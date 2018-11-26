@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package m1_s1_ihm_project.Model;
+package m1_s1_ihm_project.Model.Magazines;
 
 import java.util.Date;
-import m1_s1_ihm_project.Model.Magazines.Magazines;
 
 /**
  *
