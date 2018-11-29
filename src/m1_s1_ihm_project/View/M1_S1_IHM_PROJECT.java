@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package m1_s1_ihm_project;
+package m1_s1_ihm_project.View;
 
 import java.sql.Connection;
 import javafx.application.Application;
@@ -28,7 +28,7 @@ public class M1_S1_IHM_PROJECT extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setMaximized(true);
+       database = new Database("localhost", 1527, "IHM_Project", "root", "root");
         stage.setTitle("Learn English");
         stage.show();
     }
@@ -37,9 +37,7 @@ public class M1_S1_IHM_PROJECT extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         database = new Database("localhost", 1527, "IHM_Project", "root", "root");
-         ObservableList<Magazines> magazines = Database.getMagazines();
-         System.out.println(magazines.get(0).getTitle());
+         
         launch(args);
     }
 }
