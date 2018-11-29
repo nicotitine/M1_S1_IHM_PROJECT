@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="691.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXTabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Magazines">
+               <content>
+                  <JFXMasonryPane HSpacing="10.0" VSpacing="10.0" cellHeight="35.0" prefHeight="0.0" prefWidth="583.0" style="-fx-padding: 10px;">
+                     <children>
+                        <JFXButton buttonType="RAISED" text="Bouton" />
+                        <JFXProgressBar prefHeight="0.0" />
+                        <JFXProgressBar layoutX="85.0" layoutY="10.0" prefHeight="0.0" />
+                        <JFXProgressBar layoutX="310.0" layoutY="10.0" prefHeight="0.0" />
+                        <JFXProgressBar layoutX="10.0" layoutY="85.0" prefHeight="0.0" />
+                        <JFXProgressBar layoutX="10.0" layoutY="85.0" prefHeight="0.0" />
+                        <JFXProgressBar layoutX="235.0" layoutY="85.0" prefHeight="0.0" />
+                     </children>
+                  </JFXMasonryPane>
+               </content>
+            </Tab>
+            <Tab text="Exercices">
+               <content>
+                  <JFXMasonryPane HSpacing="10.0" prefHeight="200.0" prefWidth="692.0" style="-fx-padding: 10px;">
+                     <children>
+                        <JFXProgressBar prefHeight="0.0" />
+                        <JFXProgressBar layoutX="85.0" layoutY="10.0" prefHeight="0.0" />
+                        <JFXProgressBar layoutX="310.0" layoutY="10.0" prefHeight="0.0" />
+                        <JFXProgressBar layoutX="10.0" layoutY="85.0" prefHeight="0.0" />
+                        <JFXProgressBar layoutX="10.0" layoutY="85.0" prefHeight="0.0" />
+                        <JFXProgressBar layoutX="235.0" layoutY="85.0" prefHeight="0.0" />
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </JFXMasonryPane>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</VBox>
