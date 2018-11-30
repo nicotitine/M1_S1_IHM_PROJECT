@@ -34,10 +34,10 @@ public class Database {
         }
     }
     
-    public static ObservableList<Magazines> getMagazines() {
+    public ObservableList<Magazines> getMagazines() {
         ObservableList<Magazines> magazinesList = FXCollections.observableArrayList();
         try {
-            Statement stmt = Database.connection.createStatement();
+            Statement stmt = connection.createStatement();
             ResultSet magazinesResultSet = stmt.executeQuery("SELECT * FROM MAGAZINES");
             while(magazinesResultSet.next()){
                 String title = magazinesResultSet.getString("TITLE");

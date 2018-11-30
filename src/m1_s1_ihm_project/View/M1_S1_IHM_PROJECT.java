@@ -25,10 +25,10 @@ public class M1_S1_IHM_PROJECT extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-       database = new Database("localhost", 1527, "IHM_Project", "root", "root");
+        stage.setMaximized(true);
         stage.setTitle("Learn English");
         stage.show();
     }
