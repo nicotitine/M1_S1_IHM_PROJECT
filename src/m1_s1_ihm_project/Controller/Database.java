@@ -34,7 +34,7 @@ public class Database {
         }
     }
     
-    public ObservableList<Magazines> getMagazines() {
+    public static ObservableList<Magazines> getMagazines() {
         ObservableList<Magazines> magazinesList = FXCollections.observableArrayList();
         try {
             Statement stmt = connection.createStatement();
@@ -56,5 +56,28 @@ public class Database {
         }
         System.out.println("return is ok");
         return magazinesList;
+    }
+    
+    public static Magazines getMagazine(String id) {
+        Magazines mag = null;
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet magazineResultSet = stmt.executeQuery("SELECT * FROM MAGAZINES WHERE ID=" + id);
+            if(magazineResultSet.next()) {
+                String title = magazineResultSet.getString("TITLE");
+                String description = magazineResultSet.getString("DESCRIPTION");
+                String imageUrl = magazineResultSet.getString("IMAGEURL");
+                Date publishDate = magazineResultSet.getDate("PUBLISHDATE");
+                String type = magazineResultSet.getString("TYPE");
+                //magazinesList.add(new Magazines());
+                switch(type) {
+                    case "book":
+                        mag = new Book(title, description, imageUrl, publishDate);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return mag;
     }
 }

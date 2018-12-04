@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<FlowPane fx:id="magazinesMP" alignment="CENTER" columnHalignment="CENTER" hgap="20.0" prefHeight="200.0" prefWidth="1608.0" prefWrapLength="1200.0" styleClass="flowPane" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.MagazinesViewController">
+   <children>
+      <VBox prefHeight="450.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: grey; -fx-padding: 20px; -fx-border-radius: 7px;">
+         <children>
+            <Label fx:id="magazineTitle1" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="magazineImageView1" fitHeight="195.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="magazineText1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="301.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="250.0">
+               <children>
+                  <JFXButton fx:id="magazineConsult1" buttonType="RAISED" graphicTextGap="8.0" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #1976D2;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="450.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: grey; -fx-padding: 20px; -fx-border-radius: 7px;">
+         <children>
+            <Label fx:id="magazineTitle2" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="magazineImageView2" fitHeight="195.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="magazineText2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="301.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="250.0">
+               <children>
+                  <JFXButton fx:id="magazineConsult2" buttonType="RAISED" graphicTextGap="8.0" prefHeight="45.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #1976D2;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="450.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: grey; -fx-padding: 20px; -fx-border-radius: 7px;">
+         <children>
+            <Label fx:id="magazineTitle3" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="magazineImageView3" fitHeight="195.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="magazineText3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="301.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="250.0">
+               <children>
+                  <JFXButton fx:id="magazineConsult3" buttonType="RAISED" graphicTextGap="8.0" prefHeight="45.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #1976D2;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="450.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: grey; -fx-padding: 20px; -fx-border-radius: 7px;">
+         <children>
+            <Label fx:id="magazineTitle4" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="magazineImageView4" fitHeight="195.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="magazineText4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="301.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="250.0">
+               <children>
+                  <JFXButton fx:id="magazineConsult4" buttonType="RAISED" graphicTextGap="8.0" prefHeight="45.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #1976D2;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="450.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: grey; -fx-padding: 20px; -fx-border-radius: 7px;">
+         <children>
+            <Label fx:id="magazineTitle5" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="magazineImageView5" fitHeight="195.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="magazineText5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="301.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="250.0">
+               <children>
+                  <JFXButton fx:id="magazineConsult5" buttonType="RAISED" graphicTextGap="8.0" prefHeight="45.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #1976D2;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" top="20.0" />
+   </padding>
+</FlowPane>
