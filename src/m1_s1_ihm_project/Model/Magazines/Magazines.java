@@ -17,7 +17,7 @@ public class Magazines {
     protected String imageUrl;
     protected Date publishDate;
     
-    protected Magazines(String title, String description, String imageUrl, Date publishDate) {
+    public Magazines(String title, String description, String imageUrl, Date publishDate) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;

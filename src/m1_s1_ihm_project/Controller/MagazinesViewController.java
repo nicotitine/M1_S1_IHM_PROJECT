@@ -6,6 +6,7 @@
 package m1_s1_ihm_project.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,13 +18,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
 
 /**
@@ -76,55 +81,45 @@ public class MagazinesViewController implements Initializable {
     @FXML
     private JFXButton magazineConsult5;
     @FXML
+    private ScrollPane magazinesScrollPane;
+    @FXML
+    private JFXTabPane tabPane;
+    @FXML
+    private Tab magazinesTab;
+    private double windowWidth;
+    private Scene thisScene;
+    private Stage thisStage;
+    private ScreenController screenController;
+    
+    @FXML
     private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(magazineConsult1)) {
-            
-            magazinesMP.getChildren().clear();
             Magazines mag = Database.getMagazine("1");
-            System.out.println(magazinesMP.getChildren().size());
-            //showMagazine(mag);
-            try {
-            System.out.println(mag.getTitle());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazineView.fxml"));
-            FlowPane loadedVbox = loader.load();
-            JFXButton btn = (JFXButton)loader.getNamespace().get("exitMag");
-            //loadedVbox.setPrefWidth(windowWidth);
-            magazinesMP.getChildren().add(loadedVbox);
-            System.out.println("seems to be added " + loadedVbox.getChildren().size());
-            btn.setOnAction((ActionEvent e) -> {System.out.println(btn.getText() + " wtf");
-                magazinesMP.getChildren().clear();
-                FXMLLoader backLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazinesView.fxml"));
-                FlowPane loadedFlowPane;
-                try {
-                    backLoader.load();
-                } catch (IOException ex) {
-                    Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                FlowPane mp = (FlowPane) backLoader.getNamespace().get("magazinesMP");
-                System.out.println(mp.getChildren().size());
-                System.out.println(magazinesMP.getParent());
-                
-                
-                
-            });
-        } catch (IOException ex) {
-            Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        } else {
-            System.out.println("other event");
-        }
-        if(event.getSource().equals(magazineConsult2)) {
-            
+            screenController.setMagazineData(mag);
+            screenController.activateMag("magazine", mag, screenController);
         }
     }
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
+   
+    
+     public void setStageAndSetupListeners(Scene scene, ScreenController SC) {
+        screenController = SC;
+        thisScene = scene;
+        thisStage = (Stage)scene.getWindow();
+        windowWidth = thisStage.getWidth();
+        magazinesScrollPane.setPrefWidth(windowWidth);
+        tabPane.setPrefWidth(windowWidth);
+        magazinesMP.setPrefWidth(windowWidth);
+        
+        thisStage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            magazinesScrollPane.setPrefWidth((double)newVal);
+            tabPane.setPrefWidth((double)newVal);
+            magazinesMP.setPrefWidth((double)newVal);
+            windowWidth = (double)newVal;
+        });
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         ObservableList<Magazines> magazines = Database.getMagazines();
         
         ObservableList<Label> magazineTitles = FXCollections.observableArrayList();
@@ -146,18 +141,18 @@ public class MagazinesViewController implements Initializable {
         magazineImages.add(magazineImageView3);
         magazineImages.add(magazineImageView4);
         magazineImages.add(magazineImageView5);
+        
         int maxSize;
         if(magazineTitles.size() < magazines.size()) {
             maxSize = magazineTitles.size();
         } else {
             maxSize = magazines.size();
         }
-        
+        System.out.println(maxSize);
         for(int i = 0; i < maxSize; i++) {
             magazineTitles.get(i).setText(magazines.get(i).getTitle());
             magazineTexts.get(i).setText(magazines.get(i).getDescription());
             magazineImages.get(i).setImage(new Image(magazines.get(i).getImageUrl()));
         }
-    }    
-    
+    }
 }

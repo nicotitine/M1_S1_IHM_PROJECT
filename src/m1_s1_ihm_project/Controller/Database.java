@@ -14,8 +14,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import m1_s1_ihm_project.Model.Magazines.Audio;
 import m1_s1_ihm_project.Model.Magazines.Book;
+import m1_s1_ihm_project.Model.Magazines.Document;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
+import m1_s1_ihm_project.Model.Magazines.Video;
 
 /**
  *
@@ -23,8 +26,8 @@ import m1_s1_ihm_project.Model.Magazines.Magazines;
  */
 public class Database {
     private static Connection connection;
-    
-    public Database(String host, int port, String databaseName, String user, String password) {
+        
+    public static void connect(String host, int port, String databaseName, String user, String password) {
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:derby://" + host + ":" + port + "/" + databaseName, user, password);
             System.out.println("Connexion à la base de données réussie !");              
@@ -49,12 +52,23 @@ public class Database {
                 switch(type) {
                     case "book":
                         magazinesList.add(new Book(title, description, imageUrl, publishDate));
+                    break;
+                    case "audio":
+                        magazinesList.add(new Audio(title, description, imageUrl, publishDate));
+                    break;
+                    case "document" :
+                        magazinesList.add(new Document(title, description, imageUrl, publishDate));
+                    break;
+                    case "video" :
+                        magazinesList.add(new Video(title, description, imageUrl, publishDate));
+                    break;
+                    default: 
+                        magazinesList.add(new Magazines(title, description, imageUrl, publishDate));
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("return is ok");
         return magazinesList;
     }
     

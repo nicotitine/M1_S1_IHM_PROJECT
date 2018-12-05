@@ -1,28 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="828.0" prefWidth="1273.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.MagazinesViewController">
    <tabs>
-      <Tab text="Untitled Tab">
+      <Tab fx:id="magazinesTab" closable="false" text="Magazines">
          <content>
-            <FlowPane>
-               <children>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" />
-               </children>
-            </FlowPane>
+            <ScrollPane fx:id="magazinesScrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+               <content>
+                   <FlowPane fx:id="magazinesMP" alignment="CENTER" columnHalignment="CENTER" hgap="40.0" prefHeight="490.0" prefWidth="1272.0" prefWrapLength="1200.0" style="-fx-padding: 20;" vgap="40.0">
+                     
+                       <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                     <children>
+                        <VBox prefHeight="450.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: grey; -fx-padding: 20px;">
+                           <children>
+                              <Label fx:id="magazineTitle1" text="Label" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="magazineImageView1" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text fx:id="magazineText1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
+                                 <children>
+                                    <JFXButton fx:id="magazineConsult1" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 10px;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="30.0" layoutY="30.0" prefHeight="450.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: grey; -fx-padding: 20px;">
+                           <children>
+                              <Label fx:id="magazineTitle2" text="Label" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="magazineImageView2" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text fx:id="magazineText2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
+                                 <children>
+                                    <JFXButton fx:id="magazineConsult2" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 10px;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="350.0" layoutY="30.0" prefHeight="450.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: grey; -fx-padding: 20px;">
+                           <children>
+                              <Label fx:id="magazineTitle3" text="Label" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="magazineImageView3" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text fx:id="magazineText3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
+                                 <children>
+                                    <JFXButton fx:id="magazineConsult3" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 10px;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="670.0" layoutY="30.0" prefHeight="450.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: grey; -fx-padding: 20px;">
+                           <children>
+                              <Label fx:id="magazineTitle4" text="Label" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="magazineImageView4" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text fx:id="magazineText4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
+                                 <children>
+                                    <JFXButton fx:id="magazineConsult4" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 10px;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="30.0" layoutY="500.0" prefHeight="450.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: grey; -fx-padding: 20px;">
+                           <children>
+                              <Label fx:id="magazineTitle5" text="Label" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="magazineImageView5" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text fx:id="magazineText5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
+                                 <children>
+                                    <JFXButton fx:id="magazineConsult5" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 10px;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                   </FlowPane>
+               </content>
+            </ScrollPane>
          </content>
       </Tab>
-      <Tab text="Untitled Tab">
+      <Tab text="Exercices">
          <content>
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-              </content>
+               <content>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0" />
+               </content>
             </ScrollPane>
          </content>
       </Tab>

@@ -50,9 +50,9 @@ import m1_s1_ihm_project.Model.Magazines.Magazines;
  *
  * @author Nico
  */
-public class ViewController implements Initializable {
+public class ToDelete implements Initializable {
     
-    private Database database;
+     
     
     @FXML
     private JFXTabPane tabPane;
@@ -134,7 +134,7 @@ public class ViewController implements Initializable {
         
         if(event.getSource().equals(magazineConsult1)) {
             magazinesMP.getChildren().clear();
-            Magazines mag = database.getMagazine("1");
+            Magazines mag = Database.getMagazine("1");
             System.out.println(magazinesMP.getChildren().size());
             //showMagazine(mag);
             try {
@@ -151,7 +151,7 @@ public class ViewController implements Initializable {
                 try {
                     backLoader.load();
                 } catch (IOException ex) {
-                    Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ToDelete.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 FlowPane mp = (FlowPane) backLoader.getNamespace().get("magazinesMP");
                 System.out.println(mp.getChildren().size());
@@ -159,7 +159,7 @@ public class ViewController implements Initializable {
                 
             });
         } catch (IOException ex) {
-            Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ToDelete.class.getName()).log(Level.SEVERE, null, ex);
         }
         } else {
             System.out.println("other event");
@@ -183,21 +183,14 @@ public class ViewController implements Initializable {
                 magazinesMP.getChildren().clear();
             });
         } catch (IOException ex) {
-            Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ToDelete.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
     
     public void setStageAndSetupListeners(Scene scene) {
-        ScreenController screenController = new ScreenController(scene);
-        
-        try {
-            screenController.addScreen("magazines", FXMLLoader.load(getClass().getResource( "/m1_s1_ihm_project/View/MagazinesView.fxml" )));
-            screenController.activate("magazines");
-            //screenController.addScreen("calculator", FXMLLoader.load(getClass().getResource( "calculator.fxml" )));
-        } catch (IOException ex) {
-            Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ScreenController screenController = new ScreenController(scene);        
         Stage myStage = (Stage)scene.getWindow();
+        windowWidth = scene.getWidth();
         myStage.widthProperty().addListener((obs, oldVal, newVal) -> {
             magazinesScrollPane.setPrefWidth((double)newVal);
             tabPane.setPrefWidth((double)newVal);
@@ -208,8 +201,6 @@ public class ViewController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        database = new Database("localhost", 1527, "IHM_Project", "root", "root");
-        
         
     }
     

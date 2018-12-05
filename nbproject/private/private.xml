@@ -3,17 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/INSERTS.sql</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/Controller/MagazinesViewController.java</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/View/M1_S1_IHM_PROJECT.java</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/View/MagazinesView.fxml</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/Controller/Database.java</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/View/customCss.css</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/Model/Magazines/Audio.java</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/Controller/ViewController.java</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/Model/Magazines/Magazines.java</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/Controller/s.java</file>
-            <file>file:/C:/Users/Nico/workplace/M1_S1_IHM_Project/src/m1_s1_ihm_project/View/View.fxml</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Model/Magazines/Magazines.java</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Model/Magazines/Audio.java</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/View/MagazineView.fxml</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Controller/ScreenController.java</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Controller/MagazineViewController.java</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Model/Magazines/Book.java</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Controller/Database.java</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/View/MagazinesView.fxml</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/View/customCss.css</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/View/M1_S1_IHM_PROJECT.java</file>
+            <file>jar:file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/jfoenix-8.0.7.jar!/css/controls/jfx-button.css</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Controller/MagazinesViewController.java</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Controller/ToDelete.java</file>
+            <file>jar:file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/jfoenix-8.0.7.jar!/css/jfoenix-design.css</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Model/Magazines/Video.java</file>
+            <file>file:/C:/Users/nhinc/workplace/M1_S1_IHM_PROJECT/src/m1_s1_ihm_project/Model/Magazines/Document.java</file>
         </group>
     </open-files>
 </project-private>
