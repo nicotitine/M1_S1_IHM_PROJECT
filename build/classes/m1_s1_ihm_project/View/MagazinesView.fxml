@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
@@ -31,12 +32,18 @@
                                  <font>
                                     <Font name="System Bold" size="36.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Label>
                               <ImageView fx:id="magazineImageView1" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
-                              <Text fx:id="magazineText1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="magazineText1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="200.0" text="Text">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Text>
                               <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
                                  <children>
@@ -44,6 +51,9 @@
                                        <font>
                                           <Font size="16.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </JFXButton>
                                  </children>
                               </HBox>
@@ -55,12 +65,18 @@
                                  <font>
                                     <Font name="System Bold" size="36.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Label>
                               <ImageView fx:id="magazineImageView2" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
                               <Text fx:id="magazineText2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Text>
                               <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
                                  <children>
@@ -68,6 +84,9 @@
                                        <font>
                                           <Font size="16.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </JFXButton>
                                  </children>
                               </HBox>
@@ -79,12 +98,18 @@
                                  <font>
                                     <Font name="System Bold" size="36.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Label>
                               <ImageView fx:id="magazineImageView3" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
                               <Text fx:id="magazineText3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Text>
                               <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
                                  <children>
@@ -92,6 +117,9 @@
                                        <font>
                                           <Font size="16.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </JFXButton>
                                  </children>
                               </HBox>
@@ -103,12 +131,18 @@
                                  <font>
                                     <Font name="System Bold" size="36.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Label>
                               <ImageView fx:id="magazineImageView4" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
                               <Text fx:id="magazineText4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Text>
                               <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
                                  <children>
@@ -116,6 +150,9 @@
                                        <font>
                                           <Font size="16.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </JFXButton>
                                  </children>
                               </HBox>
@@ -127,12 +164,18 @@
                                  <font>
                                     <Font name="System Bold" size="36.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Label>
                               <ImageView fx:id="magazineImageView5" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
                               <Text fx:id="magazineText5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
                               </Text>
                               <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
                                  <children>
@@ -140,6 +183,9 @@
                                        <font>
                                           <Font size="16.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </JFXButton>
                                  </children>
                               </HBox>

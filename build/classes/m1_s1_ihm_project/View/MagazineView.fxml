@@ -1,18 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.MagazineViewController">
+<FlowPane fx:id="magazineFlowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="901.0" prefWidth="1191.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.MagazineViewController">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: blue;">
+      <VBox fx:id="magazineVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="902.0" prefWidth="1191.0">
          <children>
-            <JFXButton fx:id="exitMag" onAction="#handleButtonAction" text="EXIT" />
-            <JFXButton text="Btn" />
-            <JFXCheckBox text="chher" />
+            <MediaView fx:id="magazineMediaView" fitHeight="200.0" fitWidth="800.0" />
+            <JFXButton fx:id="exitMag" onAction="#handleButtonAction" onMouseEntered="#hoverFlatBtn" onMouseExited="#unHoverFlatBtn" ripplerFill="WHITE" styleClass="flat_btn" stylesheets="@customCss.css" text="Revenir aux magazines" textFill="#1b75bc">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <HBox prefHeight="9.0" prefWidth="1191.0" />
+            <HBox fx:id="header" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="350.0" style="-fx-padding: 20; -fx-background-color: #1b75bc;" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="title" text="Title" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="date" text="Date" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="type" text="Type" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 20px;">
+               <children>
+                  <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 20px;">
+               <children>
+                  <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Retour" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </HBox>
          </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
       </VBox>
    </children>
 </FlowPane>

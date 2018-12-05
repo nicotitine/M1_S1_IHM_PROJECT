@@ -16,12 +16,14 @@ public class Magazines {
     protected String description;
     protected String imageUrl;
     protected Date publishDate;
+    protected String type;
     
-    public Magazines(String title, String description, String imageUrl, Date publishDate) {
+    public Magazines(String title, String description, String imageUrl, Date publishDate, String type) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
         this.publishDate = publishDate;
+        this.type = type;
     }
     
     public String getTitle() {
@@ -35,5 +37,8 @@ public class Magazines {
     }
     public Date getPublishDate() {
         return this.publishDate;
+    }
+    public String getType() {
+        return this.type;
     }
 }

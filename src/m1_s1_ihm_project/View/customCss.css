@@ -16,9 +16,10 @@ and open the template in the editor.
     -fx-background-color: #1b75bc;
 }
 .jfx-tab-pane .tab-selected-line {
-    -fx-stroke: #75bc1b;
+    -fx-stroke: white;
     -fx-stroke-width: 7pt;
 }
 
-.mp {
+.flat-btn:hover {
+    -fx-text-fill: yellow;
 }

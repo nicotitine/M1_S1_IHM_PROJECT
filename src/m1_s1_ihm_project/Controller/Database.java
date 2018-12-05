@@ -52,19 +52,19 @@ public class Database {
                 //magazinesList.add(new Magazines());
                 switch(type) {
                     case "book":
-                        magazinesList.add(new Book(title, description, imageUrl, publishDate));
+                        magazinesList.add(new Book(title, description, imageUrl, publishDate, type));
                     break;
                     case "audio":
-                        magazinesList.add(new Audio(title, description, imageUrl, publishDate));
+                        magazinesList.add(new Audio(title, description, imageUrl, publishDate, type));
                     break;
                     case "document" :
-                        magazinesList.add(new Document(title, description, imageUrl, publishDate));
+                        magazinesList.add(new Document(title, description, imageUrl, publishDate, type));
                     break;
                     case "video" :
-                        magazinesList.add(new Video(title, description, imageUrl, publishDate));
+                        magazinesList.add(new Video(title, description, imageUrl, publishDate, type));
                     break;
                     default: 
-                        magazinesList.add(new Magazines(title, description, imageUrl, publishDate));
+                        magazinesList.add(new Magazines(title, description, imageUrl, publishDate, type));
                 }
             }
         } catch (SQLException ex) {
@@ -87,7 +87,7 @@ public class Database {
                 //magazinesList.add(new Magazines());
                 switch(type) {
                     case "book":
-                        mag = new Book(title, description, imageUrl, publishDate);
+                        mag = new Book(title, description, imageUrl, publishDate, type);
                 }
             }
         } catch (SQLException ex) {

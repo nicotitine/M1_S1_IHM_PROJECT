@@ -120,7 +120,7 @@ public class MagazinesViewController implements Initializable {
         System.out.println(maxSize);
         for(int i = 0; i < maxSize; i++) {
             magazineTitles.get(i).setText(magazines.get(i).getTitle());
-            magazineTexts.get(i).setText(magazines.get(i).getDescription());
+            magazineTexts.get(i).setText(magazines.get(i).getDescription() + "\nTest");
             magazineImages.get(i).setImage(new Image(magazines.get(i).getImageUrl()));
         }
     }

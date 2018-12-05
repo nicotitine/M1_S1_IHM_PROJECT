@@ -13,8 +13,8 @@ import java.util.Date;
  */
 public class Video extends Magazines{
     
-    public Video(String title, String description, String url, Date publishDate) {
-        super(title, description, url, publishDate);
+    public Video(String title, String description, String url, Date publishDate, String type) {
+        super(title, description, url, publishDate, type);
     }
     
 }
