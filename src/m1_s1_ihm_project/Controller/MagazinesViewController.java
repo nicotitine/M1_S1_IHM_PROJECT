@@ -21,6 +21,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
@@ -66,6 +67,24 @@ public class MagazinesViewController implements Initializable {
         if(event.getSource().equals(magazineConsult1)) {
             Magazines mag = Database.getMagazine("1");
             screenController.setMagazineData(mag);
+            screenController.activateMag("magazine", mag, screenController);
+        }
+        if(event.getSource().equals(magazineConsult2)) {
+            Magazines mag = Database.getMagazine("2");
+            screenController.setMagazineData(mag);
+            System.out.println(mag.getTitle());
+            screenController.activateMag("magazine", mag, screenController);
+        }
+         if(event.getSource().equals(magazineConsult3)) {
+            Magazines mag = Database.getMagazine("3");
+            screenController.setMagazineData(mag);
+            System.out.println(mag.getTitle());
+            screenController.activateMag("magazine", mag, screenController);
+        }
+         if(event.getSource().equals(magazineConsult4)) {
+            Magazines mag = Database.getMagazine("4");
+            screenController.setMagazineData(mag);
+            System.out.println(mag.getTitle());
             screenController.activateMag("magazine", mag, screenController);
         }
     }
@@ -119,9 +138,17 @@ public class MagazinesViewController implements Initializable {
         }
         System.out.println(maxSize);
         for(int i = 0; i < maxSize; i++) {
+            int descLength = magazines.get(i).getDescription().length();
+            String finalDesc;
+            if (descLength > 300) {
+                finalDesc = magazines.get(i).getDescription().substring(0, 300) + " ...".replace("13", "\n");
+            } else {
+                finalDesc = magazines.get(i).getDescription();
+            }
             magazineTitles.get(i).setText(magazines.get(i).getTitle());
-            magazineTexts.get(i).setText(magazines.get(i).getDescription() + "\nTest");
+            magazineTexts.get(i).setText(finalDesc);
             magazineImages.get(i).setImage(new Image(magazines.get(i).getImageUrl()));
+            magazineTexts.get(i).setWrappingWidth(260);
         }
     }
 }
