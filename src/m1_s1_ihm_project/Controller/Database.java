@@ -25,6 +25,7 @@ import m1_s1_ihm_project.Model.Magazines.Video;
  * @author Nico
  */
 public class Database {
+    
     private static Connection connection;
         
     public static void connect(String host, int port, String databaseName, String user, String password) {

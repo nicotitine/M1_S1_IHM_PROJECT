@@ -7,16 +7,12 @@ package m1_s1_ihm_project.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -25,8 +21,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
@@ -38,61 +32,37 @@ import m1_s1_ihm_project.Model.Magazines.Magazines;
  */
 public class MagazinesViewController implements Initializable {
 
-    @FXML
-    private FlowPane magazinesMP;
-    @FXML
-    private Label magazineTitle1;
-    @FXML
-    private ImageView magazineImageView1;
-    @FXML
-    private Text magazineText1;
-    @FXML
-    private JFXButton magazineConsult1;
-    @FXML
-    private Label magazineTitle2;
-    @FXML
-    private ImageView magazineImageView2;
-    @FXML
-    private Text magazineText2;
-    @FXML
-    private JFXButton magazineConsult2;
-    @FXML
-    private Label magazineTitle3;
-    @FXML
-    private ImageView magazineImageView3;
-    @FXML
-    private Text magazineText3;
-    @FXML
-    private JFXButton magazineConsult3;
-    @FXML
-    private Label magazineTitle4;
-    @FXML
-    private ImageView magazineImageView4;
-    @FXML
-    private Text magazineText4;
-    @FXML
-    private JFXButton magazineConsult4;
-    @FXML
-    private Label magazineTitle5;
-    @FXML
-    private ImageView magazineImageView5;
-    @FXML
-    private Text magazineText5;
-    @FXML
-    private JFXButton magazineConsult5;
-    @FXML
-    private ScrollPane magazinesScrollPane;
-    @FXML
-    private JFXTabPane tabPane;
-    @FXML
-    private Tab magazinesTab;
+    @FXML private FlowPane magazinesMP;
+    @FXML private Label magazineTitle1;
+    @FXML private ImageView magazineImageView1;
+    @FXML private Text magazineText1;
+    @FXML private JFXButton magazineConsult1;
+    @FXML private Label magazineTitle2;
+    @FXML private ImageView magazineImageView2;
+    @FXML private Text magazineText2;
+    @FXML private JFXButton magazineConsult2;
+    @FXML private Label magazineTitle3;
+    @FXML private ImageView magazineImageView3;
+    @FXML private Text magazineText3;
+    @FXML private JFXButton magazineConsult3;
+    @FXML private Label magazineTitle4;
+    @FXML private ImageView magazineImageView4;
+    @FXML private Text magazineText4;
+    @FXML private JFXButton magazineConsult4;
+    @FXML private Label magazineTitle5;
+    @FXML private ImageView magazineImageView5;
+    @FXML private Text magazineText5;
+    @FXML private JFXButton magazineConsult5;
+    @FXML private ScrollPane magazinesScrollPane;
+    @FXML private JFXTabPane tabPane;
+    @FXML private Tab magazinesTab;
+    
     private double windowWidth;
     private Scene thisScene;
     private Stage thisStage;
     private ScreenController screenController;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
+    @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(magazineConsult1)) {
             Magazines mag = Database.getMagazine("1");
             screenController.setMagazineData(mag);
@@ -118,8 +88,7 @@ public class MagazinesViewController implements Initializable {
         });
     }
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @Override public void initialize(URL url, ResourceBundle rb) {
         ObservableList<Magazines> magazines = Database.getMagazines();
         
         ObservableList<Label> magazineTitles = FXCollections.observableArrayList();
