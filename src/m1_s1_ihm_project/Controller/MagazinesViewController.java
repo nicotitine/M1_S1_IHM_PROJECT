@@ -66,6 +66,7 @@ public class MagazinesViewController implements Initializable {
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(magazineConsult1)) {
             Magazines mag = Database.getMagazine("1");
+            screenController.setMagazineData(mag);
             screenController.activateMag("magazine", mag, screenController);
         }
         if(event.getSource().equals(magazineConsult2)) {
