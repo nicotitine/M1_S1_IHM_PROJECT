@@ -66,25 +66,21 @@ public class MagazinesViewController implements Initializable {
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(magazineConsult1)) {
             Magazines mag = Database.getMagazine("1");
-            screenController.setMagazineData(mag);
             screenController.activateMag("magazine", mag, screenController);
         }
         if(event.getSource().equals(magazineConsult2)) {
             Magazines mag = Database.getMagazine("2");
             screenController.setMagazineData(mag);
-            System.out.println(mag.getTitle());
             screenController.activateMag("magazine", mag, screenController);
         }
          if(event.getSource().equals(magazineConsult3)) {
             Magazines mag = Database.getMagazine("3");
             screenController.setMagazineData(mag);
-            System.out.println(mag.getTitle());
             screenController.activateMag("magazine", mag, screenController);
         }
          if(event.getSource().equals(magazineConsult4)) {
             Magazines mag = Database.getMagazine("4");
             screenController.setMagazineData(mag);
-            System.out.println(mag.getTitle());
             screenController.activateMag("magazine", mag, screenController);
         }
     }
@@ -136,7 +132,7 @@ public class MagazinesViewController implements Initializable {
         } else {
             maxSize = magazines.size();
         }
-        System.out.println(maxSize);
+
         for(int i = 0; i < maxSize; i++) {
             int descLength = magazines.get(i).getDescription().length();
             String finalDesc;

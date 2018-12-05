@@ -8,7 +8,6 @@ package m1_s1_ihm_project.Controller;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,9 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -76,7 +73,6 @@ public class MagazineViewController implements Initializable {
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exitMag) || event.getSource().equals(backBtn)) {
             screenController.activateMag("magazines", thisMag, screenController);
-            System.out.println("exit clicked");
         }
     }
     
@@ -102,6 +98,7 @@ public class MagazineViewController implements Initializable {
         title.setText(mag.getTitle());
         description.setText(mag.getDescription());
         date.setText("Date de publication : " + mag.getPublishDate().toString());
+        
         switch(mag.getType()) {
             case "book" :
                 type.setText("Type : Livre");
@@ -128,11 +125,9 @@ public class MagazineViewController implements Initializable {
             if(windowWidth < 800) {
                 header.setSpacing(100);
             }
-            
         });
     }
 
-   
     @Override public void initialize(URL url, ResourceBundle rb) {
        
     }
