@@ -19,10 +19,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import m1_s1_ihm_project.Model.Magazines.Audio;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
+import m1_s1_ihm_project.Model.Magazines.Video;
 
 /**
  * FXML Controller class
@@ -63,16 +67,21 @@ public class MagazineViewController implements Initializable {
     @FXML private Label secondaryTitle;
     @FXML private HBox subHeaderHBox;
     @FXML private HBox btnGroupBuyShare;
+    @FXML private JFXButton buyBook;
+    @FXML private JFXButton shareBook;
     private ScreenController screenController;
     private Magazines thisMag;
     private double windowWidth;
-    private Scene thisScene;
     private Stage thisStage;
     private ImageView imageMediaView;
+    private WebView videoMediaView;
     
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exitMag) || event.getSource().equals(backBtn)) {
             screenController.activateMag("magazines", thisMag, screenController);
+            if(videoMediaView != null) {
+                videoMediaView.getEngine().load(null);
+            }
         }
     }
     
@@ -83,8 +92,7 @@ public class MagazineViewController implements Initializable {
         exitMag.setTextFill(Color.web("#1B75BC"));
     }
     
-     public void setStageAndSetupListeners(Scene scene, Magazines mag, ScreenController SC) {
-        thisScene = scene;
+    public void setStageAndSetupListeners(Scene scene, Magazines mag, ScreenController SC) {
         thisStage = (Stage)scene.getWindow();
         windowWidth = scene.getWidth();
         magazineFlowPane.setPrefWidth(windowWidth);
@@ -98,7 +106,6 @@ public class MagazineViewController implements Initializable {
         title.setText(mag.getTitle());
         description.setText(mag.getDescription());
         date.setText("Date de publication : " + mag.getPublishDate().toString());
-        
         switch(mag.getType()) {
             case "book" :
                 type.setText("Type : Livre");
@@ -109,6 +116,23 @@ public class MagazineViewController implements Initializable {
                 scrollPaneMedia.setContent(imageMediaView);
                 scrollPaneMedia.setPrefHeight(350);
                 secondaryTitle.setText("Synopsis : ");
+            break;
+            case "video" :
+                Video vid = (Video)mag;
+                type.setText("Type : Vidéo");
+                videoMediaView = new WebView();
+                videoMediaView.getEngine().load(vid.getMediaUrl());
+                videoMediaView.setPrefSize(480, 700);
+                scrollPaneMedia.setContent(videoMediaView);
+                secondaryTitle.setText("Description : ");
+                scrollPaneMedia.setPrefHeight(700);
+                subHeaderHBox.setPrefHeight(100);
+                buyBook.setText("Ouvrir la vidéo dans votre navigateur");
+                shareBook.setText("Partager cette vidéo");
+            break;
+            case "audio" :
+                Audio audio = (Audio)mag;
+                type.setText("Type : Document audio");
         }
         
         description.setWrappingWidth(windowWidth/2);

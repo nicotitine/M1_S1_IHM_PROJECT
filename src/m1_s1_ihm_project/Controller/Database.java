@@ -49,19 +49,20 @@ public class Database {
                 String imageUrl = magazinesResultSet.getString("IMAGEURL");
                 Date publishDate = magazinesResultSet.getDate("PUBLISHDATE");
                 String type = magazinesResultSet.getString("TYPE");
+                String mediaUrl = magazinesResultSet.getString("MEDIAURL");
                 //magazinesList.add(new Magazines());
                 switch(type) {
                     case "book":
                         magazinesList.add(new Book(title, description, imageUrl, publishDate, type));
                     break;
                     case "audio":
-                        magazinesList.add(new Audio(title, description, imageUrl, publishDate, type));
+                        magazinesList.add(new Audio(title, description, imageUrl, publishDate, type, mediaUrl));
                     break;
                     case "document" :
                         magazinesList.add(new Document(title, description, imageUrl, publishDate, type));
                     break;
                     case "video" :
-                        magazinesList.add(new Video(title, description, imageUrl, publishDate, type));
+                        magazinesList.add(new Video(title, description, imageUrl, publishDate, type, mediaUrl));
                     break;
                     default: 
                         magazinesList.add(new Magazines(title, description, imageUrl, publishDate, type));
@@ -84,15 +85,20 @@ public class Database {
                 String imageUrl = magazineResultSet.getString("IMAGEURL");
                 Date publishDate = magazineResultSet.getDate("PUBLISHDATE");
                 String type = magazineResultSet.getString("TYPE");
+                String mediaUrl = magazineResultSet.getString("MEDIAURL");
                 //magazinesList.add(new Magazines());
                 switch(type) {
                     case "book":
                         mag = new Book(title, description, imageUrl, publishDate, type);
+                    break;
+                    case "video" :
+                        mag = new Video(title, description, imageUrl, publishDate, type, mediaUrl);
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(mag.getTitle());
         return mag;
     }
 }

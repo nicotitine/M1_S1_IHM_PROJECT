@@ -18,13 +18,20 @@
             <VBox fx:id="magazineVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="902.0" prefWidth="1191.0">
                <children>
                   <ScrollPane fx:id="scrollPaneMedia" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" />
-                  <HBox layoutX="10.0" layoutY="235.0" prefHeight="9.0" prefWidth="1191.0" />
                   <JFXButton fx:id="exitMag" onAction="#handleButtonAction" onMouseEntered="#hoverFlatBtn" onMouseExited="#unHoverFlatBtn" ripplerFill="WHITE" styleClass="flat_btn" stylesheets="@customCss.css" text="Revenir aux magazines" textFill="#1b75bc">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </JFXButton>
-                  <HBox prefHeight="9.0" prefWidth="1191.0" />
                   <HBox fx:id="header" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="350.0" style="-fx-padding: 20; -fx-background-color: #1b75bc;" VBox.vgrow="NEVER">
                      <children>
                         <Label fx:id="title" text="Title" textAlignment="CENTER" textFill="WHITE">
@@ -59,17 +66,19 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="22.0" prefWidth="1191.0" />
-                  <HBox fx:id="subHeaderHBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                  <HBox fx:id="subHeaderHBox" alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="1191.0" spacing="50.0">
                      <children>
                         <Label fx:id="secondaryTitle" prefHeight="35.0" prefWidth="683.0" style="-fx-padding: 0px  0px 0px 200px;" text="Titre secondaire">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                         <HBox fx:id="btnGroupBuyShare" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="443.0" spacing="20.0" style="-fx-padding: 0px 40px 0px 0px;">
                            <children>
-                              <JFXButton fx:id="buyBook" buttonType="RAISED" prefHeight="39.0" prefWidth="196.0" style="-fx-background-color: #1b75bc;" text="Acheter ce livre" textFill="WHITE">
+                              <JFXButton fx:id="buyBook" buttonType="RAISED" prefHeight="39.0" style="-fx-background-color: #1b75bc;" text="Acheter ce livre" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -77,7 +86,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
-                              <JFXButton fx:id="shareBook" buttonType="RAISED" prefHeight="39.0" prefWidth="196.0" style="-fx-background-color: #1b75bc;" text="Partager ce livre" textFill="WHITE">
+                              <JFXButton fx:id="shareBook" buttonType="RAISED" prefHeight="39.0" style="-fx-background-color: #1b75bc;" text="Partager ce livre" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -88,6 +97,9 @@
                            </children>
                         </HBox>
                      </children>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 20px;">
                      <children>

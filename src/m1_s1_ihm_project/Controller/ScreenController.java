@@ -38,7 +38,7 @@ public class ScreenController {
         }
     }
 
-    protected void activateMag(String name, Magazines mag, ScreenController SC){
+    public void activateMag(String name, Magazines mag, ScreenController SC){
         switch(name) {
             case "magazine":
                 MagazineViewController controller = (MagazineViewController)magazineLoader.getController();

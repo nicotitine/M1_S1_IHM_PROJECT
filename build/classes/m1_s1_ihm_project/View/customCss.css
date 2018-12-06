@@ -84,3 +84,10 @@ and open the template in the editor.
     -fx-background-color: derive(black,50%);
 }
  
+
+
+.magazine {
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}

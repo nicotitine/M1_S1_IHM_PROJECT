@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Nico
  */
 public class Magazines {
+    protected int id;
     protected String title;
     protected String description;
     protected String imageUrl;
