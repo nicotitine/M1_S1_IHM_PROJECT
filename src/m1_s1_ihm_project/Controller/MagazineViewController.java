@@ -1,13 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m1_s1_ihm_project.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +21,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
@@ -28,47 +29,24 @@ import m1_s1_ihm_project.Model.Magazines.Audio;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
 import m1_s1_ihm_project.Model.Magazines.Video;
 
-/**
- * FXML Controller class
- *
- * @author Nico
- */
 public class MagazineViewController implements Initializable {
 
-     @FXML
-    private FlowPane magazineFlowPane;
-
-    @FXML
-    private VBox magazineVBox;
-
-    @FXML
-    private ScrollPane scrollPaneMedia;
-
-    @FXML
-    private JFXButton exitMag;
-
-    @FXML
-    private Label title;
-
-    @FXML
-    private Label date;
-
-    @FXML
-    private Label type;
-
-    @FXML
-    private Text description;
-    
-    @FXML
-    private HBox header;
-
-    @FXML
-    private JFXButton backBtn;
+    @FXML private FlowPane magazineFlowPane;
+    @FXML private VBox magazineVBox;
+    @FXML private ScrollPane scrollPaneMedia;
+    @FXML private JFXButton exitMag;
+    @FXML private Label title;
+    @FXML private Label date;
+    @FXML private Label type;
+    @FXML private Text description;
+    @FXML private HBox header;
+    @FXML private JFXButton backBtn;
     @FXML private Label secondaryTitle;
     @FXML private HBox subHeaderHBox;
     @FXML private HBox btnGroupBuyShare;
     @FXML private JFXButton buyBook;
     @FXML private JFXButton shareBook;
+    
     private ScreenController screenController;
     private Magazines thisMag;
     private double windowWidth;
@@ -81,6 +59,13 @@ public class MagazineViewController implements Initializable {
             screenController.activateMag("magazines", thisMag, screenController);
             if(videoMediaView != null) {
                 videoMediaView.getEngine().load(null);
+            }
+        }
+        if(event.getSource().equals(buyBook)) {
+            try {
+                Desktop.getDesktop().browse(new URI(thisMag.getBrowsingUrl()));
+            } catch (URISyntaxException | IOException ex) {
+                Logger.getLogger(MagazineViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -104,8 +89,8 @@ public class MagazineViewController implements Initializable {
         screenController = SC;
         thisMag = mag;
         title.setText(mag.getTitle());
-        description.setText(mag.getDescription());
-        date.setText("Date de publication : " + mag.getPublishDate().toString());
+        description.setText(mag.getDescription().replace("\\n", "\n"));
+        date.setText("Date de publication : " + new SimpleDateFormat("dd/MM/yyyy").format(mag.getPublishDate()));
         switch(mag.getType()) {
             case "book" :
                 type.setText("Type : Livre");
@@ -116,6 +101,8 @@ public class MagazineViewController implements Initializable {
                 scrollPaneMedia.setContent(imageMediaView);
                 scrollPaneMedia.setPrefHeight(350);
                 secondaryTitle.setText("Synopsis : ");
+                buyBook.setText("Acheter ce livre dans votre navigateur");
+                shareBook.setText("Partager ce livre");
             break;
             case "video" :
                 Video vid = (Video)mag;
@@ -141,7 +128,11 @@ public class MagazineViewController implements Initializable {
             magazineFlowPane.setPrefWidth((double)newVal);
             magazineVBox.setPrefWidth((double)newVal);
             windowWidth = (double)newVal;
-            imageMediaView.setFitWidth(windowWidth);
+            if(imageMediaView != null)
+                imageMediaView.setFitWidth(windowWidth);
+            if(videoMediaView != null) {
+                videoMediaView.setPrefWidth(windowWidth);
+            }
             description.setWrappingWidth(windowWidth/2);
             if(windowWidth < 1200) {
                 header.setSpacing(200);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m1_s1_ihm_project.Controller;
 
 import java.sql.Connection;
@@ -20,10 +15,6 @@ import m1_s1_ihm_project.Model.Magazines.Document;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
 import m1_s1_ihm_project.Model.Magazines.Video;
 
-/**
- *
- * @author Nico
- */
 public class Database {
     
     private static Connection connection;
@@ -45,27 +36,27 @@ public class Database {
             ResultSet magazinesResultSet = stmt.executeQuery("SELECT * FROM MAGAZINES");
             while(magazinesResultSet.next()){
                 String title = magazinesResultSet.getString("TITLE");
-                String description = magazinesResultSet.getString("DESCRIPTION");
+                String description = magazinesResultSet.getString("DESCRIPTION").replace("\\n", "\n");
                 String imageUrl = magazinesResultSet.getString("IMAGEURL");
                 Date publishDate = magazinesResultSet.getDate("PUBLISHDATE");
                 String type = magazinesResultSet.getString("TYPE");
                 String mediaUrl = magazinesResultSet.getString("MEDIAURL");
-                //magazinesList.add(new Magazines());
+                String browsingUrl = magazinesResultSet.getString("BROWSINGURL");
                 switch(type) {
                     case "book":
-                        magazinesList.add(new Book(title, description, imageUrl, publishDate, type));
+                        magazinesList.add(new Book(title, description, imageUrl, publishDate, type, browsingUrl));
                     break;
                     case "audio":
-                        magazinesList.add(new Audio(title, description, imageUrl, publishDate, type, mediaUrl));
+                        magazinesList.add(new Audio(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl));
                     break;
                     case "document" :
-                        magazinesList.add(new Document(title, description, imageUrl, publishDate, type));
+                        magazinesList.add(new Document(title, description, imageUrl, publishDate, type, browsingUrl));
                     break;
                     case "video" :
-                        magazinesList.add(new Video(title, description, imageUrl, publishDate, type, mediaUrl));
+                        magazinesList.add(new Video(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl));
                     break;
                     default: 
-                        magazinesList.add(new Magazines(title, description, imageUrl, publishDate, type));
+                        magazinesList.add(new Magazines(title, description, imageUrl, publishDate, type, browsingUrl));
                 }
             }
         } catch (SQLException ex) {
@@ -86,19 +77,27 @@ public class Database {
                 Date publishDate = magazineResultSet.getDate("PUBLISHDATE");
                 String type = magazineResultSet.getString("TYPE");
                 String mediaUrl = magazineResultSet.getString("MEDIAURL");
-                //magazinesList.add(new Magazines());
+                String browsingUrl = magazineResultSet.getString("BROWSINGURL");
                 switch(type) {
                     case "book":
-                        mag = new Book(title, description, imageUrl, publishDate, type);
+                        mag = new Book(title, description, imageUrl, publishDate, type, browsingUrl);
+                    break;
+                    case "audio":
+                        mag = new Audio(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl);
+                    break;
+                    case "document" :
+                        mag = new Document(title, description, imageUrl, publishDate, type, browsingUrl);
                     break;
                     case "video" :
-                        mag = new Video(title, description, imageUrl, publishDate, type, mediaUrl);
+                        mag = new Video(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl);
+                    break;
+                    default: 
+                        mag = new Magazines(title, description, imageUrl, publishDate, type, browsingUrl);
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(mag.getTitle());
         return mag;
     }
 }

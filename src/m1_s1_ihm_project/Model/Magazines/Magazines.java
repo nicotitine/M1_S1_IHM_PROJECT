@@ -18,13 +18,15 @@ public class Magazines {
     protected String imageUrl;
     protected Date publishDate;
     protected String type;
+    protected String browsingUrl;
     
-    public Magazines(String title, String description, String imageUrl, Date publishDate, String type) {
+    public Magazines(String title, String description, String imageUrl, Date publishDate, String type, String browsingUrl) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
         this.publishDate = publishDate;
         this.type = type;
+        this.browsingUrl = browsingUrl;
     }
     
     public String getTitle() {
@@ -41,5 +43,8 @@ public class Magazines {
     }
     public String getType() {
         return this.type;
+    }
+    public String getBrowsingUrl() {
+        return this.browsingUrl;
     }
 }

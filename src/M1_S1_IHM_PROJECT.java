@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,10 +7,6 @@ import m1_s1_ihm_project.Controller.Database;
 import m1_s1_ihm_project.Controller.MagazinesViewController;
 import m1_s1_ihm_project.Controller.ScreenController;
 
-/**
- *
- * @author Nico
- */
 public class M1_S1_IHM_PROJECT extends Application {
         
     @Override

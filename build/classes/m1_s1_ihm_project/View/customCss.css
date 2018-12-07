@@ -10,81 +10,64 @@ and open the template in the editor.
 
 .jfx-tab-pane .headers-region {
     -fx-background-color: #1b75bc;
-    -fx-padding: 20px 0px 20px 50px;
 }
+
 .jfx-tab-pane .tab-header-background {
     -fx-background-color: #1b75bc;
 }
+
+.jfx-tab-pane .tab-header-area .jfx-rippler{
+    -jfx-rippler-fill: white;
+}
+
+.tab .tab-label {
+    -fx-font-size: 28px;
+    -fx-padding: 20px 40px 20px 40px;
+}
+
 .jfx-tab-pane .tab-selected-line {
-    -fx-stroke: white;
-    -fx-stroke-width: 7pt;
+    -fx-background-color: white;
 }
 
 .flat-btn:hover {
     -fx-text-fill: yellow;
 }
 
-/* The increment and decrement button CSS class of scrollbar */
-  .increment-button ,  .decrement-button {
+.increment-button , .decrement-button {
     -fx-background-color:transparent;
-	-fx-background-radius: 2em;
- 
+    -fx-background-radius: 2em;
 }
- 
-/* The main scrollbar CSS class of ListView */
-  .scroll-bar:horizontal ,
-   .scroll-bar:vertical{
+
+.scroll-bar:horizontal , .scroll-bar:vertical {
     -fx-background-color:transparent;
- 
 }
- 
-/* The increment and decrement button CSS class of scrollbar */
-  .increment-button ,  .decrement-button {
+
+.increment-button , .decrement-button {
     -fx-background-color:transparent;
-	-fx-border-color:derive(gray,80%);
+    -fx-border-color:derive(gray,80%);
 }
- 
-/* The main scrollbar **track** CSS class  */
-  .scroll-bar:horizontal .track ,
-  .scroll-bar:vertical .track{
-     -fx-background-color: transparent;
-	 -fx-border-color:derive(gray,80%);
-	 -fx-background-radius: 0em;
+
+.scroll-bar:horizontal .track , .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color:derive(gray,80%);
+    -fx-background-radius: 0em;
 }
- 
-/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
-  .scroll-bar:horizontal .thumb,
-  .scroll-bar:vertical .thumb {
+
+.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
     -fx-background-color:derive(black,90%);
-	-fx-background-insets: 0, 0, 0;
-	-fx-background-radius: 0em;
- 
+    -fx-background-insets: 0, 0, 0;
+    -fx-background-radius: 0em;
 }
- 
-/* ------------------------------------------------------------------------------------- */
-/** EVENT CSS **/
-/* ------------------------------------------------------------------------------------- */
- 
-/* The main scrollbar **track** CSS class on event of "hover" and "pressed" */
- 
-  .scroll-bar:horizontal:hover .track ,
-  .scroll-bar:horizontal:pressed .track ,
-  .scroll-bar:vertical:hover .track,
-  .scroll-bar:vertical:pressed .track{
-     -fx-background-color: derive(#434343,20%);
- 
-	 -fx-opacity: 0.2;
-	 -fx-background-radius: 0em;
- 
+
+.scroll-bar:horizontal:hover .track , .scroll-bar:horizontal:pressed .track , .scroll-bar:vertical:hover .track, .scroll-bar:vertical:pressed .track {
+    -fx-background-color: derive(#434343,20%);
+    -fx-opacity: 0.2;
+    -fx-background-radius: 0em;
 }
- 
-/* The main scrollbar **thumb** CSS class on event of "hover" and "pressed" */
-  .scroll-bar .thumb:hover,
-  .scroll-bar .thumb:pressed{
+
+.scroll-bar .thumb:hover, .scroll-bar .thumb:pressed {
     -fx-background-color: derive(black,50%);
 }
- 
-
 
 .magazine {
     -fx-background-radius: 7px;

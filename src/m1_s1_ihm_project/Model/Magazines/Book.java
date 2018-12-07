@@ -13,8 +13,8 @@ import java.util.Date;
  */
 public class Book extends Magazines{
     
-    public Book(String title, String description, String url, Date publishDate, String type) {
-        super(title, description, url, publishDate, type);
+    public Book(String title, String description, String url, Date publishDate, String type, String browsingUrl) {
+        super(title, description, url, publishDate, type, browsingUrl);
     }
     
 }
