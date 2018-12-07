@@ -5,7 +5,7 @@ create table magazines(
     imageurl varchar(255),
     publishdate date,
     type varchar(255),
-    mediaurl type varchar(255),
+    mediaurl varchar(255),
     browsingurl varchar(255),
     PRIMARY KEY (id)
 );
@@ -19,6 +19,17 @@ insert into magazines values (
     'video',
     'https://www.youtube-nocookie.com/embed/juKd26qkNAw',
     'https://www.youtube.com/watch?v=juKd26qkNAw'
+);
+
+insert into magazines values (
+    2,
+    'Audio Test',
+    'Audio test description',
+    'http://www.bbc.co.uk/staticarchive/3f3c6fbcecc7b29271f4bcd51da8268301fcfc36.jpg',
+    '01/01/2010',
+    'audio',
+    'http://http-ws.bbc.co.uk.edgesuite.net/mp3/learningenglish/2014/09/140924_vwitn_inmates_bank_audio_140924_vwitn_inmates_bank_audio_au_bb.mp3',
+    'http://www.bbc.co.uk/worldservice/learningenglish/081222_download.shtml'
 );
 
 create table exercices(
