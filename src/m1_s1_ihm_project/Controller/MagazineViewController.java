@@ -39,7 +39,6 @@ public class MagazineViewController implements Initializable {
     @FXML private Label date;
     @FXML private Label type;
     @FXML private Text description;
-    @FXML private HBox header;
     @FXML private JFXButton backBtn;
     @FXML private Label secondaryTitle;
     @FXML private HBox subHeaderHBox;
@@ -53,12 +52,16 @@ public class MagazineViewController implements Initializable {
     private Stage thisStage;
     private ImageView imageMediaView;
     private WebView videoMediaView;
+    private WebView audioMediaView;
     
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exitMag) || event.getSource().equals(backBtn)) {
             screenController.activateMag("main", thisMag, screenController);
             if(videoMediaView != null) {
                 videoMediaView.getEngine().load(null);
+            }
+            if(audioMediaView != null) {
+                audioMediaView.getEngine().load(null);
             }
         }
         if(event.getSource().equals(buyBook)) {
@@ -120,6 +123,13 @@ public class MagazineViewController implements Initializable {
             case "audio" :
                 Audio audio = (Audio)mag;
                 type.setText("Type : Document audio");
+                audioMediaView = new WebView();
+                audioMediaView.getEngine().load(audio.getMediaUrl());
+                audioMediaView.setPrefSize(windowWidth, 350);
+                scrollPaneMedia.setContent(audioMediaView);
+                buyBook.setText("Ouvrir dans votre navigateur");
+                shareBook.setText("Partager ce document audio");
+            break;
         }
         
         description.setWrappingWidth(windowWidth/2);
