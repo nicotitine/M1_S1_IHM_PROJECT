@@ -13,10 +13,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,11 +22,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import m1_s1_ihm_project.Model.Exercices.Exercices;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
 import m1_s1_ihm_project.Model.Tools.EnglishTime;
@@ -46,7 +42,6 @@ public class MainViewController implements Initializable {
     @FXML private JFXComboBox translateFromList;
     @FXML private JFXButton exchangeBtn;
     @FXML private JFXTreeTableView<EnglishTime> timesTable;
-    @FXML private JFXButton translateBtn;
     @FXML private JFXButton clearMode;
     @FXML private JFXButton darkMode;
     @FXML private JFXButton clearModeEx;
@@ -70,8 +65,8 @@ public class MainViewController implements Initializable {
     private boolean firstLaunch;
     private TraductionController traducteurController;
     
-    private String theme1Url = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
-    private String theme2Url = getClass().getResource("/m1_s1_ihm_project/View/customCss_1.css").toExternalForm();
+    private final String theme1Url = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
+    private final String theme2Url = getClass().getResource("/m1_s1_ihm_project/View/customCss_1.css").toExternalForm();
     
     public void setStageAndSetupListeners(Scene scene, ScreenController SC) {
         // Initialize the window with the window width (screen width as fullscreen)
@@ -136,13 +131,10 @@ public class MainViewController implements Initializable {
             explenationCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExplenation()));
             timeCol.setStyle("-fx-alignment: center; -fx-font-weight: bold;");
             
-            
             final TreeItem<EnglishTime> root = new RecursiveTreeItem<EnglishTime>(times, RecursiveTreeObject::getChildren);
             timesTable.getColumns().setAll(timeCol, exampleCol, explenationCol);
             timesTable.setRoot(root);
             timesTable.setShowRoot(false);
-            
-            //if(!screenController.getMain().getStylesheets().contains(theme1Url)) screenController.getMain().getStylesheets().add(theme1Url);
         }
         
         firstLaunch = false;
@@ -203,6 +195,7 @@ public class MainViewController implements Initializable {
             if(!screenController.getMain().getStylesheets().contains(theme1Url))
                 screenController.getMain().getStylesheets().add(theme1Url);
         }
+        
         if(event.getSource().equals(exitBtn) || event.getSource().equals(exitBtnEx) ||event.getSource().equals(exitBtnTool)) {
             Runtime.getRuntime().exit(0);
         }

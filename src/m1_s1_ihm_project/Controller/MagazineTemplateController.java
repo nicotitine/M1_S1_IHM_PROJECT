@@ -43,7 +43,6 @@ public class MagazineTemplateController implements Initializable {
             magazineText.setText(mag.getDescription());
         
         magazineText.setWrappingWidth(340);
-        
         switch(mag.getType()) {
             case "book":
                 magazineType.setText("Livre");

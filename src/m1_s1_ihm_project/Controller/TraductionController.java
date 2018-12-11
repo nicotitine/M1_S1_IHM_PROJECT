@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 
 public class TraductionController {
     
-    private Map<String, String> mapLang;
+    private final Map<String, String> mapLang;
  
     TraductionController() {
         mapLang = new TreeMap<>();
