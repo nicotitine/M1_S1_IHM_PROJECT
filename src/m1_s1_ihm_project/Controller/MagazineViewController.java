@@ -56,7 +56,7 @@ public class MagazineViewController implements Initializable {
     
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exitMag) || event.getSource().equals(backBtn)) {
-            screenController.activateMag("magazines", thisMag, screenController);
+            screenController.activateMag("main", thisMag, screenController);
             if(videoMediaView != null) {
                 videoMediaView.getEngine().load(null);
             }
@@ -134,12 +134,6 @@ public class MagazineViewController implements Initializable {
                 videoMediaView.setPrefWidth(windowWidth);
             }
             description.setWrappingWidth(windowWidth/2);
-            if(windowWidth < 1200) {
-                header.setSpacing(200);
-            }
-            if(windowWidth < 800) {
-                header.setSpacing(100);
-            }
         });
     }
 

@@ -39,6 +39,8 @@ public class MagazineTemplateController implements Initializable {
         magazineImageView.setImage(new Image(mag.getImageUrl()));
         if(mag.getDescription().length() > textMaxLength)
             magazineText.setText(mag.getDescription().substring(0, 300) + "...");
+        else
+            magazineText.setText(mag.getDescription());
         
         magazineText.setWrappingWidth(340);
         

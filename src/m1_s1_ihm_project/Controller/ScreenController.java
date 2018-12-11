@@ -15,15 +15,15 @@ public class ScreenController {
     private Scene main;
     private Magazines magazineData;
     private FXMLLoader magazineLoader;
-    private FXMLLoader magazinesLoader;
+    private FXMLLoader mainLoader;
     
     public ScreenController(Scene main) {
         this.main = main;
         try {
             magazineLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazineView.fxml"));
-            magazinesLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazinesView.fxml"));
+            mainLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MainView.fxml"));
             screenMap.put("magazine", magazineLoader.load());
-            screenMap.put("magazines", magazinesLoader.load());
+            screenMap.put("main", mainLoader.load());
         } catch (IOException ex) {
             Logger.getLogger(ScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -36,8 +36,8 @@ public class ScreenController {
                 main.setRoot( screenMap.get(name) );
                 controller.setStageAndSetupListeners(main, magazineData, SC);
             break;
-            case "magazines":
-                MagazinesViewController magazinesController = (MagazinesViewController)magazinesLoader.getController();
+            case "main":
+                MainViewController magazinesController = (MainViewController)mainLoader.getController();
                 main.setRoot( screenMap.get(name) );
                 magazinesController.setStageAndSetupListeners(main, SC);
         }

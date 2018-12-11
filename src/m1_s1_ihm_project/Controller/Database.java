@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import m1_s1_ihm_project.Model.Exercices.Exercices;
 import m1_s1_ihm_project.Model.Magazines.Audio;
 import m1_s1_ihm_project.Model.Magazines.Book;
 import m1_s1_ihm_project.Model.Magazines.Document;
@@ -99,5 +100,42 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mag;
+    }
+    
+    
+    public static ObservableList<Exercices> getExercices() {
+        ObservableList<Exercices> exercicesList = FXCollections.observableArrayList();
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet exercicesResultSet = stmt.executeQuery("SELECT * FROM EXERCICES");
+            while(exercicesResultSet.next()){
+                String title = exercicesResultSet.getString("TITLE");
+                String description = exercicesResultSet.getString("DESCRIPTION");
+                String[] questions = exercicesResultSet.getString("QUESTIONS").split(", ");
+                String[] answers = exercicesResultSet.getString("ANSWERS").split(", ");
+                String duration = exercicesResultSet.getString("DURATION");
+                String imageUrl = exercicesResultSet.getString("IMAGEURL");
+                String type = exercicesResultSet.getString("TYPE");
+                switch(type) {
+                    case "qcm":
+                        exercicesList.add(new Exercices(title, description, questions, answers, duration, imageUrl, type));
+                    break;
+                    case "audio":
+                        //exercicesList.add(new Audio(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl));
+                    break;
+                    case "document" :
+                        //exercicesList.add(new Document(title, description, imageUrl, publishDate, type, browsingUrl));
+                    break;
+                    case "video" :
+                        //exercicesList.add(new Video(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl));
+                    break;
+                    default: 
+                        //exercicesList.add(new Magazines(title, description, imageUrl, publishDate, type, browsingUrl));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return exercicesList;
     }
 }

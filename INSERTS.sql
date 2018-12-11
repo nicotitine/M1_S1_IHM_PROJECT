@@ -10,6 +10,29 @@ create table magazines(
     PRIMARY KEY (id)
 );
 
+create table exercices(
+    id int not null,
+    title varchar(255),
+    description varchar(1023),
+    questions varchar(2047),
+    answers varchar(2047),
+    duration varchar(255),
+    imageurl varchar(255),
+    type varchar(255),
+    primary key (id)
+);
+
+insert into exercices values (
+    1,
+    'Test Exercice',
+    'In this exercice, you will see a good display ! Cool isnt it ?',
+    'question n°1, quesion n°2, question n°3',
+    'question n°1, question n°3',
+    '3min',
+    'https://i2.wp.com/pedagoblog.fr/wp-content/uploads/2017/11/qcm-1.jpg?fit=1876%2C1038',
+    'qcm'
+);
+
 insert into magazines values (
     1,
     'Learn English in 30 Minutes - ALL the English Basics You Need',
