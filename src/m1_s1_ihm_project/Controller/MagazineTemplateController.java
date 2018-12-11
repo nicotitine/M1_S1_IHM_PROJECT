@@ -13,11 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
 
-/**
- * FXML Controller class
- *
- * @author Nico
- */
 public class MagazineTemplateController implements Initializable {
 
     @FXML private Text magazineTitle;
