@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="450.0" prefWidth="366.0" spacing="20.0" style="-fx-background-color: grey; -fx-padding: 20px;" styleClass="magazine" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.MagazineTemplateController">
+<VBox prefHeight="450.0" prefWidth="366.0" spacing="20.0" style="-fx-padding: 20px;" styleClass="magazine" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.MagazineTemplateController">
    <children>
-      <Text fx:id="magazineTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="325.0">
+      <Text fx:id="magazineTitle" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="magazineTitle" text="Text" wrappingWidth="325.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -27,12 +27,12 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="164.0">
                      <children>
-                        <Label text="Catégorie : " textFill="WHITE">
+                        <Label styleClass="magazineCat" text="Catégorie : ">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="magazineType" text="Label" textFill="WHITE">
+                        <Label fx:id="magazineType" styleClass="magazineCat" text="Label">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -43,7 +43,7 @@
             </VBox>
             <VBox alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="161.0">
                <children>
-                  <Label fx:id="magazineDate" text="Label" textFill="WHITE">
+                  <Label fx:id="magazineDate" styleClass="magazineDate" text="Label">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -52,7 +52,7 @@
             </VBox>
          </children>
       </HBox>
-      <Text fx:id="magazineText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="200.0" text="Text">
+      <Text fx:id="magazineText" strokeType="OUTSIDE" strokeWidth="200.0" styleClass="magazineDesc" text="Text">
          <font>
             <Font size="14.0" />
          </font>
@@ -62,7 +62,7 @@
       </Text>
       <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
          <children>
-            <JFXButton fx:id="magazineConsult" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 10px;" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="magazineConsult" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 10px;" styleClass="magazineBtn" text="Consulter le magazine" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>

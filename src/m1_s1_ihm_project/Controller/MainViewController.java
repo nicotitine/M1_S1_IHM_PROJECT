@@ -3,23 +3,35 @@ package m1_s1_ihm_project.Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import m1_s1_ihm_project.Model.Exercices.Exercices;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
+import m1_s1_ihm_project.Model.Tools.EnglishTime;
 
 public class MainViewController implements Initializable {
 
@@ -33,27 +45,50 @@ public class MainViewController implements Initializable {
     @FXML private JFXComboBox translateToList;
     @FXML private JFXComboBox translateFromList;
     @FXML private JFXButton exchangeBtn;
+    @FXML private JFXTreeTableView<EnglishTime> timesTable;
+    @FXML private JFXButton translateBtn;
+    @FXML private JFXButton clearMode;
+    @FXML private JFXButton darkMode;
+    @FXML private JFXButton clearModeEx;
+    @FXML private JFXButton darkModeEx;
+    @FXML private JFXButton clearModeTool;
+    @FXML private JFXButton darkModeTool;
+    @FXML private HBox headerHBox;
+    @FXML private HBox headerHBoxEx;
+    @FXML private HBox headerHBoxTool;
+    @FXML private JFXButton exitBtn;
+    @FXML private JFXButton exitBtnEx;
+    @FXML private JFXButton exitBtnTool;
     
     private double windowWidth;
+    private double windowHeight;
     private Stage thisStage;
     private ScreenController screenController;
     private ObservableList<Magazines> magazines;
     private ObservableList<Exercices> exercices;
+    private ObservableList<EnglishTime> times;
     private boolean firstLaunch;
     private TraductionController traducteurController;
+    
+    private String theme1Url = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
+    private String theme2Url = getClass().getResource("/m1_s1_ihm_project/View/customCss_1.css").toExternalForm();
     
     public void setStageAndSetupListeners(Scene scene, ScreenController SC) {
         // Initialize the window with the window width (screen width as fullscreen)
         screenController = SC;
         thisStage = (Stage)scene.getWindow();
         windowWidth = thisStage.getWidth();
-        magazinesScrollPane.setPrefWidth(windowWidth);
-        magazinesMP.setPrefWidth(windowWidth);
-        exercicesScrollPane.setPrefWidth(windowWidth);
-        exercicesMP.setPrefWidth(windowWidth);
-        toolsScrollPane.setPrefWidth(windowWidth);
-        toolsMP.setPrefWidth(windowWidth);
-        tabPane.setPrefWidth(windowWidth);
+        windowHeight = thisStage.getHeight() - 197;
+        magazinesScrollPane.setPrefSize(windowWidth, windowHeight);
+        magazinesMP.setPrefSize(windowWidth, windowHeight);
+        exercicesScrollPane.setPrefSize(windowWidth, windowHeight);
+        exercicesMP.setPrefSize(windowWidth, windowHeight);
+        toolsScrollPane.setPrefSize(windowWidth, windowHeight);
+        toolsMP.setPrefSize(windowWidth, windowHeight);
+        tabPane.setPrefSize(windowWidth, windowHeight);
+        headerHBox.setPrefWidth(windowWidth);
+        headerHBoxEx.setPrefWidth(windowWidth);
+        headerHBoxTool.setPrefWidth(windowWidth);
         
         if(firstLaunch) {
             // Add all magazines to the magazines pane
@@ -89,6 +124,25 @@ public class MainViewController implements Initializable {
             translateToList.getSelectionModel().selectFirst();
             translateFromList.setItems(traducteurController.getNameList());
             translateFromList.getSelectionModel().select(1);
+            times = Database.getTimes();
+            JFXTreeTableColumn<EnglishTime, String> timeCol = new JFXTreeTableColumn("Temps");
+            JFXTreeTableColumn<EnglishTime, String> exampleCol = new JFXTreeTableColumn("Exemple");
+            JFXTreeTableColumn<EnglishTime, String> explenationCol = new JFXTreeTableColumn("Explication");
+            timeCol.setPrefWidth(200);
+            exampleCol.setPrefWidth(280);
+            explenationCol.setPrefWidth(timesTable.getWidth() - 200 - 310);
+            timeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getTitle()));
+            exampleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExample()));
+            explenationCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExplenation()));
+            timeCol.setStyle("-fx-alignment: center; -fx-font-weight: bold;");
+            
+            
+            final TreeItem<EnglishTime> root = new RecursiveTreeItem<EnglishTime>(times, RecursiveTreeObject::getChildren);
+            timesTable.getColumns().setAll(timeCol, exampleCol, explenationCol);
+            timesTable.setRoot(root);
+            timesTable.setShowRoot(false);
+            
+            //if(!screenController.getMain().getStylesheets().contains(theme1Url)) screenController.getMain().getStylesheets().add(theme1Url);
         }
         
         firstLaunch = false;
@@ -102,7 +156,21 @@ public class MainViewController implements Initializable {
             toolsScrollPane.setPrefWidth((double) newVal);
             toolsMP.setPrefWidth((double) newVal);
             tabPane.setPrefWidth((double)newVal);
+            headerHBox.setPrefWidth((double)newVal);
+            headerHBoxEx.setPrefWidth((double)newVal);
+            headerHBoxTool.setPrefWidth((double)newVal);
             windowWidth = (double)newVal;
+            System.out.println("resize");
+        });
+        thisStage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            magazinesScrollPane.setPrefHeight((double)newVal);
+            magazinesMP.setPrefHeight((double)newVal);
+            exercicesScrollPane.setPrefHeight((double)newVal);
+            exercicesMP.setPrefHeight((double)newVal);
+            toolsScrollPane.setPrefHeight((double) newVal);
+            toolsMP.setPrefHeight((double) newVal);
+            tabPane.setPrefHeight((double)newVal);
+            windowHeight = (double)newVal - 155;
         });
     }
     
@@ -123,6 +191,20 @@ public class MainViewController implements Initializable {
                 translateFromList.getSelectionModel().select(0);
                 translateToList.getSelectionModel().select(1);
             }
+        }
+        if(event.getSource().equals(darkMode) || event.getSource().equals(darkModeEx) || event.getSource().equals(darkModeTool)) {
+            screenController.getMain().getStylesheets().remove(theme1Url);
+            if(!screenController.getMain().getStylesheets().contains(theme2Url))
+                screenController.getMain().getStylesheets().add(theme2Url);
+        }
+        
+        if(event.getSource().equals(clearMode) || event.getSource().equals(clearModeEx) ||event.getSource().equals(clearModeTool)) {
+            screenController.getMain().getStylesheets().remove(theme2Url);
+            if(!screenController.getMain().getStylesheets().contains(theme1Url))
+                screenController.getMain().getStylesheets().add(theme1Url);
+        }
+        if(event.getSource().equals(exitBtn) || event.getSource().equals(exitBtnEx) ||event.getSource().equals(exitBtnTool)) {
+            Runtime.getRuntime().exit(0);
         }
     }
 }

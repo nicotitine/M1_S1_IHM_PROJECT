@@ -49,4 +49,7 @@ public class ScreenController {
     public Magazines getMagazineData(){
         return magazineData;
     }
+    public Scene getMain() {
+        return this.main;
+    }
 }

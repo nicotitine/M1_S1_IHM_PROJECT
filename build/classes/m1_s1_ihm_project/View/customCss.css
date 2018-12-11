@@ -72,5 +72,35 @@ and open the template in the editor.
 .magazine, .exercice, .tool {
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-border-color:  #1b75bc;
+    -fx-border-width: 3px;
+    -fx-background-color: white;
+}
+
+.timesTable {
+    -fx-font-size: 14px;
+}
+
+.timesTable .column-header-background {
+    -fx-background-color:  #1b75bc;
+}
+
+.timesTable .column-header-background .label{
+    -fx-font-weight:bold;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+.magazineTitle, .magazineCat, .magazineDate, .magazineDesc, .classicText {
+    -fx-text-fill: black;
+    -fx-fill: black;
+}
+.flowpane {
+    -fx-background-color: #b6b6b6;
+}
+
+.themeHeader {
+    -fx-background-color: white;
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-border-color:  #1b75bc;
 }

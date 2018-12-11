@@ -72,9 +72,9 @@ and open the template in the editor.
 .magazine, .exercice, .tool {
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
-    -fx-border-color:  #1b75bc;
-    -fx-border-width: 3px;
-    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-border-width: 0px;
+    -fx-background-color: grey;
 }
 
 .timesTable {
@@ -91,16 +91,24 @@ and open the template in the editor.
     -fx-font-size: 18px;
 }
 
-.magazineTitle, .magazineCat, .magazineDate, .magazineDesc, .classicText {
-    -fx-text-fill: black;
-    -fx-fill: black;
+.timesTable .column-header-background .label{
+    -fx-font-weight:bold;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
 }
+
+.magazineTitle, .magazineCat, .magazineDate, .magazineDesc, .classicText {
+    -fx-text-fill: white;
+    -fx-fill: white;
+}
+
 .flowpane {
-    -fx-background-color: #b6b6b6;
+    -fx-background-color: #1b1b1b;
 }
 
 .themeHeader {
-    -fx-background-color: white;
+    -fx-background-color: grey;
     -fx-border-width: 0px 0px 3px 0px;
-    -fx-border-color:  #1b75bc;
+    -fx-border-color: white;
 }
+

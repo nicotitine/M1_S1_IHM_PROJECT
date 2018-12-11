@@ -10,12 +10,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="366.0" spacing="20.0" style="-fx-background-color: grey; -fx-padding: 20px;" styleClass="exercice" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.ExerciceTemplateController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="366.0" spacing="20.0" style="-fx-padding: 20px;" styleClass="exercice" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.ExerciceTemplateController">
    <opaqueInsets>
       <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
    </opaqueInsets>
    <children>
-      <Text fx:id="exerciceTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="325.0">
+      <Text fx:id="exerciceTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="classicText" text="Text" wrappingWidth="325.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -30,12 +30,12 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="164.0">
                      <children>
-                        <Label text="Catégorie : " textFill="WHITE">
+                        <Label styleClass="classicText" text="Catégorie : " textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="exerciceType" text="Label" textFill="WHITE">
+                        <Label fx:id="exerciceType" styleClass="classicText" text="Label" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -46,7 +46,7 @@
             </VBox>
             <VBox alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="161.0">
                <children>
-                  <Label fx:id="exerciceDuration" text="Label" textFill="WHITE">
+                  <Label fx:id="exerciceDuration" styleClass="classicText" text="Label" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -55,7 +55,7 @@
             </VBox>
          </children>
       </HBox>
-      <Text fx:id="exerciceText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="200.0" text="Text">
+      <Text fx:id="exerciceText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="200.0" styleClass="classicText" text="Text">
          <font>
             <Font size="14.0" />
          </font>

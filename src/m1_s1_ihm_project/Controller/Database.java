@@ -15,6 +15,7 @@ import m1_s1_ihm_project.Model.Magazines.Book;
 import m1_s1_ihm_project.Model.Magazines.Document;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
 import m1_s1_ihm_project.Model.Magazines.Video;
+import m1_s1_ihm_project.Model.Tools.EnglishTime;
 
 public class Database {
     
@@ -137,5 +138,23 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return exercicesList;
+    }
+    
+    
+    public static ObservableList<EnglishTime> getTimes() {
+        ObservableList<EnglishTime> englishTimes = FXCollections.observableArrayList();
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet timesResultSet = stmt.executeQuery("SELECT * FROM TIMES");
+            while(timesResultSet.next()){
+                String time = timesResultSet.getString("TIME");
+                String example = timesResultSet.getString("EXAMPLE");
+                String explenation = timesResultSet.getString("EXPLENATION");
+                englishTimes.add(new EnglishTime(time, example, explenation));
+            }
+        } catch(SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return englishTimes;
     }
 }
