@@ -16,9 +16,13 @@ public class ScreenController {
     private Magazines magazineData;
     private FXMLLoader magazineLoader;
     private FXMLLoader mainLoader;
+    private final String theme1Url = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
+    private final String theme2Url = getClass().getResource("/m1_s1_ihm_project/View/customCss_1.css").toExternalForm();
+    private boolean isDarkMode;
     
     public ScreenController(Scene main) {
         this.main = main;
+        isDarkMode = false;
         try {
             magazineLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazineView.fxml"));
             mainLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MainView.fxml"));
@@ -51,5 +55,19 @@ public class ScreenController {
     }
     public Scene getMain() {
         return this.main;
+    }
+    
+    public void setDarkMode() {
+        this.isDarkMode = true;
+        main.getStylesheets().remove(theme1Url);
+            if(!main.getStylesheets().contains(theme2Url))
+                main.getStylesheets().add(theme2Url);
+    }
+    
+    public void setClearMode() {
+        this.isDarkMode = false;
+        main.getStylesheets().remove(theme2Url);
+            if(!main.getStylesheets().contains(theme1Url))
+                main.getStylesheets().add(theme1Url);
     }
 }

@@ -185,15 +185,11 @@ public class MainViewController implements Initializable {
             }
         }
         if(event.getSource().equals(darkMode) || event.getSource().equals(darkModeEx) || event.getSource().equals(darkModeTool)) {
-            screenController.getMain().getStylesheets().remove(theme1Url);
-            if(!screenController.getMain().getStylesheets().contains(theme2Url))
-                screenController.getMain().getStylesheets().add(theme2Url);
+            screenController.setDarkMode();
         }
         
         if(event.getSource().equals(clearMode) || event.getSource().equals(clearModeEx) ||event.getSource().equals(clearModeTool)) {
-            screenController.getMain().getStylesheets().remove(theme2Url);
-            if(!screenController.getMain().getStylesheets().contains(theme1Url))
-                screenController.getMain().getStylesheets().add(theme1Url);
+           screenController.setClearMode();
         }
         
         if(event.getSource().equals(exitBtn) || event.getSource().equals(exitBtnEx) ||event.getSource().equals(exitBtnTool)) {

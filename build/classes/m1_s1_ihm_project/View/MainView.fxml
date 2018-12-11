@@ -262,19 +262,6 @@
                                     <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                                  </opaqueInsets>
                               </VBox>
-                              <VBox layoutX="30.0" layoutY="397.0" prefHeight="139.0" prefWidth="658.0" style="-fx-padding: 20px;" styleClass="tool">
-                                 <children>
-                                    <Label styleClass="classicText" text="Traduction">
-                                       <font>
-                                          <Font name="System Bold" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="classicText" text="Vous pouvez ici chercher des traductions d'expression" />
-                                 </children>
-                                 <opaqueInsets>
-                                    <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                                 </opaqueInsets>
-                              </VBox>
                            </children>
                         </FlowPane>
                      </children>

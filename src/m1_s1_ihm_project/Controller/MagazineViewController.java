@@ -45,10 +45,12 @@ public class MagazineViewController implements Initializable {
     @FXML private HBox btnGroupBuyShare;
     @FXML private JFXButton buyBook;
     @FXML private JFXButton shareBook;
+    @FXML private ScrollPane magazineScrollPane;
     
     private ScreenController screenController;
     private Magazines thisMag;
     private double windowWidth;
+    private double windowHeight;
     private Stage thisStage;
     private ImageView imageMediaView;
     private WebView videoMediaView;
@@ -83,8 +85,10 @@ public class MagazineViewController implements Initializable {
     public void setStageAndSetupListeners(Scene scene, Magazines mag, ScreenController SC) {
         thisStage = (Stage)scene.getWindow();
         windowWidth = scene.getWidth();
-        magazineFlowPane.setPrefWidth(windowWidth);
-        magazineVBox.setPrefWidth(windowWidth);
+        windowHeight = scene.getHeight() - 2;
+        magazineFlowPane.setPrefSize(windowWidth, windowHeight);
+        magazineScrollPane.setPrefSize(windowWidth, windowHeight);
+        magazineVBox.setPrefSize(windowWidth, windowHeight);
         scrollPaneMedia.setPrefWidth(windowWidth);
         subHeaderHBox.setPrefWidth(windowWidth);
         secondaryTitle.setPrefWidth(windowWidth/2);
@@ -115,7 +119,7 @@ public class MagazineViewController implements Initializable {
                 videoMediaView.setPrefSize(480, 700);
                 scrollPaneMedia.setContent(videoMediaView);
                 secondaryTitle.setText("Description : ");
-                scrollPaneMedia.setPrefHeight(700);
+                scrollPaneMedia.setPrefHeight(400);
                 subHeaderHBox.setPrefHeight(100);
                 buyBook.setText("Ouvrir la vidéo dans votre navigateur");
                 shareBook.setText("Partager cette vidéo");
@@ -125,7 +129,8 @@ public class MagazineViewController implements Initializable {
                 type.setText("Type : Document audio");
                 audioMediaView = new WebView();
                 audioMediaView.getEngine().load(audio.getMediaUrl());
-                audioMediaView.setPrefSize(windowWidth, 350);
+                audioMediaView.setPrefSize(windowWidth, 200);
+                scrollPaneMedia.setPrefHeight(200);
                 scrollPaneMedia.setContent(audioMediaView);
                 buyBook.setText("Ouvrir dans votre navigateur");
                 shareBook.setText("Partager ce document audio");
