@@ -18,7 +18,7 @@
          <children>
             <VBox fx:id="magazineVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="902.0" prefWidth="1191.0" styleClass="flowpane">
                <children>
-                  <ScrollPane fx:id="scrollPaneMedia" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" />
+                  <ScrollPane fx:id="scrollPaneMedia" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="NEVER" />
                   <JFXButton fx:id="exitMag" onAction="#handleButtonAction" onMouseEntered="#hoverFlatBtn" onMouseExited="#unHoverFlatBtn" ripplerFill="WHITE" styleClass="flat_btn" stylesheets="@customCss.css" text="Revenir aux magazines" textFill="#1b75bc">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -82,7 +82,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <HBox fx:id="btnGroupBuyShare" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="443.0" spacing="20.0" style="-fx-padding: 0px 40px 0px 0px;">
+                        <HBox fx:id="btnGroupBuyShare" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="443.0" spacing="20.0" style="-fx-padding: 0px 40px 0px 0px;" HBox.hgrow="NEVER">
                            <children>
                               <JFXButton fx:id="buyBook" buttonType="RAISED" onAction="#handleButtonAction" prefHeight="39.0" style="-fx-background-color: #1b75bc;" text="Acheter ce livre" textFill="WHITE">
                                  <font>
@@ -107,7 +107,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 20px;">
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 20px;" VBox.vgrow="NEVER">
                      <children>
                         <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="classicText" text="Text">
                            <font>
@@ -119,7 +119,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 20px;" VBox.vgrow="NEVER">
+                  <HBox prefHeight="76.0" prefWidth="1191.0" style="-fx-padding: 20px;" VBox.vgrow="NEVER">
                      <children>
                         <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Retour" textFill="WHITE">
                            <font>
