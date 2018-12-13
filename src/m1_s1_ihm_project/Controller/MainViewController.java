@@ -3,30 +3,39 @@ package m1_s1_ihm_project.Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.jfoenix.utils.JFXHighlighter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import m1_s1_ihm_project.Model.Exercices.Exercices;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
+import m1_s1_ihm_project.Model.Tools.EnglishNumbers;
 import m1_s1_ihm_project.Model.Tools.EnglishTime;
 
 public class MainViewController implements Initializable {
@@ -42,6 +51,7 @@ public class MainViewController implements Initializable {
     @FXML private JFXComboBox translateFromList;
     @FXML private JFXButton exchangeBtn;
     @FXML private JFXTreeTableView<EnglishTime> timesTable;
+    @FXML private JFXTreeTableView<EnglishNumbers> numbersTable;
     @FXML private JFXButton clearMode;
     @FXML private JFXButton darkMode;
     @FXML private JFXButton clearModeEx;
@@ -54,6 +64,8 @@ public class MainViewController implements Initializable {
     @FXML private JFXButton exitBtn;
     @FXML private JFXButton exitBtnEx;
     @FXML private JFXButton exitBtnTool;
+    @FXML private JFXTextField searchFieldNumbers;
+    @FXML private JFXTextField searchFieldTimes;
     
     private double windowWidth;
     private double windowHeight;
@@ -62,6 +74,7 @@ public class MainViewController implements Initializable {
     private ObservableList<Magazines> magazines;
     private ObservableList<Exercices> exercices;
     private ObservableList<EnglishTime> times;
+    private ObservableList<EnglishNumbers> numbers;
     private TraductionController traducteurController;
     
     private final String theme1Url = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
@@ -124,7 +137,6 @@ public class MainViewController implements Initializable {
         JFXTreeTableColumn<EnglishTime, String> explenationCol = new JFXTreeTableColumn("Explication");
         timeCol.setPrefWidth(250);
         exampleCol.setPrefWidth(280);
-        System.out.println(timesTable.getWidth());
         explenationCol.setPrefWidth(1094 - 250 - 310);
         timeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getTitle()));
         exampleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExample()));
@@ -135,7 +147,29 @@ public class MainViewController implements Initializable {
         timesTable.getColumns().setAll(timeCol, exampleCol, explenationCol);
         timesTable.setRoot(root);
         timesTable.setShowRoot(false);
-              
+        searchFieldTimes.textProperty().addListener(setupSearchFieldTimes(timesTable));
+        
+        numbers = Database.getNumbers();
+        JFXTreeTableColumn<EnglishNumbers, String> numberCol = new JFXTreeTableColumn("Nombre");
+        JFXTreeTableColumn<EnglishNumbers, String> numberEnCol = new JFXTreeTableColumn("Nombre écrit");
+        JFXTreeTableColumn<EnglishNumbers, String> ordinalCol = new JFXTreeTableColumn("Ordinal");
+        JFXTreeTableColumn<EnglishNumbers, String> ordinalEnCol = new JFXTreeTableColumn("Ordinal écrit");
+        numberCol.setPrefWidth(250);
+        numberEnCol.setPrefWidth(250);
+        ordinalCol.setPrefWidth(250);
+        ordinalEnCol.setPrefWidth(250);
+        numberCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getNumber()));
+        numberEnCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getNumberEn()));
+        ordinalCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getOrdinal()));
+        ordinalEnCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getOrdinalEn()));
+        numberCol.setStyle("-fx-alignment: center; -fx-font-weight: bold;");
+        
+        final TreeItem<EnglishNumbers> rootNumbers = new RecursiveTreeItem<>(numbers, RecursiveTreeObject::getChildren);
+        numbersTable.getColumns().setAll(numberCol, numberEnCol, ordinalCol, ordinalEnCol);
+        numbersTable.setRoot(rootNumbers);
+        numbersTable.setShowRoot(false);
+        searchFieldNumbers.textProperty().addListener(setupSearchFieldNumbers(numbersTable));
+ 
         // Resize event
         thisStage.widthProperty().addListener((obs, oldVal, newVal) -> {
             magazinesScrollPane.setPrefWidth((double)newVal);
@@ -192,5 +226,26 @@ public class MainViewController implements Initializable {
         if(event.getSource().equals(exitBtn) || event.getSource().equals(exitBtnEx) ||event.getSource().equals(exitBtnTool)) {
             Runtime.getRuntime().exit(0);
         }
+    }
+    
+    private ChangeListener<String> setupSearchFieldTimes(final JFXTreeTableView<EnglishTime> tableView) {
+        return (o, oldVal, newVal) ->
+            tableView.setPredicate(timeProp -> {
+                final EnglishTime time = timeProp.getValue();
+                return time.getTitle().contains(newVal)
+                    || time.getExample().contains(newVal)
+                     || time.getExplenation().contains(newVal);
+            });
+    }
+    
+    private ChangeListener<String> setupSearchFieldNumbers(final JFXTreeTableView<EnglishNumbers> tableView) {
+        return (o, oldVal, newVal) ->
+            tableView.setPredicate(numberProp -> {
+                final EnglishNumbers number = numberProp.getValue();
+                return number.getNumber().contains(newVal)
+                    || number.getNumberEn().contains(newVal)
+                     || number.getOrdinal().contains(newVal)
+                         || number.getOrdinalEn().contains(newVal);
+            });
     }
 }

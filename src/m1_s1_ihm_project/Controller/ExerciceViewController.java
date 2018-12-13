@@ -4,16 +4,20 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -41,12 +45,9 @@ public class ExerciceViewController implements Initializable {
     @FXML private JFXButton backBtn;
     @FXML private Label secondaryTitle;
     @FXML private HBox subHeaderHBox;
-    @FXML private HBox btnGroupBuyShare;
     @FXML private ScrollPane exerciceScrollPane;
-    @FXML private VBox questionsVB;
     @FXML private VBox checkboxVB;
     @FXML private JFXButton validateBtn;
-    @FXML private JFXDialog dialogExe;
     @FXML private StackPane stackpane;
     
     private ScreenController screenController;
@@ -71,12 +72,27 @@ public class ExerciceViewController implements Initializable {
         }
         if(event.getSource().equals(validateBtn)) {
             List<String> answers = new ArrayList<String>();
-            for(int i = 0; i < checkboxVB.getChildren().size(); i++) {
-                JFXCheckBox temp = (JFXCheckBox)checkboxVB.getChildren().get(i);
-                if(temp.isSelected()) {
-                    answers.add(temp.getText());
+            Set<Node> textFields= checkboxVB.lookupAll("JFXTextField");
+            
+                switch(thisExe.getType()) {
+                    case "qcm": 
+                        for(int i = 0; i < checkboxVB.getChildren().size(); i++) {
+                            JFXCheckBox tempQcm = (JFXCheckBox)checkboxVB.getChildren().get(i);
+                            if(tempQcm.isSelected()) {
+                                answers.add(tempQcm.getText());
+                            }
+                        }
+                    break;
+                    case "tat":
+                         for (Iterator<Node> it = textFields.iterator(); it.hasNext(); ) {
+                            JFXTextField f = (JFXTextField)it.next();
+                            System.out.println(f.getText());
+                            answers.add(f.getText());
+                         }
+                     break;
                 }
-            }
+                
+            
             boolean isExeValid = true;
             boolean isEnd = false;
             int index = 0;
@@ -127,7 +143,7 @@ public class ExerciceViewController implements Initializable {
             test.getChildren().add(closeBox);
             content.setHeading(header);
             content.setBody(test);
-            dialog =new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+            dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
             dialog.show();
             closeBtn.setCursor(Cursor.HAND);
             closeBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -155,7 +171,6 @@ public class ExerciceViewController implements Initializable {
         scrollPaneMedia.setPrefWidth(windowWidth);
         subHeaderHBox.setPrefWidth(windowWidth);
         secondaryTitle.setPrefWidth(windowWidth/2);
-        btnGroupBuyShare.setPrefWidth(windowWidth/2);
         screenController = SC;
         thisExe = exe;
         title.setText(exe.getTitle());
@@ -179,20 +194,39 @@ public class ExerciceViewController implements Initializable {
                     checkboxVB.getChildren().add(checkBox);
                 }
             break;
-            /*case "video" :
-                Video vid = (Video)mag;
-                type.setText("Type : Vidéo");
-                videoMediaView = new WebView();
-                videoMediaView.getEngine().load(vid.getMediaUrl());
-                videoMediaView.setPrefSize(480, 700);
-                scrollPaneMedia.setContent(videoMediaView);
-                secondaryTitle.setText("Description : ");
+            case "tat" :
+                type.setText("Type : Texte à trous");
+                imageMediaView = new ImageView();
+                imageMediaView.setImage(new Image(exe.getImageUrl()));
+                imageMediaView.setFitHeight(300*3);
+                imageMediaView.setFitWidth(windowWidth);
+                scrollPaneMedia.setContent(imageMediaView);
+                scrollPaneMedia.setPrefHeight(350);
+                secondaryTitle.setText("Consigne : ");
                 scrollPaneMedia.setPrefHeight(400);
                 subHeaderHBox.setPrefHeight(100);
-                buyBook.setText("Ouvrir la vidéo dans votre navigateur");
-                shareBook.setText("Partager cette vidéo");
+                for (String question : thisExe.getQuestions()) {
+
+                    String[] splitedQuestion = question.split("%");
+                    HBox box = new HBox();
+                    box.setSpacing(20);
+                    Label firstPart = new Label(splitedQuestion[0]);
+                    Label secondPart = new Label(splitedQuestion[1]);
+                    firstPart.setStyle("-fx-font-size: 18px");
+                    firstPart.getStyleClass().add("classicText");
+                    secondPart.setStyle("-fx-font-size: 18px;");
+                    secondPart.getStyleClass().add("classicText");
+                    JFXTextField field = new JFXTextField();
+                    field.setPromptText("votre réponse ...");
+                    field.setStyle("-fx-font-size: 18px");
+                    field.setCursor(Cursor.HAND);
+                    field.getStyleClass().addAll("classicText", "searchInput");
+                    box.getChildren().addAll(firstPart, field, secondPart);
+                    box.setAlignment(Pos.CENTER_LEFT);
+                    checkboxVB.getChildren().add(box);
+                }
             break;
-            case "audio" :
+            /*case "audio" :
                 Audio audio = (Audio)mag;
                 type.setText("Type : Document audio");
                 audioMediaView = new WebView();

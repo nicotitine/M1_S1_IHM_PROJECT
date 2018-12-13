@@ -117,22 +117,8 @@ public class Database {
                 String duration = exerciceResultSet.getString("DURATION");
                 String imageUrl = exerciceResultSet.getString("IMAGEURL");
                 String type = exerciceResultSet.getString("TYPE");
-                switch(type) {
-                    case "qcm":
-                        exe = new Exercices(title, description, questions, answers, duration, imageUrl, type);
-                    break;
-                    /*case "audio":
-                        mag = new Audio(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl);
-                    break;
-                    case "document" :
-                        mag = new Document(title, description, imageUrl, publishDate, type, browsingUrl);
-                    break;
-                    case "video" :
-                        mag = new Video(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl);
-                    break;
-                    default: 
-                        mag = new Magazines(title, description, imageUrl, publishDate, type, browsingUrl);*/
-                }
+                
+                exe = new Exercices(title, description, questions, answers, duration, imageUrl, type);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -154,22 +140,8 @@ public class Database {
                 String duration = exercicesResultSet.getString("DURATION");
                 String imageUrl = exercicesResultSet.getString("IMAGEURL");
                 String type = exercicesResultSet.getString("TYPE");
-                switch(type) {
-                    case "qcm":
-                        exercicesList.add(new Exercices(title, description, questions, answers, duration, imageUrl, type));
-                    break;
-                    case "audio":
-                        //exercicesList.add(new Audio(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl));
-                    break;
-                    case "document" :
-                        //exercicesList.add(new Document(title, description, imageUrl, publishDate, type, browsingUrl));
-                    break;
-                    case "video" :
-                        //exercicesList.add(new Video(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl));
-                    break;
-                    default: 
-                        //exercicesList.add(new Magazines(title, description, imageUrl, publishDate, type, browsingUrl));
-                }
+
+                exercicesList.add(new Exercices(title, description, questions, answers, duration, imageUrl, type));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);

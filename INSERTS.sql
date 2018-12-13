@@ -97,6 +97,17 @@ insert into exercices values (
     'qcm'
 );
 
+insert into exercices values (
+    3,
+    'Test exercice 3',
+    'In this exercice, you will see a good display ! Cool isnt it ?',
+    'It % a beautiful day (preterit), I % a nice person (present simple), Tomarrow % be fun (future)',
+    'was, am, will',
+    '2min',
+    'https://i2.wp.com/pedagoblog.fr/wp-content/uploads/2017/11/qcm-1.jpg?fit=1876%2C1038',
+    'tat'
+);
+
 insert into magazines values (
     1,
     'Learn English in 30 Minutes - ALL the English Basics You Need',

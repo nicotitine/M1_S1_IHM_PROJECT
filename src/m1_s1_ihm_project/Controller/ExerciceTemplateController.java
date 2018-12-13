@@ -43,11 +43,13 @@ public class ExerciceTemplateController implements Initializable {
         
         exerciceText.setWrappingWidth(340);
         exerciceDuration.setText("Durée : " + exe.getDuration());
+        System.out.println(id_data);
     }
     
     @FXML public void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exerciceConsult)) {
             Exercices exe = Database.getExercice(Integer.toString(id_database));
+            System.out.println(exe.getTitle());
             screenController.setExerciceData(exe);
             screenController.activateExe("exercice", exe, screenController);
         }

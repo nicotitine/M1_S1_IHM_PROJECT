@@ -72,7 +72,7 @@
                            <children>
                               <HBox fx:id="subHeaderHBox" alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="1191.0" spacing="50.0" VBox.vgrow="NEVER">
                                  <children>
-                                    <Label fx:id="secondaryTitle" prefHeight="35.0" prefWidth="683.0" style="-fx-padding: 0px  0px 0px 200px;" styleClass="classicText" text="Titre secondaire" HBox.hgrow="NEVER">
+                                    <Label fx:id="secondaryTitle" prefHeight="35.0" prefWidth="189.0" styleClass="classicText" text="Titre secondaire" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>
@@ -80,7 +80,6 @@
                                           <Insets />
                                        </HBox.margin>
                                     </Label>
-                                    <HBox fx:id="btnGroupBuyShare" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="443.0" spacing="20.0" style="-fx-padding: 0px 40px 0px 0px;" HBox.hgrow="NEVER" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="30.0" />
@@ -97,8 +96,14 @@
                                        </cursor>
                                     </Text>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                               </HBox>
-                              <VBox fx:id="checkboxVB" prefHeight="200.0" prefWidth="100.0" spacing="30.0" />
+                              <VBox fx:id="checkboxVB" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                                 <VBox.margin>
+                                    <Insets left="50.0" />
+                                 </VBox.margin></VBox>
                               <JFXButton fx:id="validateBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Corriger !" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
