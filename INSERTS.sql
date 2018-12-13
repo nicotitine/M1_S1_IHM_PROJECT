@@ -137,7 +137,3 @@ create table exercices(
     type varchar(255),
     answerId int not null
 );
-
-create table questions(
-    id int not null,
-    

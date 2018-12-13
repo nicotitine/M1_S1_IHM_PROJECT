@@ -72,26 +72,24 @@ public class ExerciceViewController implements Initializable {
         }
         if(event.getSource().equals(validateBtn)) {
             List<String> answers = new ArrayList<String>();
-            Set<Node> textFields= checkboxVB.lookupAll("JFXTextField");
             
-                switch(thisExe.getType()) {
-                    case "qcm": 
-                        for(int i = 0; i < checkboxVB.getChildren().size(); i++) {
-                            JFXCheckBox tempQcm = (JFXCheckBox)checkboxVB.getChildren().get(i);
-                            if(tempQcm.isSelected()) {
-                                answers.add(tempQcm.getText());
-                            }
+            switch(thisExe.getType()) {
+                case "qcm": 
+                    for(int i = 0; i < checkboxVB.getChildren().size(); i++) {
+                        JFXCheckBox tempQcm = (JFXCheckBox)checkboxVB.getChildren().get(i);
+                        if(tempQcm.isSelected()) {
+                            answers.add(tempQcm.getText());
                         }
+                    }
+                break;
+                case "tat":
+                    Set<Node> textFields= checkboxVB.lookupAll("JFXTextField");
+                    for (Iterator<Node> it = textFields.iterator(); it.hasNext(); ) {
+                        JFXTextField f = (JFXTextField)it.next();
+                        answers.add(f.getText());
+                    }
                     break;
-                    case "tat":
-                         for (Iterator<Node> it = textFields.iterator(); it.hasNext(); ) {
-                            JFXTextField f = (JFXTextField)it.next();
-                            System.out.println(f.getText());
-                            answers.add(f.getText());
-                         }
-                     break;
-                }
-                
+            }
             
             boolean isExeValid = true;
             boolean isEnd = false;
@@ -127,7 +125,6 @@ public class ExerciceViewController implements Initializable {
             Text answersText = new Text(answersString);
             JFXButton closeBtn = new JFXButton("Fermer");
             closeBtn.setStyle("-fx-font-size: 18px; -fx-text-fill: #1b75bc");
-            
             
             header.setStyle("-fx-font-size : 24px");
             body.setStyle("-fx-font-size : 18px");
@@ -206,7 +203,6 @@ public class ExerciceViewController implements Initializable {
                 scrollPaneMedia.setPrefHeight(400);
                 subHeaderHBox.setPrefHeight(100);
                 for (String question : thisExe.getQuestions()) {
-
                     String[] splitedQuestion = question.split("%");
                     HBox box = new HBox();
                     box.setSpacing(20);
@@ -226,41 +222,6 @@ public class ExerciceViewController implements Initializable {
                     checkboxVB.getChildren().add(box);
                 }
             break;
-            /*case "audio" :
-                Audio audio = (Audio)mag;
-                type.setText("Type : Document audio");
-                audioMediaView = new WebView();
-                audioMediaView.getEngine().load(audio.getMediaUrl());
-                audioMediaView.setPrefSize(windowWidth, 200);
-                scrollPaneMedia.setPrefHeight(200);
-                scrollPaneMedia.setContent(audioMediaView);
-                buyBook.setText("Ouvrir dans votre navigateur");
-                shareBook.setText("Partager ce document audio");
-            break;*/
-            /*case "video" :
-                Video vid = (Video)mag;
-                type.setText("Type : Vidéo");
-                videoMediaView = new WebView();
-                videoMediaView.getEngine().load(vid.getMediaUrl());
-                videoMediaView.setPrefSize(480, 700);
-                scrollPaneMedia.setContent(videoMediaView);
-                secondaryTitle.setText("Description : ");
-                scrollPaneMedia.setPrefHeight(400);
-                subHeaderHBox.setPrefHeight(100);
-                buyBook.setText("Ouvrir la vidéo dans votre navigateur");
-                shareBook.setText("Partager cette vidéo");
-            break;
-            case "audio" :
-                Audio audio = (Audio)mag;
-                type.setText("Type : Document audio");
-                audioMediaView = new WebView();
-                audioMediaView.getEngine().load(audio.getMediaUrl());
-                audioMediaView.setPrefSize(windowWidth, 200);
-                scrollPaneMedia.setPrefHeight(200);
-                scrollPaneMedia.setContent(audioMediaView);
-                buyBook.setText("Ouvrir dans votre navigateur");
-                shareBook.setText("Partager ce document audio");
-            break;*/
         }
         
         description.setWrappingWidth(windowWidth/2);

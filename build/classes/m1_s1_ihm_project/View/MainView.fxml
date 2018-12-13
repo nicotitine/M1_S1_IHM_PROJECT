@@ -23,7 +23,7 @@
    <tabs>
       <Tab fx:id="magazinesTab" closable="false" text="Magazines">
          <content>
-            <ScrollPane fx:id="magazinesScrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="1351.0">
+            <ScrollPane fx:id="magazinesScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="1351.0">
                <content>
                   <VBox>
                      <children>
@@ -83,8 +83,10 @@
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
                               </JFXButton>
-                              <Region prefHeight="200.0" prefWidth="40.0" />
                            </children>
                         </HBox>
                          <FlowPane fx:id="magazinesMP" alignment="CENTER" hgap="40.0" prefHeight="787.0" prefWidth="1920.0" prefWrapLength="1200.0" rowValignment="TOP" style="-fx-padding: 20px;" styleClass="flowpane" vgap="40.0">
@@ -327,7 +329,7 @@
                                     <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                                  </opaqueInsets>
                               </VBox>
-                              <VBox prefHeight="372.0" prefWidth="1140.0" spacing="20.0" style="-fx-padding: 20px;" styleClass="tool">
+                              <VBox prefHeight="372.0" prefWidth="1140.0" spacing="15.0" style="-fx-padding: 20px;" styleClass="tool">
                                  <children>
                                     <Label styleClass="classicText" text="Les temps">
                                        <font>
@@ -362,9 +364,9 @@
                                     <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                                  </opaqueInsets>
                               </VBox>
-                              <VBox fillWidth="false" prefHeight="445.0" prefWidth="1040.0" spacing="20.0" style="-fx-padding: 20px;" styleClass="tool">
+                              <VBox fillWidth="false" prefHeight="445.0" prefWidth="1040.0" spacing="15.0" style="-fx-padding: 20px;" styleClass="tool">
                                  <children>
-                                    <Label text="Les nombres">
+                                    <Label styleClass="classicText" text="Les nombres">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>

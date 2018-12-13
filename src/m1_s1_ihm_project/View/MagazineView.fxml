@@ -121,14 +121,30 @@
                   </HBox>
                   <HBox prefHeight="76.0" prefWidth="1191.0" style="-fx-padding: 20px;" VBox.vgrow="NEVER">
                      <children>
-                        <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Retour" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
+                        <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Retour" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <JFXButton buttonType="RAISED" style="-fx-background-color: #1b75cb;" text="Accéder à l'exercice " textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                           </children>
+                        </HBox>
                      </children>
                   </HBox>
                </children>

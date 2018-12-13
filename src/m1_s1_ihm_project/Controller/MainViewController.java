@@ -154,10 +154,10 @@ public class MainViewController implements Initializable {
         JFXTreeTableColumn<EnglishNumbers, String> numberEnCol = new JFXTreeTableColumn("Nombre écrit");
         JFXTreeTableColumn<EnglishNumbers, String> ordinalCol = new JFXTreeTableColumn("Ordinal");
         JFXTreeTableColumn<EnglishNumbers, String> ordinalEnCol = new JFXTreeTableColumn("Ordinal écrit");
-        numberCol.setPrefWidth(250);
-        numberEnCol.setPrefWidth(250);
-        ordinalCol.setPrefWidth(250);
-        ordinalEnCol.setPrefWidth(250);
+        numberCol.setPrefWidth(240);
+        numberEnCol.setPrefWidth(240);
+        ordinalCol.setPrefWidth(240);
+        ordinalEnCol.setPrefWidth(240);
         numberCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getNumber()));
         numberEnCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getNumberEn()));
         ordinalCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getOrdinal()));
@@ -183,18 +183,18 @@ public class MainViewController implements Initializable {
             headerHBoxEx.setPrefWidth((double)newVal);
             headerHBoxTool.setPrefWidth((double)newVal);
             windowWidth = (double)newVal;
-            System.out.println("resize");
         });
         
         thisStage.heightProperty().addListener((obs, oldVal, newVal) -> {
-            magazinesScrollPane.setPrefHeight((double)newVal);
-            magazinesMP.setPrefHeight((double)newVal);
-            exercicesScrollPane.setPrefHeight((double)newVal);
-            exercicesMP.setPrefHeight((double)newVal);
-            toolsScrollPane.setPrefHeight((double) newVal);
-            toolsMP.setPrefHeight((double) newVal);
-            tabPane.setPrefHeight((double)newVal);
-            windowHeight = (double)newVal - 155;
+            windowHeight = (double)newVal - 197;
+            magazinesScrollPane.setPrefHeight(windowHeight);
+            magazinesMP.setPrefHeight(windowHeight);
+            exercicesScrollPane.setPrefHeight(windowHeight);
+            exercicesMP.setPrefHeight(windowHeight);
+            toolsScrollPane.setPrefHeight(windowHeight);
+            toolsMP.setPrefHeight(windowHeight);
+            tabPane.setPrefHeight(windowHeight);
+            
         });
     }
     
