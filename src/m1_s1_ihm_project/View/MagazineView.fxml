@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -42,6 +43,10 @@
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
+                           <styleClass>
+                              <String fx:value="title" />
+                              <String fx:value="large-title" />
+                           </styleClass>
                         </Label>
                         <Region prefHeight="60.0" prefWidth="277.0" HBox.hgrow="ALWAYS" />
                         <VBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="300.0">
@@ -74,17 +79,22 @@
                   </HBox>
                   <HBox fx:id="subHeaderHBox" alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="1191.0" spacing="50.0" VBox.vgrow="NEVER">
                      <children>
-                        <Label fx:id="secondaryTitle" prefHeight="35.0" prefWidth="683.0" style="-fx-padding: 0px  0px 0px 200px;" styleClass="classicText" text="Titre secondaire" HBox.hgrow="NEVER">
+                        <Label fx:id="secondaryTitle" prefHeight="35.0" prefWidth="683.0" style="-fx-padding: 0px  0px 0px 200px;" text="Titre secondaire" HBox.hgrow="NEVER">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <styleClass>
+                              <String fx:value="classicText" />
+                              <String fx:value="title" />
+                              <String fx:value="medium-title" />
+                           </styleClass>
                         </Label>
                         <HBox fx:id="btnGroupBuyShare" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="443.0" spacing="20.0" style="-fx-padding: 0px 40px 0px 0px;" HBox.hgrow="NEVER">
                            <children>
-                              <JFXButton fx:id="buyBook" buttonType="RAISED" onAction="#handleButtonAction" prefHeight="39.0" style="-fx-background-color: #1b75bc;" text="Acheter ce livre" textFill="WHITE">
+                              <JFXButton fx:id="buyBook" buttonType="RAISED" onAction="#handleButtonAction" prefHeight="39.0" style="-fx-background-color: #1b75bc; -fx-padding: 7px 15px 7px 15px;" text="Acheter ce livre" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -92,7 +102,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
-                              <JFXButton fx:id="shareBook" buttonType="RAISED" prefHeight="39.0" style="-fx-background-color: #1b75bc;" text="Partager ce livre" textFill="WHITE">
+                              <JFXButton fx:id="shareBook" buttonType="RAISED" prefHeight="39.0" style="-fx-background-color: #1b75bc; -fx-padding: 7px 15px 7px 15px;" text="Partager ce livre" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -109,13 +119,17 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 20px;" VBox.vgrow="NEVER">
                      <children>
-                        <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="classicText" text="Text">
+                        <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
+                           <styleClass>
+                              <String fx:value="classicText" />
+                              <String fx:value="text" />
+                           </styleClass>
                         </Text>
                      </children>
                   </HBox>
@@ -123,7 +137,7 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="SOMETIMES">
                            <children>
-                              <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Retour" textFill="WHITE">
+                              <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 7px 15px 7px 15px;" text="Retour" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -135,7 +149,7 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="SOMETIMES">
                            <children>
-                              <JFXButton buttonType="RAISED" style="-fx-background-color: #1b75cb;" text="Accéder à l'exercice " textFill="WHITE">
+                              <JFXButton buttonType="RAISED" style="-fx-background-color: #1b75cb; -fx-padding: 7px 15px 7px 15px;" text="Accéder à l'exercice " textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

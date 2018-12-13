@@ -128,7 +128,19 @@ and open the template in the editor.
     -jfx-checked-color: #1b75bc;
 }
 
-.jfx-dialog {
-    -fx-background-radius: 7px;
-    -fx-border-radius: 7px;
+.title {
+     -fx-font-family: Raleway;
+     -fx-font-weight: bold;
+}
+
+.large-title {
+    -fx-font-size: 32px;
+}
+
+.medium-title {
+    -fx-font-size: 24px;
+}
+
+.small-title {
+    -fx-font-size: 18px;
 }

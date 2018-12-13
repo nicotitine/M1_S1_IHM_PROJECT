@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -15,13 +16,18 @@
       <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
    </opaqueInsets>
    <children>
-      <Text fx:id="exerciceTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="classicText" text="Text" wrappingWidth="325.0">
+      <Text fx:id="exerciceTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="325.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
+         <styleClass>
+            <String fx:value="classicText" />
+            <String fx:value="title" />
+            <String fx:value="medium-title" />
+         </styleClass>
       </Text>
       <ImageView fx:id="exerciceImageView" fitHeight="155.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" />
       <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="317.0">
@@ -65,7 +71,7 @@
       </Text>
       <HBox alignment="CENTER" prefHeight="217.0" prefWidth="260.0">
          <children>
-            <JFXButton fx:id="exerciceConsult" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 10px;" text="Lancer l'exercice" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="exerciceConsult" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 7px 15px 7px 15px;" text="Lancer l'exercice" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>

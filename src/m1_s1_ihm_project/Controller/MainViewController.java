@@ -85,7 +85,7 @@ public class MainViewController implements Initializable {
         screenController = SC;
         thisStage = (Stage)scene.getWindow();
         windowWidth = thisStage.getWidth();
-        windowHeight = thisStage.getHeight() - 197;
+        windowHeight = thisStage.getHeight() - 191;
         magazinesScrollPane.setPrefSize(windowWidth, windowHeight);
         magazinesMP.setPrefSize(windowWidth, windowHeight);
         exercicesScrollPane.setPrefSize(windowWidth, windowHeight);

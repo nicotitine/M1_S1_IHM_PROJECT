@@ -52,6 +52,7 @@ public class WelcomeViewController implements Initializable {
         VBox mainBox = new VBox();
         VBox secondaryBox = new VBox();
         Text title = new Text("Bienvenu sur Traveler Companion");
+        title.getStyleClass().addAll("medium-title", "title");
         Text description = new Text("Apprenez rapidement l'anglais avec cet assistant et obtenez un dipome reconnu par l'état.\n\nEt le tout sans débourser un centime !");
         Text toStart = new Text("Pour commencer : ");
         VBox pseudoBox = new VBox();
@@ -60,14 +61,15 @@ public class WelcomeViewController implements Initializable {
         buttonStart = new JFXButton("Commencer !");
         VBox buttonWrapper = new VBox();
         
-        title.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
+        //title.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         description.setStyle("-fx-font-size: 14px; -fx-fill: #313131;");
         description.setWrappingWidth(380);
-        toStart.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        toStart.getStyleClass().addAll("title", "small-title");
         pseudoLabel.setStyle("-fx-font-size: 14px;");
         pseudoLabel.setWrappingWidth(190);
         pseudoField.setPromptText("Ex : Fab");
         pseudoField.setPrefWidth(190);
+        pseudoField.setStyle("-jfx-focus-color: #1b75bc");
         pseudoBox.getChildren().addAll(pseudoLabel, pseudoField);
         pseudoBox.setSpacing(10);
         pseudoBox.setAlignment(Pos.CENTER);

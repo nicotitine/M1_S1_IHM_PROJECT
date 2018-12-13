@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import m1_s1_ihm_project.Model.Exercices.Exercices;
 import m1_s1_ihm_project.Model.Magazines.Magazines;
@@ -40,6 +41,14 @@ public final class ScreenController {
         } catch (IOException ex) {
             Logger.getLogger(ScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Font.loadFont(
+            getClass().getResourceAsStream("/m1_s1_ihm_project/View/Ressources/Raleway-Regular.ttf"), 
+            72
+        );
+        Font.loadFont(
+            getClass().getResourceAsStream("/m1_s1_ihm_project/View/Ressources/Raleway-Bold.ttf"), 
+            72
+        );
         Parent root = (Parent)screenMap.get("welcome");
         WelcomeViewController controller = (WelcomeViewController)welcomeLoader.getController();
         main = new Scene(root);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -46,6 +47,10 @@
                                  <cursor>
                                     <Cursor fx:constant="TEXT" />
                                  </cursor>
+                                 <styleClass>
+                                    <String fx:value="title" />
+                                    <String fx:value="large-title" />
+                                 </styleClass>
                               </Label>
                               <Region prefHeight="60.0" prefWidth="277.0" HBox.hgrow="ALWAYS" />
                               <VBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="300.0">
@@ -72,13 +77,18 @@
                            <children>
                               <HBox fx:id="subHeaderHBox" alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="1191.0" spacing="50.0" VBox.vgrow="NEVER">
                                  <children>
-                                    <Label fx:id="secondaryTitle" prefHeight="35.0" prefWidth="189.0" styleClass="classicText" text="Titre secondaire" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="secondaryTitle" prefHeight="35.0" prefWidth="189.0" text="Titre secondaire" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
+                                       <styleClass>
+                                          <String fx:value="classicText" />
+                                          <String fx:value="title" />
+                                          <String fx:value="large-title" />
+                                       </styleClass>
                                     </Label>
                                  </children>
                                  <VBox.margin>
@@ -104,7 +114,7 @@
                                  <VBox.margin>
                                     <Insets left="50.0" />
                                  </VBox.margin></VBox>
-                              <JFXButton fx:id="validateBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Corriger !" textFill="WHITE">
+                              <JFXButton fx:id="validateBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 7px 15px 7px 15px;" text="Corriger !" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -119,7 +129,7 @@
                         </VBox>
                         <HBox prefHeight="76.0" prefWidth="1191.0" style="-fx-padding: 20px;" VBox.vgrow="NEVER">
                            <children>
-                              <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Retour" textFill="WHITE">
+                              <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc; -fx-padding: 7px 15px 7px 15px;" text="Retour" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
