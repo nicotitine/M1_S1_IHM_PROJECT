@@ -18,6 +18,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.util.Duration;
 
 public class WelcomeViewController implements Initializable {
@@ -45,6 +46,8 @@ public class WelcomeViewController implements Initializable {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);  
         mediaPlayer.setAutoPlay(true);
         MediaView mediaView = new MediaView(mediaPlayer); 
+        mediaView.setFitWidth(Screen.getPrimary().getBounds().getWidth());
+        mediaView.setFitHeight(Screen.getPrimary().getBounds().getHeight());
         
         VBox mainBox = new VBox();
         VBox secondaryBox = new VBox();
