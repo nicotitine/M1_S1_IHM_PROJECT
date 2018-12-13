@@ -127,3 +127,8 @@ and open the template in the editor.
     -jfx-unchecked-color: white;
     -jfx-checked-color: #1b75bc;
 }
+
+.jfx-dialog {
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+}

@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import m1_s1_ihm_project.Model.Exercices.Exercices;
@@ -21,27 +22,32 @@ public final class ScreenController {
     private Exercices exerciceData;
     private FXMLLoader exerciceLoader;
     private FXMLLoader mainLoader;
+    private FXMLLoader welcomeLoader;
     private final String lightThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
     private final String darkThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/customCss_1.css").toExternalForm();
+    private String pseudo;
     
     public ScreenController(Stage stage) {
         try {
             magazineLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazineView.fxml"));
             exerciceLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/ExerciceView.fxml"));
             mainLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MainView.fxml"));
+            welcomeLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/WelcomeView.fxml"));
             screenMap.put("magazine", magazineLoader.load());
             screenMap.put("exercice", exerciceLoader.load());
             screenMap.put("main", mainLoader.load());
+            screenMap.put("welcome", welcomeLoader.load());
         } catch (IOException ex) {
             Logger.getLogger(ScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Parent root = (Parent)screenMap.get("main");
-        MainViewController controller = (MainViewController)mainLoader.getController();
+        Parent root = (Parent)screenMap.get("welcome");
+        WelcomeViewController controller = (WelcomeViewController)welcomeLoader.getController();
         main = new Scene(root);
-        main.getStylesheets().add(lightThemeUrl);
+        main.getStylesheets().add(darkThemeUrl);
         stage.setScene(main);
         stage.setMaximized(true);
-        stage.setTitle("Learn English");
+        stage.setTitle("Traveler Companion");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/m1_s1_ihm_project/View/Ressources/icon.png")));
         stage.show();
         controller.setStageAndSetupListeners(this.getMain(), this);
     }
@@ -105,5 +111,13 @@ public final class ScreenController {
         main.getStylesheets().remove(darkThemeUrl);
             if(!main.getStylesheets().contains(lightThemeUrl))
                 main.getStylesheets().add(lightThemeUrl);
+    }
+    
+    public String getPseudo() {
+        return this.pseudo;
+    }
+    
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 }

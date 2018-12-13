@@ -115,14 +115,16 @@ public class ExerciceViewController implements Initializable {
                 bodyString = "Dommage, toutes les réponses ne sont pas correctes.\n";
                 imageView = new ImageView(new Image("/m1_s1_ihm_project/View/Ressources/errorIcon.png"));
             }
-            String answersString = "\nLes réponses étaient :\n";
+            String answersString = "";
             for(int i = 0; i < thisExe.getAnswers().length; i++) {
                 answersString += "\t- " + thisExe.getAnswers()[i] + "\n";
             }
             JFXDialogLayout content= new JFXDialogLayout();
             Text header = new Text("Résultat de l'exercice");
             Text body = new Text(bodyString);
-            Text answersText = new Text(answersString);
+            Text answersText = new Text("\nLes réponses étaient :");
+            Text answersTextBold = new Text(answersString);
+            answersTextBold.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
             JFXButton closeBtn = new JFXButton("Fermer");
             closeBtn.setStyle("-fx-font-size: 18px; -fx-text-fill: #1b75bc");
             
@@ -134,10 +136,7 @@ public class ExerciceViewController implements Initializable {
             HBox closeBox = new HBox(closeBtn);
             closeBox.setAlignment(Pos.CENTER_RIGHT);
             imageBox.setAlignment(Pos.CENTER);
-            test.getChildren().add(body);
-            test.getChildren().add(imageBox);
-            test.getChildren().add(answersText);
-            test.getChildren().add(closeBox);
+            test.getChildren().addAll(body, imageBox, answersText, answersTextBold, closeBox);
             content.setHeading(header);
             content.setBody(test);
             dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
