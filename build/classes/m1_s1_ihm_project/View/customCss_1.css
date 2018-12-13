@@ -112,3 +112,18 @@ and open the template in the editor.
     -fx-border-color: white;
 }
 
+.searchInput {
+    -fx-text-fill: white;
+    -jfx-focus-color: white;
+    -fx-prompt-text-fill: #CACACA;
+}
+
+.searchInput .input-line {
+    -fx-background-color: white;
+}
+
+.checkbox {
+    -fx-text-fill: white;
+    -jfx-unchecked-color: white;
+    -jfx-checked-color: #1b75bc;
+}

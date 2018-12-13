@@ -46,7 +46,11 @@ public class ExerciceTemplateController implements Initializable {
     }
     
     @FXML public void handleButtonAction(ActionEvent event) {
-        
+        if(event.getSource().equals(exerciceConsult)) {
+            Exercices exe = Database.getExercice(Integer.toString(id_database));
+            screenController.setExerciceData(exe);
+            screenController.activateExe("exercice", exe, screenController);
+        }
     }
     
     @Override public void initialize(URL url, ResourceBundle rb) {

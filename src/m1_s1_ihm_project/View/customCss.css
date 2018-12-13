@@ -69,7 +69,7 @@ and open the template in the editor.
     -fx-background-color: derive(black,50%);
 }
 
-.magazine, .exercice, .tool {
+.magazine, .exercice, .tool, .exercice {
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
     -fx-border-color:  #1b75bc;
@@ -103,4 +103,7 @@ and open the template in the editor.
     -fx-background-color: white;
     -fx-border-width: 0px 0px 3px 0px;
     -fx-border-color:  #1b75bc;
+}
+.checkbox {
+    -jfx-checked-color: #1b75bc;
 }

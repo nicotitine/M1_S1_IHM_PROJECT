@@ -62,7 +62,6 @@ public class MainViewController implements Initializable {
     private ObservableList<Magazines> magazines;
     private ObservableList<Exercices> exercices;
     private ObservableList<EnglishTime> times;
-    private boolean firstLaunch;
     private TraductionController traducteurController;
     
     private final String theme1Url = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
@@ -85,60 +84,58 @@ public class MainViewController implements Initializable {
         headerHBoxEx.setPrefWidth(windowWidth);
         headerHBoxTool.setPrefWidth(windowWidth);
         
-        if(firstLaunch) {
-            // Add all magazines to the magazines pane
-            magazinesMP.getChildren().clear();
-            magazinesMP.setAlignment(Pos.TOP_CENTER);
-            for(int i = 0; i < magazines.size(); i++) {
-                try {
-                    FXMLLoader magLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazineTemplate.fxml"));
-                    magazinesMP.getChildren().add(magLoader.load());
-                    MagazineTemplateController controller = magLoader.getController();
-                    controller.setStageAndSetupListeners(magazines.get(i), screenController, i+1);
-                } catch (IOException ex) {
-                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        // Add all magazines to the magazines pane
+        magazinesMP.getChildren().clear();
+        magazinesMP.setAlignment(Pos.TOP_CENTER);
+        exercicesMP.setAlignment(Pos.TOP_CENTER);
+        for(int i = 0; i < magazines.size(); i++) {
+            try {
+                FXMLLoader magLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazineTemplate.fxml"));
+                magazinesMP.getChildren().add(magLoader.load());
+                MagazineTemplateController controller = magLoader.getController();
+                controller.setStageAndSetupListeners(magazines.get(i), screenController, i+1);
+            } catch (IOException ex) {
+                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            // Add all exercices to the exercices pane
-            exercicesMP.setAlignment(Pos.CENTER);
-            for(int i = 0; i < exercices.size(); i++) {
-                try {
-                    FXMLLoader exeLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/ExerciceTemplate.fxml"));
-                    exercicesMP.getChildren().add(exeLoader.load());
-                    ExerciceTemplateController controller = exeLoader.getController();
-                    controller.setStageAndSetupListeners(exercices.get(i), screenController, i);
-                } catch (IOException ex) {
-                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            
-            // Initialize the tools tab
-            traducteurController = new TraductionController();
-            translateToList.setItems(traducteurController.getNameList());
-            translateToList.getSelectionModel().selectFirst();
-            translateFromList.setItems(traducteurController.getNameList());
-            translateFromList.getSelectionModel().select(1);
-            times = Database.getTimes();
-            JFXTreeTableColumn<EnglishTime, String> timeCol = new JFXTreeTableColumn("Temps");
-            JFXTreeTableColumn<EnglishTime, String> exampleCol = new JFXTreeTableColumn("Exemple");
-            JFXTreeTableColumn<EnglishTime, String> explenationCol = new JFXTreeTableColumn("Explication");
-            timeCol.setPrefWidth(200);
-            exampleCol.setPrefWidth(280);
-            explenationCol.setPrefWidth(timesTable.getWidth() - 200 - 310);
-            timeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getTitle()));
-            exampleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExample()));
-            explenationCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExplenation()));
-            timeCol.setStyle("-fx-alignment: center; -fx-font-weight: bold;");
-            
-            final TreeItem<EnglishTime> root = new RecursiveTreeItem<EnglishTime>(times, RecursiveTreeObject::getChildren);
-            timesTable.getColumns().setAll(timeCol, exampleCol, explenationCol);
-            timesTable.setRoot(root);
-            timesTable.setShowRoot(false);
         }
-        
-        firstLaunch = false;
-        
+           
+        // Add all exercices to the exercices pane
+        exercicesMP.getChildren().clear();
+        for(int i = 0; i < exercices.size(); i++) {
+            try {
+                FXMLLoader exeLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/ExerciceTemplate.fxml"));
+                exercicesMP.getChildren().add(exeLoader.load());
+                ExerciceTemplateController controller = exeLoader.getController();
+                controller.setStageAndSetupListeners(exercices.get(i), screenController, i+1);
+            } catch (IOException ex) {
+                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+           
+        // Initialize the tools tab
+        traducteurController = new TraductionController();
+        translateToList.setItems(traducteurController.getNameList());
+        translateToList.getSelectionModel().selectFirst();
+        translateFromList.setItems(traducteurController.getNameList());
+        translateFromList.getSelectionModel().select(1);
+        times = Database.getTimes();
+        JFXTreeTableColumn<EnglishTime, String> timeCol = new JFXTreeTableColumn("Temps");
+        JFXTreeTableColumn<EnglishTime, String> exampleCol = new JFXTreeTableColumn("Exemple");
+        JFXTreeTableColumn<EnglishTime, String> explenationCol = new JFXTreeTableColumn("Explication");
+        timeCol.setPrefWidth(250);
+        exampleCol.setPrefWidth(280);
+        System.out.println(timesTable.getWidth());
+        explenationCol.setPrefWidth(1094 - 250 - 310);
+        timeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getTitle()));
+        exampleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExample()));
+        explenationCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExplenation()));
+        timeCol.setStyle("-fx-alignment: center; -fx-font-weight: bold;");
+            
+        final TreeItem<EnglishTime> root = new RecursiveTreeItem<>(times, RecursiveTreeObject::getChildren);
+        timesTable.getColumns().setAll(timeCol, exampleCol, explenationCol);
+        timesTable.setRoot(root);
+        timesTable.setShowRoot(false);
+              
         // Resize event
         thisStage.widthProperty().addListener((obs, oldVal, newVal) -> {
             magazinesScrollPane.setPrefWidth((double)newVal);
@@ -154,6 +151,7 @@ public class MainViewController implements Initializable {
             windowWidth = (double)newVal;
             System.out.println("resize");
         });
+        
         thisStage.heightProperty().addListener((obs, oldVal, newVal) -> {
             magazinesScrollPane.setPrefHeight((double)newVal);
             magazinesMP.setPrefHeight((double)newVal);
@@ -170,7 +168,6 @@ public class MainViewController implements Initializable {
         // Get all magazines and exercices from database
         magazines = Database.getMagazines();
         exercices = Database.getExercices();
-        firstLaunch = true;
     }
     
     @FXML public void handleButtonAction(ActionEvent event) {

@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -17,37 +18,56 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<JFXTabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="828.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.MainViewController">
+<JFXTabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="857.0" prefWidth="1479.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m1_s1_ihm_project.Controller.MainViewController">
    <tabs>
       <Tab fx:id="magazinesTab" closable="false" text="Magazines">
          <content>
-            <ScrollPane fx:id="magazinesScrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+            <ScrollPane fx:id="magazinesScrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="1351.0">
                <content>
                   <VBox>
                      <children>
                         <HBox fx:id="headerHBox" alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="1920.0" spacing="20.0" style="-fx-padding: 0px 0px 0px 20px;" styleClass="themeHeader">
                            <children>
-                              <Label styleClass="classicText" text="Choix du thème : ">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <JFXButton fx:id="clearMode" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Mode clair" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </JFXButton>
-                              <JFXButton fx:id="darkMode" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b1b1b;" text="Mode sombre" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </JFXButton>
+                              <HBox alignment="CENTER" prefHeight="76.0" prefWidth="415.0" spacing="30.0" HBox.hgrow="NEVER">
+                                 <children>
+                                    <Label styleClass="classicText" text="Choix du thème : ">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton fx:id="clearMode" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Mode clair" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </JFXButton>
+                                    <JFXButton fx:id="darkMode" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b1b1b;" text="Mode sombre" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <HBox alignment="CENTER" prefHeight="76.0" prefWidth="340.0" spacing="20.0" HBox.hgrow="NEVER">
+                                 <children>
+                                    <JFXTextField focusColor="#1b75bc" prefHeight="30.0" prefWidth="192.0" promptText="Rechercher un magazine" styleClass="searchInput">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton buttonType="RAISED" style="-fx-background-color: #1b75bc;" text="Rechercher" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
                               <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                               <JFXButton fx:id="exitBtn" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Quitter" textFill="WHITE">
                                  <font>
@@ -87,27 +107,46 @@
                      <children>
                         <HBox fx:id="headerHBoxEx" alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="1920.0" spacing="20.0" style="-fx-padding: 0px 0px 0px 20px;" styleClass="themeHeader">
                            <children>
-                              <Label styleClass="classicText" text="Choix du thème : ">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <JFXButton fx:id="clearModeEx" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Mode clair" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </JFXButton>
-                              <JFXButton fx:id="darkModeEx" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b1b1b;" text="Mode sombre" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </JFXButton>
+                              <HBox alignment="CENTER" prefHeight="76.0" prefWidth="415.0" spacing="30.0" HBox.hgrow="NEVER">
+                                 <children>
+                                    <Label styleClass="classicText" text="Choix du thème : ">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton fx:id="clearModeEx" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Mode clair" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </JFXButton>
+                                    <JFXButton fx:id="darkModeEx" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b1b1b;" text="Mode sombre" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <HBox alignment="CENTER" prefHeight="76.0" prefWidth="325.0" spacing="20.0" HBox.hgrow="NEVER">
+                                 <children>
+                                    <JFXTextField focusColor="#1b75bc" prefHeight="30.0" prefWidth="186.0" promptText="Rechercher un exercice" styleClass="searchInput">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton buttonType="RAISED" style="-fx-background-color: #1b75bc;" text="Rechercher" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
                               <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                               <JFXButton fx:id="exitBtnEx" buttonType="RAISED" onAction="#handleButtonAction" style="-fx-background-color: #1b75bc;" text="Quitter" textFill="WHITE">
                                  <font>
@@ -120,7 +159,7 @@
                               <Region prefHeight="200.0" prefWidth="40.0" />
                            </children>
                         </HBox>
-                        <FlowPane fx:id="exercicesMP" alignment="TOP_CENTER" hgap="40.0" prefHeight="666.0" prefWidth="1920.0" rowValignment="TOP" style="-fx-padding: 20px;" styleClass="flowpane" vgap="40.0" />
+                        <FlowPane fx:id="exercicesMP" hgap="40.0" prefHeight="666.0" prefWidth="1920.0" rowValignment="TOP" style="-fx-padding: 20px;" styleClass="flowpane" vgap="40.0" />
                      </children>
                   </VBox>
                </content>
@@ -261,6 +300,21 @@
                                  <opaqueInsets>
                                     <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                                  </opaqueInsets>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="1175.0" style="-fx-padding: 20px;" styleClass="tool">
+                                 <children>
+                                    <Label text="Les nombres">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="classicText" text="Récapitulatif sur les nombres utilisés en anglais...">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <JFXTreeTableView fx:id="numbersTable" styleClass="timesTable" />
+                                 </children>
                               </VBox>
                            </children>
                         </FlowPane>

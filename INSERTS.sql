@@ -29,8 +29,48 @@ create table times(
     primary key (time)
 );
 
+create table numbers(
+    number varchar(255) not null,
+    numberEn varchar(255),
+    ordinal varchar(255),
+    ordinalEn varchar(255),
+    primary key(number)
+);
+
+insert into numbers values ('1', 'One', '1st', 'First');
+insert into numbers values ('2', 'Two', '2nd', 'Second');
+insert into numbers values ('3', 'Three', '3rd', 'Third');
+insert into numbers values ('4', 'Four', '4th', 'Fourth');
+insert into numbers values ('5', 'Five', '5th', 'Fifth');
+insert into numbers values ('6', 'Six', '6th', 'Sixth');
+insert into numbers values ('7', 'Seven', '7th', 'Seventh');
+insert into numbers values ('8', 'Eight', '8th', 'Eighth');
+insert into numbers values ('9', 'Nine', '9th', 'Ninth');
+insert into numbers values ('10', 'Ten', '10th', 'Tenth');
+insert into numbers values ('11', 'Eleven', '11th', 'Eleventh');
+insert into numbers values ('12', 'Twelve', '12th', 'Twelfth');
+insert into numbers values ('13', 'Thirteen', '13th', 'Thirteenth');
+insert into numbers values ('14', 'Fourteen', '14th', 'Fourteenth');
+insert into numbers values ('15', 'Fifteen', '15th', 'Fifteenth');
+insert into numbers values ('16', 'Sixteen', '16th', 'Sixteenth');
+insert into numbers values ('17', 'Seventeen', '17th', 'Seventeenth');
+insert into numbers values ('18', 'Eighteen', '18th', 'Eighteenth');
+insert into numbers values ('19', 'Nineteen', '19th', 'Nineteenth');
+insert into numbers values ('20', 'Twenty', '20th', 'Twentieth');
+insert into numbers values ('30', 'Thiry', '30th', 'Thirtieth');
+insert into numbers values ('40', 'Forty', '40th', 'Fortieth');
+insert into numbers values ('50', 'Fifty', '50th', 'Fiftieth');
+insert into numbers values ('60', 'Sixty', '60th', 'Sixtieth');
+insert into numbers values ('70', 'Seventy', '70th', 'Seventieth');
+insert into numbers values ('80', 'Eighty', '80th', 'Eightieth');
+insert into numbers values ('90', 'Ninety', '90th', 'Ninetieth');
+insert into numbers values ('100', 'One hundred', '100th', 'Hundreth');
+insert into numbers values ('1000', 'One thousand', '1000th', 'Thousandth');
+insert into numbers values ('1.000.000', 'One million', '1.000.000th', 'Millionth');
+insert into numbers values ('1.000.000.000', 'One billion', '1.000.000.000th', 'Billionth');
+
 insert into times values ('Present simple', 'I play football every week.', 'Action qui arrive régulièrement');
-insert into times values ('Present continuous', 'I am playing footbal now', 'Acion qui arrive en ce moment');
+insert into times values ('Present continuous', 'I am playing footbal now', 'Action qui arrive en ce moment');
 insert into times values ('Past simple', 'I played football yesterday', 'Action passée et datée (hier ou avant hier)');
 insert into times values ('Past continuous', 'I was playing football the whole evening', 'Action qui avait lieu hier, on insiste sur la durée');
 insert into times values ('Present perfect', 'I have just played football', 'Action qui vient de se produire, avec conséquence sur le présent');
