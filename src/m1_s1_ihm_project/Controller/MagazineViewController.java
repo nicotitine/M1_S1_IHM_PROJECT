@@ -129,10 +129,13 @@ public class MagazineViewController implements Initializable {
                 type.setText("Type : Vidéo");
                 videoMediaView = new WebView();
                 videoMediaView.getEngine().load(vid.getMediaUrl());
-                videoMediaView.setPrefSize(480, 700);
                 scrollPaneMedia.setContent(videoMediaView);
                 secondaryTitle.setText("Description : ");
-                scrollPaneMedia.setPrefHeight(400);
+                scrollPaneMedia.setPrefHeight(700);
+                scrollPaneMedia.setFitToHeight(false);
+                magazineScrollPane.setPrefHeight(magazineScrollPane.getPrefHeight() + 300);
+                magazineVBox.setPrefHeight(magazineVBox.getPrefHeight() + 300);
+                magazineFlowPane.setPrefHeight(magazineFlowPane.getPrefHeight() + 300);
                 subHeaderHBox.setPrefHeight(100);
                 buyBook.setText("Ouvrir la vidéo dans votre navigateur");
                 shareBook.setText("Partager cette vidéo (Not working)");
