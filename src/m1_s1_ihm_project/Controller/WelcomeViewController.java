@@ -5,6 +5,10 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import static java.util.concurrent.TimeUnit.NANOSECONDS;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,8 +34,28 @@ public class WelcomeViewController implements Initializable {
     public void setStageAndSetupListeners(Scene scene, ScreenController SC) {
         buttonStart.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event) {
-                SC.setPseudo(pseudoField.getText());
-                SC.activateMag("main", null, SC);
+                pane.getChildren().clear();
+                Text loading = new Text("Chargement en cours...");
+                loading.setStyle("-fx-font-size: 48px; -fx-font-family: Raleway; -fx-font-weight: bold;");
+                pane.getChildren().add(loading);
+                try {
+                    NANOSECONDS.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(WelcomeViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                Platform.runLater(new Runnable(){
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(WelcomeViewController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                       SC.setPseudo(pseudoField.getText());
+                       SC.activateMag("main", null, SC);   
+                    }
+                });
             }
         });
     }
@@ -61,7 +85,6 @@ public class WelcomeViewController implements Initializable {
         buttonStart = new JFXButton("Commencer !");
         VBox buttonWrapper = new VBox();
         
-        //title.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         description.setStyle("-fx-font-size: 14px; -fx-fill: #313131;");
         description.setWrappingWidth(380);
         toStart.getStyleClass().addAll("title", "small-title");

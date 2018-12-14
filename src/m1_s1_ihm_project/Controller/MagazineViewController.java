@@ -98,6 +98,7 @@ public class MagazineViewController implements Initializable {
         title.setText(mag.getTitle());
         description.setText(mag.getDescription().replace("\\n", "\n"));
         date.setText("Date de publication : " + new SimpleDateFormat("dd/MM/yyyy").format(mag.getPublishDate()));
+        System.out.println(mag.getType());
         switch(mag.getType()) {
             case "book" :
                 type.setText("Type : Livre");
@@ -109,7 +110,19 @@ public class MagazineViewController implements Initializable {
                 scrollPaneMedia.setPrefHeight(350);
                 secondaryTitle.setText("Synopsis : ");
                 buyBook.setText("Acheter ce livre dans votre navigateur");
-                shareBook.setText("Partager ce livre");
+                shareBook.setText("Partager ce livre (Not working)");
+            break;
+            case "document" :
+                type.setText("Type : Document");
+                imageMediaView = new ImageView();
+                imageMediaView.setImage(new Image(mag.getImageUrl()));
+                imageMediaView.setFitHeight(300*3);
+                imageMediaView.setFitWidth(windowWidth);
+                scrollPaneMedia.setContent(imageMediaView);
+                scrollPaneMedia.setPrefHeight(350);
+                secondaryTitle.setText("Description : ");
+                buyBook.setText("Ouvrir ce document dans votre navigateur");
+                shareBook.setText("Partager ce document (Not working)");
             break;
             case "video" :
                 Video vid = (Video)mag;
@@ -122,7 +135,7 @@ public class MagazineViewController implements Initializable {
                 scrollPaneMedia.setPrefHeight(400);
                 subHeaderHBox.setPrefHeight(100);
                 buyBook.setText("Ouvrir la vidéo dans votre navigateur");
-                shareBook.setText("Partager cette vidéo");
+                shareBook.setText("Partager cette vidéo (Not working)");
             break;
             case "audio" :
                 Audio audio = (Audio)mag;
@@ -133,7 +146,7 @@ public class MagazineViewController implements Initializable {
                 scrollPaneMedia.setPrefHeight(200);
                 scrollPaneMedia.setContent(audioMediaView);
                 buyBook.setText("Ouvrir dans votre navigateur");
-                shareBook.setText("Partager ce document audio");
+                shareBook.setText("Partager ce document audio (Not working)");
             break;
         }
         

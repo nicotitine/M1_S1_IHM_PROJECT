@@ -127,7 +127,6 @@ public class ExerciceViewController implements Initializable {
             answersTextBold.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
             JFXButton closeBtn = new JFXButton("Fermer");
             closeBtn.setStyle("-fx-font-size: 18px; -fx-text-fill: #1b75bc");
-            
             header.setStyle("-fx-font-size : 24px");
             body.setStyle("-fx-font-size : 18px");
             answersText.setStyle("-fx-font-size: 18px");
@@ -224,7 +223,6 @@ public class ExerciceViewController implements Initializable {
         }
         
         description.setWrappingWidth(windowWidth/2);
-         
         thisStage.widthProperty().addListener((obs, oldVal, newVal) -> {
             exerciceFlowPane.setPrefWidth((double)newVal);
             exerciceVBox.setPrefWidth((double)newVal);

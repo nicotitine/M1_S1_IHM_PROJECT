@@ -27,6 +27,7 @@ public final class ScreenController {
     private final String lightThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
     private final String darkThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/customCss_1.css").toExternalForm();
     private String pseudo;
+    private boolean firstLaunch = true;
     
     public ScreenController(Stage stage) {
         try {
@@ -59,6 +60,7 @@ public final class ScreenController {
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/m1_s1_ihm_project/View/Ressources/icon.png")));
         stage.show();
         controller.setStageAndSetupListeners(this.getMain(), this);
+        
     }
 
     public void activateMag(String name, Magazines mag, ScreenController SC){
@@ -69,9 +71,15 @@ public final class ScreenController {
                 controller.setStageAndSetupListeners(main, magazineData, SC);
             break;
             case "main":
-                MainViewController magazinesController = (MainViewController)mainLoader.getController();
-                main.setRoot( screenMap.get(name) );
-                magazinesController.setStageAndSetupListeners(main, SC);
+                if(firstLaunch) {
+                    MainViewController magazinesController = (MainViewController)mainLoader.getController();
+                    main.setRoot( screenMap.get(name) );
+                    magazinesController.setStageAndSetupListeners(main, SC);
+                    firstLaunch = false;
+                } else {
+                    main.setRoot(screenMap.get(name));
+                }
+            break;
         }
     }
     
@@ -83,9 +91,14 @@ public final class ScreenController {
                 controller.setStageAndSetupListeners(main, exerciceData, SC);
             break;
             case "main":
-                MainViewController magazinesController = (MainViewController)mainLoader.getController();
-                main.setRoot( screenMap.get(name) );
-                magazinesController.setStageAndSetupListeners(main, SC);
+                if(firstLaunch) {
+                    MainViewController magazinesController = (MainViewController)mainLoader.getController();
+                    main.setRoot( screenMap.get(name) );
+                    magazinesController.setStageAndSetupListeners(main, SC);
+                    firstLaunch = false;
+                } else {
+                    main.setRoot(screenMap.get(name));
+                }
             break;
         }
     }

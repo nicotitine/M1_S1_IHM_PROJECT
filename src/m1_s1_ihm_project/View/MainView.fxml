@@ -62,7 +62,7 @@
                               <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="SOMETIMES" />
                               <HBox alignment="CENTER" prefHeight="76.0" prefWidth="340.0" spacing="20.0" HBox.hgrow="NEVER">
                                  <children>
-                                    <JFXTextField focusColor="#1b75bc" prefHeight="30.0" prefWidth="192.0" promptText="Rechercher un magazine" styleClass="searchInput">
+                                    <JFXTextField focusColor="#1b75bc" prefHeight="30.0" prefWidth="192.0" promptText="Rechercher (Not working)" styleClass="searchInput">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -154,7 +154,7 @@
                               <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                               <HBox alignment="CENTER" prefHeight="76.0" prefWidth="325.0" spacing="20.0" HBox.hgrow="NEVER">
                                  <children>
-                                    <JFXTextField focusColor="#1b75bc" prefHeight="30.0" prefWidth="186.0" promptText="Rechercher un exercice" styleClass="searchInput">
+                                    <JFXTextField focusColor="#1b75bc" prefHeight="30.0" prefWidth="186.0" promptText="Rechercher (Not working)" styleClass="searchInput">
                                        <font>
                                           <Font size="14.0" />
                                        </font>

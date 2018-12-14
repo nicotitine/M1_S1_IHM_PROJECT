@@ -45,6 +45,12 @@ public class MagazineTemplateController implements Initializable {
             case "video":
                 magazineType.setText("Vidéo");
             break;
+            case "audio":
+                magazineType.setText("Audio");
+            break;
+            case "document":
+                magazineType.setText("Document");
+            break;
         }
     }
 

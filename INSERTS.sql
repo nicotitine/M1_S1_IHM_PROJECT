@@ -1,42 +1,7 @@
-create table magazines(
-    id int NOT NULL,
-    title varchar(255),
-    description varchar(1023),
-    imageurl varchar(255),
-    publishdate date,
-    type varchar(255),
-    mediaurl varchar(255),
-    browsingurl varchar(255),
-    PRIMARY KEY (id)
-);
-
-create table exercices(
-    id int not null,
-    title varchar(255),
-    description varchar(1023),
-    questions varchar(2047),
-    answers varchar(2047),
-    duration varchar(255),
-    imageurl varchar(255),
-    type varchar(255),
-    primary key (id)
-);
-
-create table times(
-    time varchar(255) not null,
-    example varchar(255),
-    explenation varchar(255),
-    primary key (time)
-);
-
-create table numbers(
-    number varchar(255) not null,
-    numberEn varchar(255),
-    ordinal varchar(255),
-    ordinalEn varchar(255),
-    primary key(number)
-);
-
+create table magazines(id int NOT NULL,title varchar(255),description varchar(1023),imageurl varchar(255),publishdate date,type varchar(255), mediaurl varchar(255),browsingurl varchar(255),PRIMARY KEY (id));
+create table exercices(id int not null,title varchar(255),description varchar(1023),questions varchar(2047),answers varchar(2047),duration varchar(255),imageurl varchar(255),type varchar(255),primary key (id));
+create table times(time varchar(255) not null,example varchar(255),explenation varchar(255),primary key (time));
+create table numbers(number varchar(255) not null,numberEn varchar(255),ordinal varchar(255),ordinalEn varchar(255),primary key(number));
 insert into numbers values ('1', 'One', '1st', 'First');
 insert into numbers values ('2', 'Two', '2nd', 'Second');
 insert into numbers values ('3', 'Three', '3rd', 'Third');
@@ -68,7 +33,6 @@ insert into numbers values ('100', 'One hundred', '100th', 'Hundreth');
 insert into numbers values ('1000', 'One thousand', '1000th', 'Thousandth');
 insert into numbers values ('1.000.000', 'One million', '1.000.000th', 'Millionth');
 insert into numbers values ('1.000.000.000', 'One billion', '1.000.000.000th', 'Billionth');
-
 insert into times values ('Present simple', 'I play football every week.', 'Action qui arrive régulièrement');
 insert into times values ('Present continuous', 'I am playing footbal now', 'Action qui arrive en ce moment');
 insert into times values ('Past simple', 'I played football yesterday', 'Action passée et datée (hier ou avant hier)');
@@ -85,55 +49,15 @@ insert into times values ('Conditional simple', 'I would play football', 'Action
 insert into times values ('Conditional continuous', 'I would be playing football', 'Action probable, en insistant sur la durée');
 insert into times values ('Conditional perfect', 'I would have played football', 'Action future avec notion de probabilité');
 insert into times values ('Conditional perfect continuous', 'I would have been playing football', 'Action future avec notion de probabilité en insistant sur la durée');
-
-insert into exercices values (
-    1,
-    'Test Exercice',
-    'In this exercice, you will see a good display ! Cool isnt it ?',
-    'question n°1, quesion n°2, question n°3',
-    'question n°1, question n°3',
-    '3min',
-    'https://i2.wp.com/pedagoblog.fr/wp-content/uploads/2017/11/qcm-1.jpg?fit=1876%2C1038',
-    'qcm'
-);
-
-insert into exercices values (
-    3,
-    'Test exercice 3',
-    'In this exercice, you will see a good display ! Cool isnt it ?',
-    'It % a beautiful day (preterit), I % a nice person (present simple), Tomarrow % be fun (future)',
-    'was, am, will',
-    '2min',
-    'https://i2.wp.com/pedagoblog.fr/wp-content/uploads/2017/11/qcm-1.jpg?fit=1876%2C1038',
-    'tat'
-);
-
-insert into magazines values (
-    1,
-    'Learn English in 30 Minutes - ALL the English Basics You Need',
-    'With this video compilation you will be able to get started with the English language in only 30 minutes!\n\nYou have decided to start learning English, so lets build up your vocabulary! In this video, you will learn some of the most important words and phrases in the English language. If you want to start learning English, this video is made for you. Our host expresses herself in simple English, with English subtitles. This video will challenge your listening comprehension skills and help you progress in your English study. \n\nLet us help you through this 30-minute English basics compilation! This is the fastest, easiest way to pick up basic English!',
-    'https://i.ytimg.com/vi/juKd26qkNAw/hqdefault.jpg',
-    '03/17/2017',
-    'video',
-    'https://www.youtube-nocookie.com/embed/juKd26qkNAw',
-    'https://www.youtube.com/watch?v=juKd26qkNAw'
-);
-
-insert into magazines values (
-    4,
-    'Audio Test',
-    'Audio test description',
-    'http://www.bbc.co.uk/staticarchive/3f3c6fbcecc7b29271f4bcd51da8268301fcfc36.jpg',
-    '01/01/2010',
-    'audio',
-    'http://http-ws.bbc.co.uk.edgesuite.net/mp3/learningenglish/2014/09/140924_vwitn_inmates_bank_audio_140924_vwitn_inmates_bank_audio_au_bb.mp3',
-    'http://www.bbc.co.uk/worldservice/learningenglish/081222_download.shtml'
-);
-
-create table exercices(
-    id int not null,
-    title varchar(255),
-    description varchar(255),
-    type varchar(255),
-    answerId int not null
-);
+insert into exercices values(1,'Money exercice','In this exercice, you will need to pick the good answer(s) between all the answers','Dollar is the american currency., The england currency is the Livre Sterling, The england currency is the rouble','Dollar is the american currency., The england currency is the Livre Sterling','3min','https://i2.wp.com/pedagoblog.fr/wp-content/uploads/2017/11/qcm-1.jpg','qcm');
+insert into exercices values(2,'English times','In this exercice, you will need to write the missing text in the textareas. The time you have to write is given in (parentheses)','It % a beautiful day (preterit), I % a nice person (present simple), Tomarrow % be fun (future)','was, am, will','2min','https://www.ministryinsights.com/wp-content/uploads/2014/08/Missing-Puzzle-Pieces-600x398-betanews.jpg','tat');
+insert into exercices values(3,'English Suffixes','In this exercice, you will need to write the missing text in the textareas. You have to choose betwen "a" and "an"','It was % beautiful day, This application needs % update, I need % url to access your website please','a, an, a','3min','https://www.ministryinsights.com/wp-content/uploads/2014/08/Missing-Puzzle-Pieces-600x398-betanews.jpg','tat');
+insert into exercices values(4,'English hour','In this exercice, you will need to pick the write translations','17h15 : Quarter past five pm, 12h45 : Quarter to one, 00h00 : Twelve o clock','17h15 : Quarter past five pm, 12h45 : Quarter to one, 00h00 : Twelve o clock','4min','https://i2.wp.com/pedagoblog.fr/wp-content/uploads/2017/11/qcm-1.jpg','qcm');
+insert into magazines values (1,'Learn English in 30 Minutes - ALL the English Basics You Need','With this video compilation you will be able to get started with the English language in only 30 minutes!\n\nYou have decided to start learning English, so lets build up your vocabulary! In this video, you will learn some of the most important words and phrases in the English language. If you want to start learning English, this video is made for you. Our host expresses herself in simple English, with English subtitles. This video will challenge your listening comprehension skills and help you progress in your English study. \n\nLet us help you through this 30-minute English basics compilation! This is the fastest, easiest way to pick up basic English!','https://i.ytimg.com/vi/juKd26qkNAw/hqdefault.jpg','03/17/2017','video','https://www.youtube-nocookie.com/embed/juKd26qkNAw','https://www.youtube.com/watch?v=juKd26qkNAw');
+insert into magazines values (2,'How to tell the time in English','Learn how to tell the time in English with this English video lesson. \nFirst I show you how to ask somebody for the time ("What time is it?", "Do you have the time?" etc).\n\n I then give you 2 methods of saying the time and give you some new vocabulary. Some examples of time are seven o clock, ten past eight, quarter past nine, half past eleven, twenty to six, quarter to twelve. I explain the words midday, noon and midnight. \n\nIn English, to make it clear what time of the day we are talking about we use several time expressions like "in the morning", "in the afternoon", "in the evening" and "at night" Alternatively we can use the "am" and "pm" abbreviations. The 24 hour clock is rarely used in English except for timetables and in the military. I finish this English lesson with some exercises to test your understanding. \nThe accent of the commentary is a British English accent.','https://i.ytimg.com/vi/9p_pdjhPfMs/hqdefault.jpg','05/16/2017','video','https://www.youtube-nocookie.com/embed/9p_pdjhPfMs','https://www.youtube.com/watch?v=9p_pdjhPfMs');
+insert into magazines values(3,'How to tell the weather and handle money issue','Carolina is having some problems with money. What can she do to solve them? Adam and Rob talk about all the different types of weather you have in your countries.','https://i.ytimg.com/vi/Z2biA1gczXs/maxresdefault.jpg','07/20/2017','audio','https://nicolashincelin.fr/working.mp3','https://learnenglish.britishcouncil.org/en/learnenglish-podcasts/series-03-episode-04');
+insert into magazines values (4,'Exceptions: Choosing A or An','Here are a few exceptions to the general rule of using a before words that start with consonants and an before words that begin with vowels. The first letter of the word honor, for example, is a consonant, but it’s unpronounced. In spite of its spelling, the word honor begins with a vowel sound. Therefore, we use an. Consider the example sentence below for an illustration of this concept.\n\nIncorrect : My mother is a honest woman.\nCorrect : My mother is an honest woman.\n\nSimilarly, when the first letter of a word is a vowel but is pronounced with a consonant sound, use a, as in the sample sentence below:\n\nIncorrect : She is an United States senator.\nCorrect : She is a United States senator.\n\nThis holds true with acronyms and initialisms, too: an LCD display, a UK-based company, an HR department, a URL.','https://static.grammarly.com/assets/files/7bebc5dfd61602d5879c5627ff00d5ba/card_correct.png','12/04/2017','document',null,'https://www.grammarly.com/blog/articles/');
+insert into magazines values (5,'How To Learn English: A guide to speaking English like a native speaker','Présentation de l éditeur : \nHow To Learn English explains the techniques anyone can use to speak English with ease, confidence and fluency in every situation. You will learn ten new habits, how to use them to improve your English every day -- and how to maintain your level once you become fluent. The principles of How To Learn English will help you realize how to learn better and act as a driving force for your success.\n\nBiographie de l auteur : \nFabien Snauwaert is a self-taught entrepreneur from Paris, France. His newsletter of tips and techniques to learn English is followed by over 14 000 people. His passions include music, communication and psychology; he is currently learning Hungarian.','https://images-na.ssl-images-amazon.com/images/I/51WvFaJDCpL._SX331_BO1,204,203,200_.jpg','11/14/2010','book',null,'https://www.amazon.fr/How-Learn-English-speaking-speaker/dp/1453844155');
+insert into magazines values (6,'6 Minute Vocabulary: Suffixes','In this download from BBC learning Enlgish, we look at suffixes. To learn more visit our website\n\n Suffixes, what they are, what they mean and how to use them ...','https://gdb.voanews.com/073BF19B-5742-4B51-848B-3DBCAA25F39D_cx0_cy15_cw0_w1023_r1_s.jpg','06/18/2013','audio','http://downloads.bbc.co.uk/learningenglish/lowerintermediate/unit1/u1_6min_vocab.mp3','http://www.bbc.co.uk/learningenglish/marathi/course/lower-intermediate/unit-1/downloads');
+insert into magazines values (7,'4 Tips to Help You Learn English - How to Learn English','In this video, I’m going to talk about how to learn English. I’ll share some tips I wish I’d known before I started studying languages.\n\n I’ll share my experience of learning different languages and teaching different students with you, and give you the most important tips which can help you to learn English, or even another language!\n\nIn this lesson you can learn: \n- Different ways to study language outside of school. \n- How to work with your emotions and continue improving. \n- Ways to change your life to help your language studies. - The secret to learning English (or any language)!','https://i.ytimg.com/vi/uaHJXnSdnOw/hqdefault.jpg','05/22/2017','video','https://www.youtube-nocookie.com/embed/uaHJXnSdnOw','https://www.youtube.com/watch?v=uaHJXnSdnOw');
+insert into magazines values (8,'Leaving Time (with bonus novella Larger Than Life): A Novel','What this book is about: A woman searches for her mother, who disappeared after a terrible accident. She gets some help from a psychic and a detective. Together, they find out that sometimes asking questions gets them answers they didn’t want to know…\n\nThe English in this book: This book might be a little difficult, since it’s not a typical thriller. It’s focused more on how people think than on their actions. More advanced readers will enjoy this one.','https://images-na.ssl-images-amazon.com/images/I/51awyZJCrfL._SX331_BO1,204,203,200_.jpg','04/28/2015','book',null,'https://www.amazon.com/gp/product/0345544943?tag=fluentu-20');
