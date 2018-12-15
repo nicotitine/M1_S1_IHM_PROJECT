@@ -25,36 +25,26 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import m1_s1_ihm_project.Model.Magazines.Audio;
-import m1_s1_ihm_project.Model.Magazines.Magazines;
-import m1_s1_ihm_project.Model.Magazines.Video;
+import m1_s1_ihm_project.Model.Magazine.Audio;
+import m1_s1_ihm_project.Model.Magazine.Magazine;
+import m1_s1_ihm_project.Model.Magazine.Video;
 
 public class MagazineViewController implements Initializable {
 
     @FXML private FlowPane magazineFlowPane;
     @FXML private VBox magazineVBox;
-    @FXML private ScrollPane scrollPaneMedia;
-    @FXML private JFXButton exitMag;
-    @FXML private Label title;
-    @FXML private Label date;
-    @FXML private Label type;
+    @FXML private ScrollPane scrollPaneMedia, magazineScrollPane;
+    @FXML private JFXButton exitMag, backBtn, buyBook, shareBook;
+    @FXML private Label title, date, type, secondaryTitle;
     @FXML private Text description;
-    @FXML private JFXButton backBtn;
-    @FXML private Label secondaryTitle;
-    @FXML private HBox subHeaderHBox;
-    @FXML private HBox btnGroupBuyShare;
-    @FXML private JFXButton buyBook;
-    @FXML private JFXButton shareBook;
-    @FXML private ScrollPane magazineScrollPane;
+    @FXML private HBox subHeaderHBox, btnGroupBuyShare;
     
     private ScreenController screenController;
-    private Magazines thisMag;
-    private double windowWidth;
-    private double windowHeight;
+    private Magazine thisMag;
+    private double windowWidth, windowHeight;
     private Stage thisStage;
     private ImageView imageMediaView;
-    private WebView videoMediaView;
-    private WebView audioMediaView;
+    private WebView videoMediaView, audioMediaView;
     
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exitMag) || event.getSource().equals(backBtn)) {
@@ -82,7 +72,7 @@ public class MagazineViewController implements Initializable {
         exitMag.setTextFill(Color.web("#1B75BC"));
     }
     
-    public void setStageAndSetupListeners(Scene scene, Magazines mag, ScreenController SC) {
+    public void setStageAndSetupListeners(Scene scene, Magazine mag, ScreenController SC) {
         thisStage = (Stage)scene.getWindow();
         windowWidth = scene.getWidth();
         windowHeight = scene.getHeight() - 2;

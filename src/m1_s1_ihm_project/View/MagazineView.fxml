@@ -20,7 +20,7 @@
             <VBox fx:id="magazineVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="902.0" prefWidth="1191.0" styleClass="flowpane">
                <children>
                   <ScrollPane fx:id="scrollPaneMedia" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="NEVER" />
-                  <JFXButton fx:id="exitMag" onAction="#handleButtonAction" onMouseEntered="#hoverFlatBtn" onMouseExited="#unHoverFlatBtn" ripplerFill="WHITE" styleClass="flat_btn" stylesheets="@customCss.css" text="Revenir aux magazines" textFill="#1b75bc">
+                  <JFXButton fx:id="exitMag" onAction="#handleButtonAction" onMouseEntered="#hoverFlatBtn" onMouseExited="#unHoverFlatBtn" ripplerFill="WHITE" styleClass="flat_btn" text="Revenir aux magazines" textFill="#1b75bc">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

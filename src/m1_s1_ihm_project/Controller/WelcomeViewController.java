@@ -42,7 +42,7 @@ public class WelcomeViewController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("src/m1_s1_ihm_project/View/ressources/welcomeVideo.mp4");
+        File file = new File("src/m1_s1_ihm_project/View/Resources/welcomeVideo.mp4");
         Media media = new Media(file.toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         MediaView mediaView = new MediaView(mediaPlayer); 

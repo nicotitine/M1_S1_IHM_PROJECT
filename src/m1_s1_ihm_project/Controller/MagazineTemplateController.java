@@ -11,22 +11,20 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import m1_s1_ihm_project.Model.Magazines.Magazines;
+import m1_s1_ihm_project.Model.Magazine.Magazine;
 
 public class MagazineTemplateController implements Initializable {
 
-    @FXML private Text magazineTitle;
+    @FXML private Text magazineTitle, magazineText;
     @FXML private ImageView magazineImageView;
-    @FXML private Label magazineType;
-    @FXML private Label magazineDate;
-    @FXML private Text magazineText;
+    @FXML private Label magazineType, magazineDate;
     @FXML private JFXButton magazineConsult;
     
     private int textMaxLength;
     private int id_database;
     private ScreenController screenController;
     
-    public void setStageAndSetupListeners(Magazines mag, ScreenController SC, int id_data) {
+    public void setStageAndSetupListeners(Magazine mag, ScreenController SC, int id_data) {
         
         screenController = SC;
         id_database = id_data;
@@ -61,7 +59,7 @@ public class MagazineTemplateController implements Initializable {
 
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(magazineConsult)) {
-            Magazines mag = Database.getMagazine(id_database);
+            Magazine mag = Database.getMagazine(id_database);
             screenController.setMagazineData(mag);
             screenController.activateMag("magazine", mag, screenController);
         }

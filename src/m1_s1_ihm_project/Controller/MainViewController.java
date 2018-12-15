@@ -3,6 +3,7 @@ package m1_s1_ihm_project.Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -27,48 +28,31 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import m1_s1_ihm_project.Model.Exercices.Exercices;
-import m1_s1_ihm_project.Model.Magazines.Magazines;
-import m1_s1_ihm_project.Model.Tools.EnglishNumbers;
+import m1_s1_ihm_project.Model.Exercice.Exercice;
+import m1_s1_ihm_project.Model.Magazine.Magazine;
+import m1_s1_ihm_project.Model.Tools.EnglishNumber;
 import m1_s1_ihm_project.Model.Tools.EnglishTime;
 
 public class MainViewController implements Initializable {
 
-    @FXML private FlowPane magazinesMP;
-    @FXML private ScrollPane magazinesScrollPane;
-    @FXML private FlowPane exercicesMP;
-    @FXML private ScrollPane exercicesScrollPane;
-    @FXML private FlowPane toolsMP;
-    @FXML private ScrollPane toolsScrollPane;
+    @FXML private FlowPane magazinesMP, exercicesMP, toolsMP;
+    @FXML private ScrollPane magazinesScrollPane, exercicesScrollPane, toolsScrollPane;
     @FXML private JFXTabPane tabPane;
-    @FXML private JFXComboBox translateToList;
-    @FXML private JFXComboBox translateFromList;
-    @FXML private JFXButton exchangeBtn;
+    @FXML private JFXComboBox translateToList, translateFromList;
+    @FXML private JFXButton exchangeBtn, clearMode, darkMode, clearModeEx, darkModeEx, clearModeTool, darkModeTool, exitBtn, exitBtnEx, exitBtnTool;
     @FXML private JFXTreeTableView<EnglishTime> timesTable;
-    @FXML private JFXTreeTableView<EnglishNumbers> numbersTable;
-    @FXML private JFXButton clearMode;
-    @FXML private JFXButton darkMode;
-    @FXML private JFXButton clearModeEx;
-    @FXML private JFXButton darkModeEx;
-    @FXML private JFXButton clearModeTool;
-    @FXML private JFXButton darkModeTool;
-    @FXML private HBox headerHBox;
-    @FXML private HBox headerHBoxEx;
-    @FXML private HBox headerHBoxTool;
-    @FXML private JFXButton exitBtn;
-    @FXML private JFXButton exitBtnEx;
-    @FXML private JFXButton exitBtnTool;
-    @FXML private JFXTextField searchFieldNumbers;
-    @FXML private JFXTextField searchFieldTimes;
+    @FXML private JFXTreeTableView<EnglishNumber> numbersTable;
+    @FXML private HBox headerHBox, headerHBoxEx, headerHBoxTool;
+    @FXML private JFXTextField searchFieldNumbers, searchFieldTimes;
+    @FXML private JFXTextArea textTranslated, textToTranslate;
     
-    private double windowWidth;
-    private double windowHeight;
+    private double windowWidth, windowHeight;
     private Stage thisStage;
     private ScreenController screenController;
-    private ObservableList<Magazines> magazines;
-    private ObservableList<Exercices> exercices;
+    private ObservableList<Magazine> magazines;
+    private ObservableList<Exercice> exercices;
     private ObservableList<EnglishTime> times;
-    private ObservableList<EnglishNumbers> numbers;
+    private ObservableList<EnglishNumber> numbers;
     private TraductionController traducteurController;
         
     public void setStageAndSetupListeners(Scene scene, ScreenController SC) {
@@ -87,7 +71,7 @@ public class MainViewController implements Initializable {
         headerHBox.setPrefWidth(windowWidth);
         headerHBoxEx.setPrefWidth(windowWidth);
         headerHBoxTool.setPrefWidth(windowWidth);
-        
+               
         // Add all magazines to the magazines pane
         magazinesMP.getChildren().clear();
         magazinesMP.setAlignment(Pos.TOP_CENTER);
@@ -126,40 +110,40 @@ public class MainViewController implements Initializable {
         JFXTreeTableColumn<EnglishTime, String> timeCol = new JFXTreeTableColumn("Temps");
         JFXTreeTableColumn<EnglishTime, String> exampleCol = new JFXTreeTableColumn("Exemple");
         JFXTreeTableColumn<EnglishTime, String> explenationCol = new JFXTreeTableColumn("Explication");
-        timeCol.setPrefWidth(250);
-        exampleCol.setPrefWidth(280);
-        explenationCol.setPrefWidth(1094 - 250 - 310);
         timeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getTitle()));
-        exampleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExample()));
-        explenationCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExplenation()));
         timeCol.setStyle("-fx-alignment: center; -fx-font-weight: bold;");
-            
+        timeCol.setContextMenu(null);
+        exampleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExample()));
+        exampleCol.setContextMenu(null);
+        explenationCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getExplenation()));
+        explenationCol.setContextMenu(null);
         final TreeItem<EnglishTime> root = new RecursiveTreeItem<>(times, RecursiveTreeObject::getChildren);
         timesTable.getColumns().setAll(timeCol, exampleCol, explenationCol);
         timesTable.setRoot(root);
         timesTable.setShowRoot(false);
         searchFieldTimes.textProperty().addListener(setupSearchFieldTimes(timesTable));
+        timesTable.setColumnResizePolicy(JFXTreeTableView.CONSTRAINED_RESIZE_POLICY);
         
         numbers = Database.getNumbers();
-        JFXTreeTableColumn<EnglishNumbers, String> numberCol = new JFXTreeTableColumn("Nombre");
-        JFXTreeTableColumn<EnglishNumbers, String> numberEnCol = new JFXTreeTableColumn("Nombre écrit");
-        JFXTreeTableColumn<EnglishNumbers, String> ordinalCol = new JFXTreeTableColumn("Ordinal");
-        JFXTreeTableColumn<EnglishNumbers, String> ordinalEnCol = new JFXTreeTableColumn("Ordinal écrit");
-        numberCol.setPrefWidth(240);
-        numberEnCol.setPrefWidth(240);
-        ordinalCol.setPrefWidth(240);
-        ordinalEnCol.setPrefWidth(240);
+        JFXTreeTableColumn<EnglishNumber, String> numberCol = new JFXTreeTableColumn("Nombre");
+        JFXTreeTableColumn<EnglishNumber, String> numberEnCol = new JFXTreeTableColumn("Nombre écrit");
+        JFXTreeTableColumn<EnglishNumber, String> ordinalCol = new JFXTreeTableColumn("Ordinal");
+        JFXTreeTableColumn<EnglishNumber, String> ordinalEnCol = new JFXTreeTableColumn("Ordinal écrit");
         numberCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getNumber()));
-        numberEnCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getNumberEn()));
-        ordinalCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getOrdinal()));
-        ordinalEnCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getOrdinalEn()));
         numberCol.setStyle("-fx-alignment: center; -fx-font-weight: bold;");
-        
-        final TreeItem<EnglishNumbers> rootNumbers = new RecursiveTreeItem<>(numbers, RecursiveTreeObject::getChildren);
+        numberCol.setContextMenu(null);
+        numberEnCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getNumberEn()));
+        numberEnCol.setContextMenu(null);
+        ordinalCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getOrdinal()));
+        ordinalCol.setContextMenu(null);
+        ordinalEnCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().valueProperty().get().getOrdinalEn()));
+        ordinalEnCol.setContextMenu(null);  
+        final TreeItem<EnglishNumber> rootNumbers = new RecursiveTreeItem<>(numbers, RecursiveTreeObject::getChildren);
         numbersTable.getColumns().setAll(numberCol, numberEnCol, ordinalCol, ordinalEnCol);
         numbersTable.setRoot(rootNumbers);
         numbersTable.setShowRoot(false);
-        searchFieldNumbers.textProperty().addListener(setupSearchFieldNumbers(numbersTable));
+        searchFieldNumbers.textProperty().addListener(setupSearchFieldNumbers(numbersTable));  
+        numbersTable.setColumnResizePolicy(JFXTreeTableView.CONSTRAINED_RESIZE_POLICY);
  
         // Resize events
         thisStage.widthProperty().addListener((obs, oldVal, newVal) -> {
@@ -205,6 +189,9 @@ public class MainViewController implements Initializable {
                 translateFromList.getSelectionModel().select(0);
                 translateToList.getSelectionModel().select(1);
             }
+            String temp = textTranslated.getText();
+            textTranslated.setText(textToTranslate.getText());
+            textToTranslate.setText(temp);
         }
         if(event.getSource().equals(darkMode) || event.getSource().equals(darkModeEx) || event.getSource().equals(darkModeTool)) {
             screenController.setDarkMode();
@@ -231,10 +218,10 @@ public class MainViewController implements Initializable {
             });
     }
     
-    private ChangeListener<String> setupSearchFieldNumbers(final JFXTreeTableView<EnglishNumbers> tableView) {
+    private ChangeListener<String> setupSearchFieldNumbers(final JFXTreeTableView<EnglishNumber> tableView) {
         return (o, oldVal, newVal) ->
             tableView.setPredicate(numberProp -> {
-                final EnglishNumbers number = numberProp.getValue();
+                final EnglishNumber number = numberProp.getValue();
                 return number.getNumber().contains(newVal)
                     || number.getNumberEn().contains(newVal)
                      || number.getOrdinal().contains(newVal)

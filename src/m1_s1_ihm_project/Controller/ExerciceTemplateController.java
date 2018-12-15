@@ -10,22 +10,20 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import m1_s1_ihm_project.Model.Exercices.Exercices;
+import m1_s1_ihm_project.Model.Exercice.Exercice;
 
 public class ExerciceTemplateController implements Initializable {
     
-    @FXML private Text exerciceTitle;
+    @FXML private Text exerciceTitle, exerciceText;
     @FXML private ImageView exerciceImageView;
-    @FXML private Label exerciceType;
-    @FXML private Label exerciceDuration;
-    @FXML private Text exerciceText;
+    @FXML private Label exerciceType, exerciceDuration;
     @FXML private JFXButton exerciceConsult;
     
     private ScreenController screenController;
     private int id_database;
     private int textMaxLength;
 
-    public void setStageAndSetupListeners(Exercices exe, ScreenController SC, int id_data) {
+    public void setStageAndSetupListeners(Exercice exe, ScreenController SC, int id_data) {
         screenController = SC;
         id_database = id_data;
         exerciceTitle.setText(exe.getTitle());
@@ -42,7 +40,7 @@ public class ExerciceTemplateController implements Initializable {
 
     @FXML public void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exerciceConsult)) {
-            Exercices exe = Database.getExercice(id_database);
+            Exercice exe = Database.getExercice(id_database);
             screenController.setExerciceData(exe);
             screenController.activateExe("exercice", exe, screenController);
         }

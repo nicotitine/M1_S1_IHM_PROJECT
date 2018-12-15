@@ -12,21 +12,18 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import m1_s1_ihm_project.Model.Exercices.Exercices;
-import m1_s1_ihm_project.Model.Magazines.Magazines;
+import m1_s1_ihm_project.Model.Exercice.Exercice;
+import m1_s1_ihm_project.Model.Magazine.Magazine;
 
 public final class ScreenController {
 
     private HashMap<String, Pane> screenMap = new HashMap<>();
     private final Scene main;
-    private Magazines magazineData;
-    private FXMLLoader magazineLoader;
-    private Exercices exerciceData;
-    private FXMLLoader exerciceLoader;
-    private FXMLLoader mainLoader;
-    private FXMLLoader welcomeLoader;
-    private final String lightThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
-    private final String darkThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/customCss_1.css").toExternalForm();
+    private Magazine magazineData;
+    private Exercice exerciceData;
+    private FXMLLoader magazineLoader, exerciceLoader, mainLoader, welcomeLoader;
+    private final String lightThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/lightTheme.css").toExternalForm();
+    private final String darkThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/darkTheme.css").toExternalForm();
     private String pseudo;
     private boolean firstLaunch = true;
     
@@ -44,11 +41,11 @@ public final class ScreenController {
             Logger.getLogger(ScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
         Font.loadFont(
-            getClass().getResourceAsStream("/m1_s1_ihm_project/View/Ressources/Raleway-Regular.ttf"), 
+            getClass().getResourceAsStream("/m1_s1_ihm_project/View/Resources/Raleway-Regular.ttf"), 
             72
         );
         Font.loadFont(
-            getClass().getResourceAsStream("/m1_s1_ihm_project/View/Ressources/Raleway-Bold.ttf"), 
+            getClass().getResourceAsStream("/m1_s1_ihm_project/View/Resources/Raleway-Bold.ttf"), 
             72
         );
         Parent root = (Parent)screenMap.get("welcome");
@@ -58,7 +55,7 @@ public final class ScreenController {
         stage.setScene(main);
         stage.setMaximized(true);
         stage.setTitle("Traveler Companion");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/m1_s1_ihm_project/View/Ressources/icon.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/m1_s1_ihm_project/View/Resources/icon.png")));
         stage.show();
         controller.setStageAndSetupListeners(this.getMain(), this.getInstance());
     }
@@ -71,7 +68,7 @@ public final class ScreenController {
         });
     }
 
-    public void activateMag(String name, Magazines mag, ScreenController SC){
+    public void activateMag(String name, Magazine mag, ScreenController SC){
         switch(name) {
             case "magazine":
                 MagazineViewController controller = (MagazineViewController)magazineLoader.getController();
@@ -91,7 +88,7 @@ public final class ScreenController {
         }
     }
     
-    public void activateExe(String name, Exercices exe, ScreenController SC) {
+    public void activateExe(String name, Exercice exe, ScreenController SC) {
         switch(name) {
             case "exercice" :
                 ExerciceViewController controller = (ExerciceViewController)exerciceLoader.getController();
@@ -111,19 +108,19 @@ public final class ScreenController {
         }
     }
     
-    public void setMagazineData(Magazines mag) {
+    public void setMagazineData(Magazine mag) {
         this.magazineData = mag;
     }
     
-    public Magazines getMagazineData(){
+    public Magazine getMagazineData(){
         return this.magazineData;
     }
     
-    public void setExerciceData(Exercices exe) {
+    public void setExerciceData(Exercice exe) {
         this.exerciceData = exe;
     }
     
-    public Exercices getExerciceData() {
+    public Exercice getExerciceData() {
         return this.exerciceData;
     }
     

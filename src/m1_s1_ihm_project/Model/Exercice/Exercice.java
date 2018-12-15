@@ -1,6 +1,6 @@
-package m1_s1_ihm_project.Model.Exercices;
+package m1_s1_ihm_project.Model.Exercice;
 
-public class Exercices {
+public class Exercice {
     protected String title;
     protected String description;
     protected String[] questions;
@@ -9,7 +9,7 @@ public class Exercices {
     protected String imageUrl;
     protected String type;
     
-    public Exercices(String title, String description, String[] questions, String[] answers, String duration, String imageUrl, String type) {
+    public Exercice(String title, String description, String[] questions, String[] answers, String duration, String imageUrl, String type) {
         this.title = title;
         this.description = description;
         this.questions = questions;

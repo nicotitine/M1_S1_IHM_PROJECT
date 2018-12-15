@@ -9,22 +9,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import m1_s1_ihm_project.Model.Exercices.Exercices;
-import m1_s1_ihm_project.Model.Magazines.Audio;
-import m1_s1_ihm_project.Model.Magazines.Book;
-import m1_s1_ihm_project.Model.Magazines.Document;
-import m1_s1_ihm_project.Model.Magazines.Magazines;
-import m1_s1_ihm_project.Model.Magazines.Video;
-import m1_s1_ihm_project.Model.Tools.EnglishNumbers;
+import m1_s1_ihm_project.Model.Exercice.Exercice;
+import m1_s1_ihm_project.Model.Magazine.Audio;
+import m1_s1_ihm_project.Model.Magazine.Book;
+import m1_s1_ihm_project.Model.Magazine.Document;
+import m1_s1_ihm_project.Model.Magazine.Magazine;
+import m1_s1_ihm_project.Model.Magazine.Video;
+import m1_s1_ihm_project.Model.Tools.EnglishNumber;
 import m1_s1_ihm_project.Model.Tools.EnglishTime;
 
 public class Database {
     
     private static Connection connection;
-    private static ObservableList<Magazines> magazinesList;
-    private static ObservableList<Exercices> exercicesList;
+    private static ObservableList<Magazine> magazinesList;
+    private static ObservableList<Exercice> exercicesList;
     private static ObservableList<EnglishTime> timesList;
-    private static ObservableList<EnglishNumbers> numbersList;
+    private static ObservableList<EnglishNumber> numbersList;
         
     public static void connect(String host, int port, String databaseName, String user, String password) {
         try {
@@ -38,6 +38,7 @@ public class Database {
             Database.retrieveExercicesFromDatabase();
             Database.retrieveTimesFromDatabase();
             Database.retrieveNumbersFromDatabase();
+            connection.close();
         } catch(java.sql.SQLException e) {
             System.err.println(e.getMessage());
             Runtime.getRuntime().exit(1);
@@ -70,7 +71,7 @@ public class Database {
                         magazinesList.add(new Video(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl));
                     break;
                     default: 
-                        magazinesList.add(new Magazines(title, description, imageUrl, publishDate, type, browsingUrl));
+                        magazinesList.add(new Magazine(title, description, imageUrl, publishDate, type, browsingUrl));
                 }
             }
             magazinesResultSet.close();
@@ -92,7 +93,7 @@ public class Database {
                 String duration = exercicesResultSet.getString("DURATION");
                 String imageUrl = exercicesResultSet.getString("IMAGEURL");
                 String type = exercicesResultSet.getString("TYPE");
-                exercicesList.add(new Exercices(title, description, questions, answers, duration, imageUrl, type));
+                exercicesList.add(new Exercice(title, description, questions, answers, duration, imageUrl, type));
             }
             exercicesResultSet.close();
             stmt.close();
@@ -127,7 +128,7 @@ public class Database {
                 String numberEn = numbersResultSet.getString("NUMBEREN");
                 String ordinal = numbersResultSet.getString("ORDINAL");
                 String ordinalEn = numbersResultSet.getString("ORDINALEN");
-                numbersList.add(new EnglishNumbers(number, numberEn, ordinal, ordinalEn));
+                numbersList.add(new EnglishNumber(number, numberEn, ordinal, ordinalEn));
             }
             numbersResultSet.close();
             stmt.close();
@@ -136,11 +137,11 @@ public class Database {
         }
     }
     
-    public static ObservableList<Magazines> getMagazines() {
+    public static ObservableList<Magazine> getMagazines() {
         return magazinesList;
     }
     
-    public static ObservableList<Exercices> getExercices() {
+    public static ObservableList<Exercice> getExercices() {
         return exercicesList;
     }
     
@@ -148,15 +149,15 @@ public class Database {
         return timesList;
     }
     
-    public static ObservableList<EnglishNumbers> getNumbers() {
+    public static ObservableList<EnglishNumber> getNumbers() {
         return numbersList;
     }
     
-    public static Magazines getMagazine(int index) {
+    public static Magazine getMagazine(int index) {
         return magazinesList.get(index);
     }
     
-    public static Exercices getExercice(int index) {
+    public static Exercice getExercice(int index) {
         return exercicesList.get(index);
     }
 }

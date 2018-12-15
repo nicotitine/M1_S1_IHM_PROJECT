@@ -4,15 +4,21 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/ExerciceTemplateController.java</file>
+            <file>jar:file:/C:/Users/nhinc/workplace/V1.1/jfoenix-8.0.7.jar!/css/controls/jfx-dialog-layout.css</file>
+            <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/View/darkTheme.css</file>
+            <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/ExerciceViewController.java</file>
+            <file>jar:file:/C:/Users/nhinc/workplace/V1.1/jfoenix-8.0.7.jar!/css/controls/jfx-text-field.css</file>
+            <file>jar:file:/C:/Users/nhinc/workplace/V1.1/jfoenix-8.0.7.jar!/css/controls/jfx-text-area.css</file>
+            <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/MagazineViewController.java</file>
             <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/MainViewController.java</file>
-            <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/View/customCss_1.css</file>
             <file>file:/C:/Users/nhinc/workplace/V1.1/INSERTS.sql</file>
             <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/Database.java</file>
             <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/TraductionController.java</file>
             <file>file:/C:/Users/nhinc/workplace/V1.1/src/M1_S1_IHM_PROJECT.java</file>
             <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/MagazineTemplateController.java</file>
-            <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/ExerciceViewController.java</file>
-            <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/MagazineViewController.java</file>
+            <file>jar:file:/C:/Users/nhinc/workplace/V1.1/jfoenix-8.0.7.jar!/css/jfoenix-design.css</file>
+            <file>jar:file:/C:/Users/nhinc/workplace/V1.1/jfoenix-8.0.7.jar!/css/controls/jfx-tree-table-view.css</file>
+            <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/View/lightTheme.css</file>
             <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/WelcomeViewController.java</file>
             <file>file:/C:/Users/nhinc/workplace/V1.1/src/m1_s1_ihm_project/Controller/ScreenController.java</file>
         </group>

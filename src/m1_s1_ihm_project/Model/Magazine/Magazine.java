@@ -1,8 +1,8 @@
-package m1_s1_ihm_project.Model.Magazines;
+package m1_s1_ihm_project.Model.Magazine;
 
 import java.util.Date;
 
-public class Magazines {
+public class Magazine {
     protected int id;
     protected String title;
     protected String description;
@@ -11,7 +11,7 @@ public class Magazines {
     protected String type;
     protected String browsingUrl;
     
-    public Magazines(String title, String description, String imageUrl, Date publishDate, String type, String browsingUrl) {
+    public Magazine(String title, String description, String imageUrl, Date publishDate, String type, String browsingUrl) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;

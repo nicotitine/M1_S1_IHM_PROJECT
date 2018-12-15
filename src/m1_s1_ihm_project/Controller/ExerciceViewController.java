@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -31,27 +30,21 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import m1_s1_ihm_project.Model.Exercices.Exercices;
+import m1_s1_ihm_project.Model.Exercice.Exercice;
 
 public class ExerciceViewController implements Initializable {
 
     @FXML private FlowPane exerciceFlowPane;
-    @FXML private VBox exerciceVBox;
-    @FXML private ScrollPane scrollPaneMedia;
-    @FXML private JFXButton exitMag;
-    @FXML private Label title;
-    @FXML private Label type;
+    @FXML private VBox exerciceVBox, checkboxVB;
+    @FXML private ScrollPane scrollPaneMedia, exerciceScrollPane;
+    @FXML private JFXButton exitMag, backBtn, validateBtn;
+    @FXML private Label title, type, secondaryTitle;
     @FXML private Text description;
-    @FXML private JFXButton backBtn;
-    @FXML private Label secondaryTitle;
     @FXML private HBox subHeaderHBox;
-    @FXML private ScrollPane exerciceScrollPane;
-    @FXML private VBox checkboxVB;
-    @FXML private JFXButton validateBtn;
     @FXML private StackPane stackpane;
     
     private ScreenController screenController;
-    private Exercices thisExe;
+    private Exercice thisExe;
     private double windowWidth;
     private double windowHeight;
     private Stage thisStage;
@@ -105,10 +98,10 @@ public class ExerciceViewController implements Initializable {
             ImageView imageView;
             if(isExeValid) {
                 bodyString = "Bravo, l'exercice a été complété sans erreur !\n";
-                imageView = new ImageView(new Image("/m1_s1_ihm_project/View/Ressources/okIcon.png"));
+                imageView = new ImageView(new Image("/m1_s1_ihm_project/View/Resources/okIcon.png"));
             } else {
                 bodyString = "Dommage, toutes les réponses ne sont pas correctes.\n";
-                imageView = new ImageView(new Image("/m1_s1_ihm_project/View/Ressources/errorIcon.png"));
+                imageView = new ImageView(new Image("/m1_s1_ihm_project/View/Resources/errorIcon.png"));
             }
             String answersString = "";
             for (String answer : thisExe.getAnswers()) {
@@ -149,7 +142,7 @@ public class ExerciceViewController implements Initializable {
         exitMag.setTextFill(Color.web("#1B75BC"));
     }
     
-    public void setStageAndSetupListeners(Scene scene, Exercices exe, ScreenController SC) {
+    public void setStageAndSetupListeners(Scene scene, Exercice exe, ScreenController SC) {
         thisStage = (Stage)scene.getWindow();
         windowWidth = scene.getWidth();
         windowHeight = scene.getHeight() - 2;

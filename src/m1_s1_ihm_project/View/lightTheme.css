@@ -107,3 +107,47 @@ and open the template in the editor.
 .checkbox {
     -jfx-checked-color: #1b75bc;
 }
+
+.title {
+     -fx-font-family: Raleway;
+     -fx-font-weight: bold;
+}
+
+.large-title {
+    -fx-font-size: 32px;
+}
+
+.medium-title {
+    -fx-font-size: 24px;
+}
+
+.small-title {
+    -fx-font-size: 18px;
+}
+
+.jfx-tree-table-view *.scroll-bar:horizontal *.increment-button,
+.jfx-tree-table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: -1;
+}
+
+.jfx-tree-table-view *.scroll-bar:horizontal *.increment-arrow, 
+.jfx-tree-table-view *.scroll-bar:horizontal *.decrement-arrow, 
+.jfx-tree-table-view .scroll-bar:horizontal .track,
+.jfx-tree-table-view .scroll-bar:horizontal:hover .track , 
+.jfx-tree-table-view .scroll-bar:horizontal:pressed .track{
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: -1;
+    -fx-shape: null;
+}
+
+.leftTranslate, .rightTranslate {
+    -fx-border-color: #1b75bc;
+    -fx-border-width: 4px 4px 4px 4px;
+    -fx-border-radius: 7px;
+    -fx-padding: 10px;
+}

@@ -1,8 +1,8 @@
-package m1_s1_ihm_project.Model.Magazines;
+package m1_s1_ihm_project.Model.Magazine;
 
 import java.util.Date;
 
-public class Audio extends Magazines{
+public class Audio extends Magazine{
     
     private final String mediaUrl;
     
