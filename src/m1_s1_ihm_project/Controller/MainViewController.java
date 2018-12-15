@@ -97,7 +97,7 @@ public class MainViewController implements Initializable {
                 FXMLLoader magLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazineTemplate.fxml"));
                 magazinesMP.getChildren().add(magLoader.load());
                 MagazineTemplateController controller = magLoader.getController();
-                controller.setStageAndSetupListeners(magazines.get(i), screenController, i+1);
+                controller.setStageAndSetupListeners(magazines.get(i), screenController, i);
             } catch (IOException ex) {
                 Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -110,7 +110,7 @@ public class MainViewController implements Initializable {
                 FXMLLoader exeLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/ExerciceTemplate.fxml"));
                 exercicesMP.getChildren().add(exeLoader.load());
                 ExerciceTemplateController controller = exeLoader.getController();
-                controller.setStageAndSetupListeners(exercices.get(i), screenController, i+1);
+                controller.setStageAndSetupListeners(exercices.get(i), screenController, i);
             } catch (IOException ex) {
                 Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
