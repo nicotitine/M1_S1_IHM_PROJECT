@@ -73,6 +73,8 @@ public class Database {
                         magazinesList.add(new Magazines(title, description, imageUrl, publishDate, type, browsingUrl));
                 }
             }
+            magazinesResultSet.close();
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,9 +92,10 @@ public class Database {
                 String duration = exercicesResultSet.getString("DURATION");
                 String imageUrl = exercicesResultSet.getString("IMAGEURL");
                 String type = exercicesResultSet.getString("TYPE");
-
                 exercicesList.add(new Exercices(title, description, questions, answers, duration, imageUrl, type));
             }
+            exercicesResultSet.close();
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -108,6 +111,8 @@ public class Database {
                 String explenation = timesResultSet.getString("EXPLENATION");
                 timesList.add(new EnglishTime(time, example, explenation));
             }
+            timesResultSet.close();
+            stmt.close();
         } catch(SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,6 +129,8 @@ public class Database {
                 String ordinalEn = numbersResultSet.getString("ORDINALEN");
                 numbersList.add(new EnglishNumbers(number, numberEn, ordinal, ordinalEn));
             }
+            numbersResultSet.close();
+            stmt.close();
         } catch(SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
