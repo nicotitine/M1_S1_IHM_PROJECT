@@ -21,19 +21,30 @@ import m1_s1_ihm_project.Model.Tools.EnglishTime;
 public class Database {
     
     private static Connection connection;
+    private static ObservableList<Magazines> magazinesList;
+    private static ObservableList<Exercices> exercicesList;
+    private static ObservableList<EnglishTime> timesList;
+    private static ObservableList<EnglishNumbers> numbersList;
         
     public static void connect(String host, int port, String databaseName, String user, String password) {
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:derby://" + host + ":" + port + "/" + databaseName, user, password);
-            System.out.println("Connexion à la base de données réussie !");              
+            System.out.println("Connexion à la base de données réussie !");
+            magazinesList = FXCollections.observableArrayList();
+            exercicesList = FXCollections.observableArrayList();
+            timesList = FXCollections.observableArrayList();
+            numbersList = FXCollections.observableArrayList();
+            Database.retrieveMagazinesFromDatabse();
+            Database.retrieveExercicesFromDatabase();
+            Database.retrieveTimesFromDatabase();
+            Database.retrieveNumbersFromDatabase();
         } catch(java.sql.SQLException e) {
             System.err.println(e.getMessage());
             Runtime.getRuntime().exit(1);
         }
     }
     
-    public static ObservableList<Magazines> getMagazines() {
-        ObservableList<Magazines> magazinesList = FXCollections.observableArrayList();
+    private static void retrieveMagazinesFromDatabse() {
         try {
             Statement stmt = connection.createStatement();
             ResultSet magazinesResultSet = stmt.executeQuery("SELECT * FROM MAGAZINES");
@@ -65,70 +76,9 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return magazinesList;
     }
     
-    public static Magazines getMagazine(String id) {
-        Magazines mag = null;
-        try {
-            Statement stmt = connection.createStatement();
-            ResultSet magazineResultSet = stmt.executeQuery("SELECT * FROM MAGAZINES WHERE ID=" + id);
-            if(magazineResultSet.next()) {
-                String title = magazineResultSet.getString("TITLE");
-                String description = magazineResultSet.getString("DESCRIPTION");
-                String imageUrl = magazineResultSet.getString("IMAGEURL");
-                Date publishDate = magazineResultSet.getDate("PUBLISHDATE");
-                String type = magazineResultSet.getString("TYPE");
-                String mediaUrl = magazineResultSet.getString("MEDIAURL");
-                String browsingUrl = magazineResultSet.getString("BROWSINGURL");
-                switch(type) {
-                    case "book":
-                        mag = new Book(title, description, imageUrl, publishDate, type, browsingUrl);
-                    break;
-                    case "audio":
-                        mag = new Audio(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl);
-                    break;
-                    case "document" :
-                        mag = new Document(title, description, imageUrl, publishDate, type, browsingUrl);
-                    break;
-                    case "video" :
-                        mag = new Video(title, description, imageUrl, publishDate, type, browsingUrl, mediaUrl);
-                    break;
-                    default: 
-                        mag = new Magazines(title, description, imageUrl, publishDate, type, browsingUrl);
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return mag;
-    }
-    
-    public static Exercices getExercice(String id) {
-        Exercices exe = null;
-        try {
-            Statement stmt = connection.createStatement();
-            ResultSet exerciceResultSet = stmt.executeQuery("SELECT * FROM EXERCICES WHERE ID=" + id);
-            if(exerciceResultSet.next()) {
-                String title = exerciceResultSet.getString("TITLE");
-                String description = exerciceResultSet.getString("DESCRIPTION");
-                String[] questions = exerciceResultSet.getString("QUESTIONS").split(", ");
-                String[] answers = exerciceResultSet.getString("ANSWERS").split(", ");
-                String duration = exerciceResultSet.getString("DURATION");
-                String imageUrl = exerciceResultSet.getString("IMAGEURL");
-                String type = exerciceResultSet.getString("TYPE");
-                
-                exe = new Exercices(title, description, questions, answers, duration, imageUrl, type);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return exe;
-    }
-    
-    
-    public static ObservableList<Exercices> getExercices() {
-        ObservableList<Exercices> exercicesList = FXCollections.observableArrayList();
+    private static void retrieveExercicesFromDatabase() {
         try {
             Statement stmt = connection.createStatement();
             ResultSet exercicesResultSet = stmt.executeQuery("SELECT * FROM EXERCICES");
@@ -146,12 +96,9 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return exercicesList;
     }
     
-    
-    public static ObservableList<EnglishTime> getTimes() {
-        ObservableList<EnglishTime> englishTimes = FXCollections.observableArrayList();
+    private static void retrieveTimesFromDatabase() {
         try {
             Statement stmt = connection.createStatement();
             ResultSet timesResultSet = stmt.executeQuery("SELECT * FROM TIMES");
@@ -159,16 +106,14 @@ public class Database {
                 String time = timesResultSet.getString("TIME");
                 String example = timesResultSet.getString("EXAMPLE");
                 String explenation = timesResultSet.getString("EXPLENATION");
-                englishTimes.add(new EnglishTime(time, example, explenation));
+                timesList.add(new EnglishTime(time, example, explenation));
             }
         } catch(SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return englishTimes;
     }
     
-    public static ObservableList<EnglishNumbers> getNumbers() {
-        ObservableList<EnglishNumbers> englishNumbers = FXCollections.observableArrayList();
+    private static void retrieveNumbersFromDatabase() {
         try {
             Statement stmt = connection.createStatement();
             ResultSet numbersResultSet = stmt.executeQuery("SELECT * FROM NUMBERS");
@@ -177,11 +122,34 @@ public class Database {
                 String numberEn = numbersResultSet.getString("NUMBEREN");
                 String ordinal = numbersResultSet.getString("ORDINAL");
                 String ordinalEn = numbersResultSet.getString("ORDINALEN");
-                englishNumbers.add(new EnglishNumbers(number, numberEn, ordinal, ordinalEn));
+                numbersList.add(new EnglishNumbers(number, numberEn, ordinal, ordinalEn));
             }
         } catch(SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return englishNumbers;
+    }
+    
+    public static ObservableList<Magazines> getMagazines() {
+        return magazinesList;
+    }
+    
+    public static ObservableList<Exercices> getExercices() {
+        return exercicesList;
+    }
+    
+    public static ObservableList<EnglishTime> getTimes() {
+        return timesList;
+    }
+    
+    public static ObservableList<EnglishNumbers> getNumbers() {
+        return numbersList;
+    }
+    
+    public static Magazines getMagazine(int index) {
+        return magazinesList.get(index);
+    }
+    
+    public static Exercices getExercice(int index) {
+        return exercicesList.get(index);
     }
 }

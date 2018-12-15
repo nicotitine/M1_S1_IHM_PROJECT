@@ -99,13 +99,6 @@
                              <padding>
                               <Insets bottom="20.0" top="20.0" />
                            </padding>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chargement, veuillez patienter">
-                                 <font>
-                                    <Font size="36.0" />
-                                 </font>
-                              </Text>
-                           </children>
                          </FlowPane>
                      </children>
                   </VBox>

@@ -63,16 +63,14 @@ public class ExerciceViewController implements Initializable {
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exitMag) || event.getSource().equals(backBtn)) {
             screenController.activateExe("main", thisExe, screenController);
-            if(videoMediaView != null) {
+            if(videoMediaView != null)
                 videoMediaView.getEngine().load(null);
-            }
-            if(audioMediaView != null) {
+            if(audioMediaView != null) 
                 audioMediaView.getEngine().load(null);
-            }
         }
+        
         if(event.getSource().equals(validateBtn)) {
-            List<String> answers = new ArrayList<String>();
-            
+            List<String> answers = new ArrayList<>();
             switch(thisExe.getType()) {
                 case "qcm": 
                     for(int i = 0; i < checkboxVB.getChildren().size(); i++) {
@@ -88,25 +86,22 @@ public class ExerciceViewController implements Initializable {
                         JFXTextField f = (JFXTextField)it.next();
                         answers.add(f.getText());
                     }
-                    break;
+                break;
             }
             
             boolean isExeValid = true;
             boolean isEnd = false;
             int index = 0;
-            if(answers.size() != thisExe.getAnswers().length) {
+            if(answers.size() != thisExe.getAnswers().length) 
                 isExeValid = false;
-            }
             while(isExeValid == true && isEnd == false) {
-                if(!answers.get(index).equals(thisExe.getAnswers()[index])) {
+                if(!answers.get(index).equals(thisExe.getAnswers()[index]))
                     isExeValid = false;
-                }
                 index++;
-                if(index >= answers.size()) {
+                if(index >= answers.size())
                     isEnd = true;
-                }
             }
-            String bodyString = "";
+            String bodyString;
             ImageView imageView;
             if(isExeValid) {
                 bodyString = "Bravo, l'exercice a été complété sans erreur !\n";
@@ -116,8 +111,8 @@ public class ExerciceViewController implements Initializable {
                 imageView = new ImageView(new Image("/m1_s1_ihm_project/View/Ressources/errorIcon.png"));
             }
             String answersString = "";
-            for(int i = 0; i < thisExe.getAnswers().length; i++) {
-                answersString += "\t- " + thisExe.getAnswers()[i] + "\n";
+            for (String answer : thisExe.getAnswers()) {
+                answersString += "\t- " + answer + "\n";
             }
             JFXDialogLayout content= new JFXDialogLayout();
             Text header = new Text("Résultat de l'exercice");
@@ -141,10 +136,8 @@ public class ExerciceViewController implements Initializable {
             dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
             dialog.show();
             closeBtn.setCursor(Cursor.HAND);
-            closeBtn.setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent event) {
-                    dialog.close();
-                }
+            closeBtn.setOnAction((ActionEvent event1) -> {
+                dialog.close();
             });
         }
     }

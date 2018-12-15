@@ -5,12 +5,8 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -32,31 +28,15 @@ public class WelcomeViewController implements Initializable {
     private JFXTextField pseudoField;
     
     public void setStageAndSetupListeners(Scene scene, ScreenController SC) {
-        buttonStart.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent event) {
-                pane.getChildren().clear();
-                Text loading = new Text("Chargement en cours...");
-                loading.setStyle("-fx-font-size: 48px; -fx-font-family: Raleway; -fx-font-weight: bold;");
-                pane.getChildren().add(loading);
-                try {
-                    NANOSECONDS.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(WelcomeViewController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                Platform.runLater(new Runnable(){
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(WelcomeViewController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                       SC.setPseudo(pseudoField.getText());
-                       SC.activateMag("main", null, SC);   
-                    }
-                });
-            }
+        Platform.runLater(() -> {
+            // Load the main view while the user is on the welcome screen.
+            // On "new Image()", adding the parameter "backgroundLoading" as true removes any loading time !!!
+            SC.loadHome(SC);
+        });
+        
+        buttonStart.setOnAction((ActionEvent event) -> {
+            SC.setPseudo(pseudoField.getText());
+            SC.activateMag("main", null, SC);
         });
     }
     
@@ -65,18 +45,10 @@ public class WelcomeViewController implements Initializable {
         File file = new File("src/m1_s1_ihm_project/View/ressources/welcomeVideo.mp4");
         Media media = new Media(file.toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
-        mediaPlayer.setMute(true);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);  
-        mediaPlayer.setAutoPlay(true);
         MediaView mediaView = new MediaView(mediaPlayer); 
-        mediaView.setFitWidth(Screen.getPrimary().getBounds().getWidth());
-        mediaView.setFitHeight(Screen.getPrimary().getBounds().getHeight());
-        
         VBox mainBox = new VBox();
         VBox secondaryBox = new VBox();
         Text title = new Text("Bienvenu sur Traveler Companion");
-        title.getStyleClass().addAll("medium-title", "title");
         Text description = new Text("Apprenez rapidement l'anglais avec cet assistant et obtenez un dipome reconnu par l'état.\n\nEt le tout sans débourser un centime !");
         Text toStart = new Text("Pour commencer : ");
         VBox pseudoBox = new VBox();
@@ -85,6 +57,13 @@ public class WelcomeViewController implements Initializable {
         buttonStart = new JFXButton("Commencer !");
         VBox buttonWrapper = new VBox();
         
+        mediaPlayer.play();
+        mediaPlayer.setMute(true);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);  
+        mediaPlayer.setAutoPlay(true);
+        mediaView.setFitWidth(Screen.getPrimary().getBounds().getWidth());
+        mediaView.setFitHeight(Screen.getPrimary().getBounds().getHeight());
+        title.getStyleClass().addAll("medium-title", "title");
         description.setStyle("-fx-font-size: 14px; -fx-fill: #313131;");
         description.setWrappingWidth(380);
         toStart.getStyleClass().addAll("title", "small-title");
@@ -110,17 +89,16 @@ public class WelcomeViewController implements Initializable {
         secondaryBox.setStyle("-fx-background-color: white; -fx-background-radius: 7px; -fx-border-radius: 7px; -fx-padding: 20px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,1), 20, 0, 0, 0);");
         secondaryBox.setFillWidth(false);
         mainBox.setFillWidth(false);
+        mainBox.getChildren().add(secondaryBox);
+        pane.getChildren().add(mediaView);
+        pane.getChildren().add(mainBox);
+        mainBox.setAlignment(Pos.CENTER);
         
-        // Cut a video bug (camera became crazy)
+        // Cut a video bug (camera became crazy : https://youtu.be/AmJrybOE9bs?t=75 )
         mediaPlayer.currentTimeProperty().addListener((obs, oldVal, newVal) -> {
             if(newVal.toSeconds() > 69 && newVal.toSeconds() < 70) {
                 mediaPlayer.seek(new Duration(newVal.toMillis() + 11000));
             }
         });
-        
-        mainBox.getChildren().add(secondaryBox);
-        pane.getChildren().add(mediaView);
-        pane.getChildren().add(mainBox);
-        mainBox.setAlignment(Pos.CENTER);
     }
 }

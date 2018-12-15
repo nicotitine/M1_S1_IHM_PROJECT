@@ -103,7 +103,7 @@ public class MagazineViewController implements Initializable {
             case "book" :
                 type.setText("Type : Livre");
                 imageMediaView = new ImageView();
-                imageMediaView.setImage(new Image(mag.getImageUrl()));
+                imageMediaView.setImage(new Image(mag.getImageUrl(), true));
                 imageMediaView.setFitHeight(300*3);
                 imageMediaView.setFitWidth(windowWidth);
                 scrollPaneMedia.setContent(imageMediaView);
@@ -115,7 +115,7 @@ public class MagazineViewController implements Initializable {
             case "document" :
                 type.setText("Type : Document");
                 imageMediaView = new ImageView();
-                imageMediaView.setImage(new Image(mag.getImageUrl()));
+                imageMediaView.setImage(new Image(mag.getImageUrl(), true));
                 imageMediaView.setFitHeight(300*3);
                 imageMediaView.setFitWidth(windowWidth);
                 scrollPaneMedia.setContent(imageMediaView);
@@ -161,9 +161,8 @@ public class MagazineViewController implements Initializable {
             windowWidth = (double)newVal;
             if(imageMediaView != null)
                 imageMediaView.setFitWidth(windowWidth);
-            if(videoMediaView != null) {
+            if(videoMediaView != null)
                 videoMediaView.setPrefWidth(windowWidth);
-            }
             description.setWrappingWidth(windowWidth/2);
         });
     }

@@ -24,32 +24,31 @@ public class ExerciceTemplateController implements Initializable {
     private ScreenController screenController;
     private int id_database;
     private int textMaxLength;
-    
+
     public void setStageAndSetupListeners(Exercices exe, ScreenController SC, int id_data) {
         screenController = SC;
         id_database = id_data;
         exerciceTitle.setText(exe.getTitle());
         exerciceType.setText(exe.getType().toUpperCase());
-        exerciceImageView.setImage(new Image(exe.getImageUrl()));
+        exerciceImageView.setImage(new Image(exe.getImageUrl(), true));
         if(exe.getDescription().length() > textMaxLength)
             exerciceText.setText(exe.getDescription().substring(0, 300) + "...");
-        else 
+        else
             exerciceText.setText(exe.getDescription());
-        
+
         exerciceText.setWrappingWidth(340);
         exerciceDuration.setText("Durée : " + exe.getDuration());
     }
-    
+
     @FXML public void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(exerciceConsult)) {
-            Exercices exe = Database.getExercice(Integer.toString(id_database));
+            Exercices exe = Database.getExercice(id_database);
             screenController.setExerciceData(exe);
             screenController.activateExe("exercice", exe, screenController);
         }
     }
-    
+
     @Override public void initialize(URL url, ResourceBundle rb) {
         textMaxLength = 300;
-    }    
-    
+    }
 }

@@ -13,12 +13,12 @@ public class TraductionController {
         mapLang = new TreeMap<>();
         init();
     }
- 
+
     private void init() {
         mapLang.put("en", "ENGLISH");
         mapLang.put("fr", "FRENCH");
     }
-     
+    
     public ObservableList getNameList(){
         return FXCollections.observableArrayList(mapLang.values().toArray());
     }

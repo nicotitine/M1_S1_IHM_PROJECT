@@ -70,10 +70,7 @@ public class MainViewController implements Initializable {
     private ObservableList<EnglishTime> times;
     private ObservableList<EnglishNumbers> numbers;
     private TraductionController traducteurController;
-    
-    private final String theme1Url = getClass().getResource("/m1_s1_ihm_project/View/customCss.css").toExternalForm();
-    private final String theme2Url = getClass().getResource("/m1_s1_ihm_project/View/customCss_1.css").toExternalForm();
-    
+        
     public void setStageAndSetupListeners(Scene scene, ScreenController SC) {
         // Initialize the window with the window width (screen width as fullscreen)
         screenController = SC;
@@ -164,7 +161,7 @@ public class MainViewController implements Initializable {
         numbersTable.setShowRoot(false);
         searchFieldNumbers.textProperty().addListener(setupSearchFieldNumbers(numbersTable));
  
-        // Resize event
+        // Resize events
         thisStage.widthProperty().addListener((obs, oldVal, newVal) -> {
             magazinesScrollPane.setPrefWidth((double)newVal);
             magazinesMP.setPrefWidth((double)newVal);
@@ -222,6 +219,8 @@ public class MainViewController implements Initializable {
         }
     }
     
+    
+    // Searching functions
     private ChangeListener<String> setupSearchFieldTimes(final JFXTreeTableView<EnglishTime> tableView) {
         return (o, oldVal, newVal) ->
             tableView.setPredicate(timeProp -> {

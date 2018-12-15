@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -59,8 +60,15 @@ public final class ScreenController {
         stage.setTitle("Traveler Companion");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/m1_s1_ihm_project/View/Ressources/icon.png")));
         stage.show();
-        controller.setStageAndSetupListeners(this.getMain(), this);
-        
+        controller.setStageAndSetupListeners(this.getMain(), this.getInstance());
+    }
+    
+    public void loadHome(ScreenController SC) {
+        Platform.runLater(() -> {
+            MainViewController mainController = (MainViewController)mainLoader.getController();
+            mainController.setStageAndSetupListeners(main, SC);
+            firstLaunch = false;
+        });
     }
 
     public void activateMag(String name, Magazines mag, ScreenController SC){
@@ -141,5 +149,9 @@ public final class ScreenController {
     
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
+    }
+    
+    private ScreenController getInstance() {
+        return this;
     }
 }

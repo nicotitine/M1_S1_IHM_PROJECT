@@ -27,11 +27,12 @@ public class MagazineTemplateController implements Initializable {
     private ScreenController screenController;
     
     public void setStageAndSetupListeners(Magazines mag, ScreenController SC, int id_data) {
+        
         screenController = SC;
         id_database = id_data;
         magazineTitle.setText(mag.getTitle());
         magazineDate.setText("Publié le : " + new SimpleDateFormat("dd/MM/yyyy").format(mag.getPublishDate()));
-        magazineImageView.setImage(new Image(mag.getImageUrl()));
+        magazineImageView.setImage(new Image(mag.getImageUrl(), true));
         if(mag.getDescription().length() > textMaxLength)
             magazineText.setText(mag.getDescription().substring(0, 300) + "...");
         else
@@ -60,7 +61,7 @@ public class MagazineTemplateController implements Initializable {
 
     @FXML private void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(magazineConsult)) {
-            Magazines mag = Database.getMagazine(Integer.toString(id_database));
+            Magazines mag = Database.getMagazine(id_database);
             screenController.setMagazineData(mag);
             screenController.activateMag("magazine", mag, screenController);
         }
