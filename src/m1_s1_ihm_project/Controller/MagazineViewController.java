@@ -73,10 +73,6 @@ public class MagazineViewController implements Initializable {
     }
     
     public void setStageAndSetupListeners(Scene scene, Magazine mag, ScreenController SC) {
-        // To comment if used at home !!!
-        System.setProperty("https.proxyHost", "cache.univ-pau.fr");
-        System.setProperty("https.proxyPort", "3128");
-        /////////////////////////////////
         thisStage = (Stage)scene.getWindow();
         windowWidth = scene.getWidth();
         windowHeight = scene.getHeight() - 2;
@@ -92,7 +88,6 @@ public class MagazineViewController implements Initializable {
         title.setText(mag.getTitle());
         description.setText(mag.getDescription().replace("\\n", "\n"));
         date.setText("Date de publication : " + new SimpleDateFormat("dd/MM/yyyy").format(mag.getPublishDate()));
-        System.out.println(mag.getType());
         switch(mag.getType()) {
             case "book" :
                 type.setText("Type : Livre");

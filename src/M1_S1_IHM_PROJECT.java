@@ -12,11 +12,20 @@ public class M1_S1_IHM_PROJECT extends Application {
     private final String dbUser = "root";
     private final String dbPassword = "root";
     ///////////////////////////////////////////////
+    
+    // SET TO TRUE IF LAUNCHED FROM A DESKTOP AT UNIVERSITY
+    private final boolean isProxyNeeded = false;
+    ///////////////////////////////////////////////////////
+    
         
     @Override
     public void start(Stage stage) throws Exception {
-        Database.connect(serverName, serverPort, dbName, dbUser, dbPassword);
-        ScreenController screenController = new ScreenController(stage);
+        if(isProxyNeeded) {
+            System.setProperty("https.proxyHost", "cache.univ-pau.fr");
+            System.setProperty("https.proxyPort", "3128");
+        }
+        final boolean isDatabaseConnected = Database.connect(serverName, serverPort, dbName, dbUser, dbPassword);
+        ScreenController screenController = new ScreenController(stage, isDatabaseConnected);
     }
 
     public static void main(String[] args) {

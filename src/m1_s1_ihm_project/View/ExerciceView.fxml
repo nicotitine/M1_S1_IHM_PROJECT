@@ -25,7 +25,7 @@
                         <ScrollPane fx:id="scrollPaneMedia" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" VBox.vgrow="NEVER" />
                         <VBox prefHeight="24.0" prefWidth="1191.0">
                            <children>
-                              <JFXButton fx:id="exitMag" onAction="#handleButtonAction" onMouseEntered="#hoverFlatBtn" onMouseExited="#unHoverFlatBtn" ripplerFill="WHITE" styleClass="flat_btn" stylesheets="@customCss.css" text="Revenir aux exercices" textFill="#1b75bc">
+                              <JFXButton fx:id="exitMag" onAction="#handleButtonAction" onMouseEntered="#hoverFlatBtn" onMouseExited="#unHoverFlatBtn" ripplerFill="WHITE" styleClass="flat_btn" text="Revenir aux exercices" textFill="#1b75bc">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>

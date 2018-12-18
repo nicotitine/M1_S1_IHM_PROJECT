@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -36,7 +37,11 @@ public class WelcomeViewController implements Initializable {
         
         buttonStart.setOnAction((ActionEvent event) -> {
             SC.setPseudo(pseudoField.getText());
-            SC.activateMag("main", null, SC);
+            if(!Database.getIsDatabaseConnected()) {
+               SC.activateMag("error", null, SC);
+            } else 
+                SC.activateMag("main", null, SC);
+            
         });
     }
     

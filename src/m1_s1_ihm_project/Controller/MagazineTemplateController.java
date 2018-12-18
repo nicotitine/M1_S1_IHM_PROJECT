@@ -25,10 +25,6 @@ public class MagazineTemplateController implements Initializable {
     private ScreenController screenController;
     
     public void setStageAndSetupListeners(Magazine mag, ScreenController SC, int id_data) {
-        // To comment if used at home !!!
-        System.setProperty("https.proxyHost", "cache.univ-pau.fr");
-        System.setProperty("https.proxyPort", "3128");
-        /////////////////////////////////
         screenController = SC;
         id_database = id_data;
         magazineTitle.setText(mag.getTitle());

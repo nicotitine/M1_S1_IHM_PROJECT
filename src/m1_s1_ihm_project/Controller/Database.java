@@ -25,8 +25,10 @@ public class Database {
     private static ObservableList<Exercice> exercicesList;
     private static ObservableList<EnglishTime> timesList;
     private static ObservableList<EnglishNumber> numbersList;
+    private static String errorConnect;
+    private static boolean isDatabaseConnected;
         
-    public static void connect(String host, int port, String databaseName, String user, String password) {
+    public static boolean connect(String host, int port, String databaseName, String user, String password) {
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:derby://" + host + ":" + port + "/" + databaseName, user, password);
             System.out.println("Connexion à la base de données réussie !");
@@ -39,10 +41,13 @@ public class Database {
             Database.retrieveTimesFromDatabase();
             Database.retrieveNumbersFromDatabase();
             connection.close();
+            isDatabaseConnected =  true;
         } catch(java.sql.SQLException e) {
+            errorConnect = e.getMessage();
             System.err.println(e.getMessage());
-            Runtime.getRuntime().exit(1);
+            isDatabaseConnected = false;
         }
+        return isDatabaseConnected;
     }
     
     private static void retrieveMagazinesFromDatabse() {
@@ -159,5 +164,13 @@ public class Database {
     
     public static Exercice getExercice(int index) {
         return exercicesList.get(index);
+    }
+    
+    public static String getErrorConnect() {
+        return errorConnect;
+    }
+    
+    public static boolean getIsDatabaseConnected() {
+        return isDatabaseConnected;
     }
 }

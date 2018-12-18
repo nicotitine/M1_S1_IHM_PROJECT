@@ -26,9 +26,11 @@ public final class ScreenController {
     private final String darkThemeUrl = getClass().getResource("/m1_s1_ihm_project/View/darkTheme.css").toExternalForm();
     private String pseudo;
     private boolean firstLaunch = true;
+    private boolean isDatabaseConnected;
     
-    public ScreenController(Stage stage) {
+    public ScreenController(Stage stage, boolean isDatabaseConnected) {
         try {
+            this.isDatabaseConnected = isDatabaseConnected;
             magazineLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MagazineView.fxml"));
             exerciceLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/ExerciceView.fxml"));
             mainLoader = new FXMLLoader(getClass().getResource("/m1_s1_ihm_project/View/MainView.fxml"));
@@ -40,14 +42,8 @@ public final class ScreenController {
         } catch (IOException ex) {
             Logger.getLogger(ScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Font.loadFont(
-            getClass().getResourceAsStream("/m1_s1_ihm_project/View/Resources/Raleway-Regular.ttf"), 
-            72
-        );
-        Font.loadFont(
-            getClass().getResourceAsStream("/m1_s1_ihm_project/View/Resources/Raleway-Bold.ttf"), 
-            72
-        );
+        Font.loadFont(getClass().getResourceAsStream("/m1_s1_ihm_project/View/Resources/Raleway-Regular.ttf"), 72);
+        Font.loadFont(getClass().getResourceAsStream("/m1_s1_ihm_project/View/Resources/Raleway-Bold.ttf"), 72);
         Parent root = (Parent)screenMap.get("welcome");
         WelcomeViewController controller = (WelcomeViewController)welcomeLoader.getController();
         main = new Scene(root);
@@ -74,6 +70,18 @@ public final class ScreenController {
                 MagazineViewController controller = (MagazineViewController)magazineLoader.getController();
                 main.setRoot( screenMap.get(name) );
                 controller.setStageAndSetupListeners(main, magazineData, SC);
+            break;
+            case "error":
+                MainViewController magazinesControllerError = (MainViewController)mainLoader.getController();
+                if(firstLaunch) {
+                    main.setRoot( screenMap.get("main") );
+                    magazinesControllerError.setStageAndSetupListeners(main, SC);
+                    magazinesControllerError.showError();
+                    firstLaunch = false;
+                } else {
+                    main.setRoot(screenMap.get("main"));
+                    magazinesControllerError.showError();
+                }
             break;
             case "main":
                 if(firstLaunch) {
@@ -150,5 +158,9 @@ public final class ScreenController {
     
     private ScreenController getInstance() {
         return this;
+    }
+    
+    public boolean getIsDatabaseConnected() {
+        return this.isDatabaseConnected;
     }
 }
