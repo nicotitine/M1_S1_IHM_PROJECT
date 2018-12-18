@@ -73,6 +73,10 @@ public class MagazineViewController implements Initializable {
     }
     
     public void setStageAndSetupListeners(Scene scene, Magazine mag, ScreenController SC) {
+        // To comment if used at home !!!
+        System.setProperty("https.proxyHost", "cache.univ-pau.fr");
+        System.setProperty("https.proxyPort", "3128");
+        /////////////////////////////////
         thisStage = (Stage)scene.getWindow();
         windowWidth = scene.getWidth();
         windowHeight = scene.getHeight() - 2;
