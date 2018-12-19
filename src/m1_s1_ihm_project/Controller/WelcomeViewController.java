@@ -57,7 +57,7 @@ public class WelcomeViewController implements Initializable {
         Text description = new Text("Apprenez rapidement et efficacement l'anglais avec cet assistant !\n\nEt le tout sans débourser un centime !");
         Text toStart = new Text("Pour commencer : ");
         VBox pseudoBox = new VBox();
-        Text pseudoLabel = new Text("Entrez un pseudo : (Not working)");
+        Text pseudoLabel = new Text("Entrez un pseudo : (Coming soon...)");
         pseudoField = new JFXTextField();
         buttonStart = new JFXButton("Commencer !");
         VBox buttonWrapper = new VBox();
