@@ -14,7 +14,7 @@ public class M1_S1_IHM_PROJECT extends Application {
     ///////////////////////////////////////////////
     
     // SET TO TRUE IF LAUNCHED FROM A DESKTOP AT UNIVERSITY
-    private final boolean isProxyNeeded = false;
+    private final boolean isProxyNeeded = true;
     ///////////////////////////////////////////////////////
     
         
