@@ -242,7 +242,7 @@
                            <children>
                               <VBox prefHeight="347.0" prefWidth="689.0" spacing="10.0" style="-fx-padding: 20px;" styleClass="tool">
                                  <children>
-                                    <Label text="Traduction">
+                                    <Label text="Traduction (Not working)">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>

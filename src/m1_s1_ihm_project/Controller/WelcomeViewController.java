@@ -57,7 +57,7 @@ public class WelcomeViewController implements Initializable {
         Text description = new Text("Apprenez rapidement l'anglais avec cet assistant et obtenez un dipome reconnu par l'état.\n\nEt le tout sans débourser un centime !");
         Text toStart = new Text("Pour commencer : ");
         VBox pseudoBox = new VBox();
-        Text pseudoLabel = new Text("Entrez un pseudo :");
+        Text pseudoLabel = new Text("Entrez un pseudo : (Not working)");
         pseudoField = new JFXTextField();
         buttonStart = new JFXButton("Commencer !");
         VBox buttonWrapper = new VBox();
@@ -73,9 +73,9 @@ public class WelcomeViewController implements Initializable {
         description.setWrappingWidth(380);
         toStart.getStyleClass().addAll("title", "small-title");
         pseudoLabel.setStyle("-fx-font-size: 14px;");
-        pseudoLabel.setWrappingWidth(190);
+        pseudoLabel.setWrappingWidth(230);
         pseudoField.setPromptText("Ex : Fab");
-        pseudoField.setPrefWidth(190);
+        pseudoField.setPrefWidth(230);
         pseudoField.setStyle("-jfx-focus-color: #1b75bc");
         pseudoBox.getChildren().addAll(pseudoLabel, pseudoField);
         pseudoBox.setSpacing(10);
