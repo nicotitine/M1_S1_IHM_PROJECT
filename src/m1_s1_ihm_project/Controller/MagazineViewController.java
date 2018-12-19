@@ -99,7 +99,7 @@ public class MagazineViewController implements Initializable {
                 scrollPaneMedia.setPrefHeight(350);
                 secondaryTitle.setText("Synopsis : ");
                 buyBook.setText("Acheter ce livre dans votre navigateur");
-                shareBook.setText("Partager ce livre (Not working)");
+                shareBook.setText("Partager ce livre (Coming soon...)");
             break;
             case "document" :
                 type.setText("Type : Document");
@@ -111,7 +111,7 @@ public class MagazineViewController implements Initializable {
                 scrollPaneMedia.setPrefHeight(350);
                 secondaryTitle.setText("Description : ");
                 buyBook.setText("Ouvrir ce document dans votre navigateur");
-                shareBook.setText("Partager ce document (Not working)");
+                shareBook.setText("Partager ce document (Coming soon...)");
             break;
             case "video" :
                 Video vid = (Video)mag;
@@ -127,7 +127,7 @@ public class MagazineViewController implements Initializable {
                 magazineFlowPane.setPrefHeight(magazineFlowPane.getPrefHeight() + 300);
                 subHeaderHBox.setPrefHeight(100);
                 buyBook.setText("Ouvrir la vidéo dans votre navigateur");
-                shareBook.setText("Partager cette vidéo (Not working)");
+                shareBook.setText("Partager cette vidéo (Coming soon)");
             break;
             case "audio" :
                 Audio audio = (Audio)mag;
@@ -138,7 +138,7 @@ public class MagazineViewController implements Initializable {
                 scrollPaneMedia.setPrefHeight(200);
                 scrollPaneMedia.setContent(audioMediaView);
                 buyBook.setText("Ouvrir dans votre navigateur");
-                shareBook.setText("Partager ce document audio (Not working)");
+                shareBook.setText("Partager ce document audio (Coming soon)");
             break;
         }
         
